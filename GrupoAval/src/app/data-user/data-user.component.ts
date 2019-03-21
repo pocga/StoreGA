@@ -15,7 +15,7 @@ export class DataUserComponent implements OnInit {
   ngOnInit() {
   }
   dataConfirm(){
-   // this.router.navigate(['/reserve']); 
+    this.router.navigate(['/reserve']); 
    //this.dialog.open(ReserveComponent,{ data: {
    // message:  "Error!!!"
    // }});

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'menu', component:MenuComponent },
   { path: 'shopCar', component:ShopComponent },
   { path: 'datauser', component:DataUserComponent },
- // { path: 'reserve', component:ReserveComponent },
+  { path: 'reserve', component:ReserveComponent },
   { path: 'checkOrder', component:CheckOrderComponent }
 
   
