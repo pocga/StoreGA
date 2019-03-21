@@ -1,7 +1,6 @@
 <div class="filter">
-        <ul>
-            <li><a (click)="routerTvs()">TVs</a></li>
-            <li><a (click)="routerPCs()">PCs</a></li>
-            <li><a (click)="routerCelulares()">Celulares</a></li>     
-        </ul>
+
+    <ul (click)="routerFiltros()">
+        <li *ngFor="let item of categorias" ><a >{{item}}</a></li>    
+    </ul>
 </div> 

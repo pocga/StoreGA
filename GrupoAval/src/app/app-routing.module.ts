@@ -8,17 +8,27 @@ import { ShopComponent } from './shop/shop.component';
 import { DataUserComponent } from './data-user/data-user.component';
 import { ReserveComponent } from './reserve/reserve.component';
 import { CheckOrderComponent } from './check-order/check-order.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
 
   { path: '', component:LoginComponent },
-  { path: 'menu', component:MenuComponent },
+  { path: 'menu', component:MenuComponent ,
+    children: [
+    { path: '', component:HomeComponent } ,
+    { path: 'filtros', component:TvComponent }  ,
+      ]
+  },
   { path: 'shopCar', component:ShopComponent },
   { path: 'datauser', component:DataUserComponent },
   { path: 'reserve', component:ReserveComponent },
-  { path: 'checkOrder', component:CheckOrderComponent }
+  { path: 'checkOrder', component:CheckOrderComponent },
 
-  
+  { path: '', component:MenuComponent ,
+  children: [
+  { path: 'filtros', component:TvComponent }  ,
+    ]
+  }
 ];
 
 @NgModule({
@@ -26,3 +36,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

@@ -13,6 +13,9 @@ import { DataUserComponent } from './data-user/data-user.component';
 import { ReserveComponent } from './reserve/reserve.component';
 import { CheckOrderComponent } from './check-order/check-order.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -27,6 +30,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     DataUserComponent,
     ReserveComponent,
     CheckOrderComponent,
+    HomeComponent,
     
   ],
   imports: [
@@ -34,6 +38,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     Ng5SliderModule,
     NoopAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
