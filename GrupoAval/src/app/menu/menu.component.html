@@ -2,23 +2,28 @@
     <div class="roof">
         <div class="head">
             <a><img class="logo"src="assets/imgaval.jpg"></a>
-            <a class="button"><span><i class="fas fa-shopping-cart"></i></span></a>
-            <a class="button-check">Seguimiento Pedido</a>
+            <!-- <a class="head-hello">Bienvenido</a>-->
+            <a class="button" (click)="shopCar()" ><span><i class="fas fa-shopping-cart"></i></span></a>
+            <a class="button-check" (click)="checkOrder()" >Seguimiento Pedido</a>
         </div>
     </div>
 </header>
 <div>
-<div>
+    <div>
     <app-filter></app-filter>
+    </div>
 </div>
 
-</div>
-<div class="menu-catalogo">  
-    <app-catalogo></app-catalogo>
+<div class="menu-principal"> 
+    <div  class="menu-catalogo"> 
+        <app-catalogo></app-catalogo>
+    </div> 
     <div class="router">
         <router-outlet></router-outlet>
     </div>
 </div>
+
+
 
 
 

@@ -3,14 +3,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 .login{
+    
     width: 280px;
     height: 280px;
     background: white;
     float: right;
     outline: 1px solid #333;
     text-align:center;
+}
+.button-confirm-next{
+    float: right;
+    margin: 1%;
+}
+.button-confirm-last{
+    float: left;
+    margin: 1%;
+}
+.login-shop{
+    width: 350px;
+    height: 350px;
+    background: white;
+    float: right;
+    outline: 1px solid #333;
+    text-align:center;
+}
+.product-car{
+    text-align:center;
+
 }
 .logologin{
     width: 280px;
@@ -19,6 +41,14 @@
 }
 .button-login{
     text-align:center;
+}
+.button-login-next{
+    float: right;
+    margin: 1%;
+}
+.button-login-last{
+    float: left;
+    margin: 1%;
 }
 //menu
 
@@ -29,6 +59,10 @@
 .logo{
     width: 90px;
     height: 50px;
+}
+.head-hello{
+    text-align:center;
+    font-family: Helvetica, sans-serif;
 }
 .button{
     float: right;
@@ -56,12 +90,12 @@
     background: #FF0000;
 }
 .menu{
-    background: #333;
-    width: 250px;
-    height: 600px;
+    
+    
+   // height: 600px;
     color: white;
     font-family: Helvetica, sans-serif;
-    //text-align:center;
+   // text-align:center;
     line-height: 30px;
 }
 .form-filtros{
@@ -69,6 +103,7 @@
 }
 .menu-filtro{
     font-size: 17px;
+    text-align:center;
 }
 .filter ul{
     font-family: Helvetica, sans-serif;
@@ -79,6 +114,7 @@
 }
 .filter ul li{
     display: inline-block;
+ 
     transition: all 300ms;
 }
 .filter ul li a:hover{
@@ -92,11 +128,29 @@
     padding-right: 30px;
 }
 .router{
-    background: white;
-    width: 500px;
-    height: 300px;
-    margin-left: 500px;  
+    background:white;
+    width: 800px;
+    height:405px;
+    //margin: 20px;
+    //padding-top: 500px;  
 }
-
+.menu-principal div{
+    display: inline-block;
+}
+.menu-catalogo {
+    background: #333;
+    width: 200px;
+    height:100%;
+   // background: white;
+   text-align:center;
+}
+//slider precio
+.button-precio{
+    font-family: Helvetica, sans-serif;
+}
+.values-precio{
+    text-align:center;
+    
+}
 
 

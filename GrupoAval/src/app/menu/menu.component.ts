@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TvComponent } from '../filter/tv/tv.component';
-
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -9,10 +9,19 @@ import { TvComponent } from '../filter/tv/tv.component';
 })
 export class MenuComponent implements OnInit {
   
-  constructor( ) { }
+  constructor( public router: Router) { }
 
   ngOnInit() {
   }
+
+  shopCar(){
+    this.router.navigate(['/shopCar']);
+  }
+
+  checkOrder(){
+    this.router.navigate(['/checkOrder']);
+  }
+
   routerTvs(){
     console.log("tvs");
   }

@@ -1,24 +1,20 @@
 <div class="menu">
-  <a class="menu-filtro">Filtros</a><br>
+
+  <div><a class="menu-filtro">Filtros</a></div>
+  
   <form class="form-filtros">
 
-    <label for="categoria">* Categoria </label><br>
+    <label for="categoria"> Categoria </label><br>
     <input type="checkbox">TVs<br>
     <input type="checkbox">PCs<br>
     <input type="checkbox">Celulares<br><br>
 
-    <label form="disponibilidad">* Disponibilidad </label>
-    <section>
-      <option type="checkbox">Disponible</option>
-    </section>
-    <br><br>
-
+    <label form="disponibilidad"> Disponibilidad </label><br>
     <input type="checkbox">Disponible<br>
     <input type="checkbox">No disponible<br><br>
 
     <label form="precio">Precio </label>
-    <select name="precio">
-    </select><br>
-
+    <ng5-slider class="slider-precio" [(value)]="minValue" [(highValue)]="maxValue" [options]="options" ></ng5-slider>
+    <br><br>
   </form>
 </div>

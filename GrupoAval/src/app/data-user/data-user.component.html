@@ -1,0 +1,28 @@
+<div class="login-pag">
+  <div class="login-shop">
+    <div>
+      <h1>Datos de comprador</h1>
+    </div>
+    <h4>Por favor confimar datos de envío</h4>
+   <div>
+    <form  class="form-login">
+      <label for="nombre">Nombre </label>
+      <input name="nombre" type="text"/><br><br>
+      
+      <label for="apellido">Apellido </label>
+      <input name="apellido" type="text"/><br><br>
+
+      <label for="ciudad">Ciudad </label>
+      <input name="ciudad" type="text"/><br><br>
+
+      <label for="direccion">Dirección </label>
+      <input name="direccion" type="text"/><br>
+
+      <h4>Valor total=...</h4>
+
+      <button class="button-login-next" (click)="dataConfirm()" >Siguiente</button>
+      <button class="button-login-last" (click)="returnConfirm()" >Anterior</button>
+    </form>
+   </div>
+  </div>
+</div>
