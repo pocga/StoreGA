@@ -5,13 +5,23 @@
         <a><img class="logologin" src="assets/sophos.jpg"></a>
       </div><br>
   
-      <form  class="form-login">
-        <label for="name">Nombre </label>
-        <input name="name" type="text"/><br><br>
-        
-        <label for="password">Contraseña </label>
-        <input name="password" type="text"/><br><br>
-        <button class="button-login" (click)="accept()">Aceptar</button>
-      </form>
+      <div class="form-login">
+
+        <form [formGroup]="form">
+          <label for="name" >Usuario </label>
+          <input id="name" formControlName="nombre" type="text" class="form-control" /><br><br>
+          
+          <label for="password">Contraseña </label>
+          <input id="password" formControlName="contraseña" type="text" /><br><br>
+
+          <button class="button-login" (click)="accept()">Aceptar</button>
+
+          <div *ngIf="datos_erroneos">
+            <h4>Usuario o contraseña no válidos</h4>
+          </div>
+        </form>
+
+      </div>
+
     </div>
 </div>

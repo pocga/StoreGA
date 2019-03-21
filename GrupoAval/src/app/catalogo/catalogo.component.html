@@ -1,20 +1,18 @@
 <div class="menu">
-
   <div><a class="menu-filtro">Filtros</a></div>
   
   <form class="form-filtros">
 
-    <label for="categoria"> Categoria </label><br>
-    <input type="checkbox">TVs<br>
-    <input type="checkbox">PCs<br>
-    <input type="checkbox">Celulares<br><br>
+    <label for="categoria"> Categorias </label><br>
+    <li *ngFor="let item of categorias" ><input type="checkbox">{{item}}</li><br>
 
     <label form="disponibilidad"> Disponibilidad </label><br>
     <input type="checkbox">Disponible<br>
     <input type="checkbox">No disponible<br><br>
 
     <label form="precio">Precio </label>
-    <ng5-slider class="slider-precio" [(value)]="minValue" [(highValue)]="maxValue" [options]="options" ></ng5-slider>
+    <ng5-slider class="slider-precio"  [(value)]="minValue" [(highValue)]="maxValue" [options]="options" ></ng5-slider>
+    
     <br><br>
   </form>
 </div>

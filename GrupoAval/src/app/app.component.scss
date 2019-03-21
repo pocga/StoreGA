@@ -1,4 +1,15 @@
 //app componente
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: #BDBDBD;
+    background-attachment: fixed;
+    margin: 0; padding: 0;
+} 
+
 .login-pag {
     display: flex;
     align-items: center;
@@ -60,10 +71,7 @@
     width: 90px;
     height: 50px;
 }
-.head-hello{
-    text-align:center;
-    font-family: Helvetica, sans-serif;
-}
+
 .button{
     float: right;
     width: 50px;
@@ -90,20 +98,21 @@
     background: #FF0000;
 }
 .menu{
-    
-    
    // height: 600px;
     color: white;
     font-family: Helvetica, sans-serif;
    // text-align:center;
     line-height: 30px;
+    text-align:center;
+    width:100;
 }
 .form-filtros{
     font-size: 14px;
+} li {
+    list-style: none;
 }
 .menu-filtro{
     font-size: 17px;
-    text-align:center;
 }
 .filter ul{
     font-family: Helvetica, sans-serif;
@@ -114,7 +123,6 @@
 }
 .filter ul li{
     display: inline-block;
- 
     transition: all 300ms;
 }
 .filter ul li a:hover{
@@ -129,28 +137,34 @@
 }
 .router{
     background:white;
-    width: 800px;
-    height:405px;
-    //margin: 20px;
+    width: 85%;
+    height:600px;
+   // margin: 20px;
     //padding-top: 500px;  
+    float:right;
 }
 .menu-principal div{
     display: inline-block;
 }
+
 .menu-catalogo {
     background: #333;
-    width: 200px;
-    height:100%;
+    width: 15%;
+    height:600px;
    // background: white;
-   text-align:center;
+    text-align:center;
+    float:left;
 }
 //slider precio
 .button-precio{
     font-family: Helvetica, sans-serif;
 }
 .values-precio{
-    text-align:center;
-    
+    text-align:center; 
 }
-
+.menu-img{
+    width:1150px;
+    height:600px;
+    text-align:center;
+}
 
