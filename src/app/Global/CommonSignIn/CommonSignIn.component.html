@@ -1,0 +1,20 @@
+<form>
+  <div class="mb-4">
+    <mat-form-field [formGroup]="form" class="w-100">
+      <input formControlName="nombre" matInput type="nombre" placeholder="Nombre Usuario" required>
+    </mat-form-field>
+  </div>
+
+  <div class="mb-4">
+    <mat-form-field [formGroup]="form" class="w-100">
+      <input  formControlName="password" matInput type="password" placeholder="Contraseña" required>
+    </mat-form-field>
+  </div>
+  <!--
+  <div class="mb-3">
+    <mat-checkbox>Remember Me</mat-checkbox>
+    <span fxFlex></span> <a [routerLink]="['/session/forgot-password']">Forgot Password?</a>
+  </div>-->
+  <button color="accent" class="button-lg mb-3" mat-raised-button (click)="signin()" >Continuar</button>
+  <!--<p>Don't have an account? <a [routerLink]="['/session/signup']">Click here to create one</a></p>-->
+</form>
