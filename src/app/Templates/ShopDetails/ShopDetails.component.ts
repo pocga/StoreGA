@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, OnChanges,Output, EventEmitter, Renderer2, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
 import { Router, ActivatedRoute, Params }   from '@angular/router';
+import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
+import {HttpResponse} from '@angular/common/http';
 
 import {EmbryoService } from '../../Services/Embryo.service';
 
@@ -9,15 +11,9 @@ import {EmbryoService } from '../../Services/Embryo.service';
   styleUrls: ['./ShopDetails.component.scss']
 })
 export class ShopDetailsComponent implements OnInit, OnChanges {
-   private mockData = {
-      "image":"https://media.aws.alkosto.com/media/catalog/product/cache/6/image/69ace863370f34bdf190e4e164b6e123/t/c/tc_32es_600x_600b_600l_600h_1.jpg",
-      "name": "Televisor",
-      "availablity": true,
-      "product_code": 1234,
-      "description": "El televisor",
-      "price": 2500,
-   }
-   @Input() detailData : any = this.mockData;;
+
+
+   @Input() detailData : any;
    @Input() currency   : string; 
 
    mainImgPath   : string;
@@ -32,15 +28,15 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
 
    constructor(private route: ActivatedRoute,
                private router: Router, 
-               public embryoService : EmbryoService
+               public embryoService : EmbryoService,private toastyService: ToastaService
                ) {
       this.embryoService.getProductReviews().valueChanges().subscribe(res => {this.productReviews = res});
    }
 
    ngOnInit() {
-      this.detailData = this.mockData;
-      this.mainImgPath = this.mockData.image;
-      this.totalPrice  = this.mockData.price; 
+      
+      this.mainImgPath = this.detailData.imagen;
+      this.totalPrice  = this.detailData.precio; 
 
       this.route.params.subscribe(res => {
          this.type = null;
@@ -51,8 +47,8 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
    ngOnChanges() {
       this.mainImgPath = null;
       this.totalPrice  = null;
-      this.mainImgPath = this.mockData.image;
-      this.totalPrice  = this.mockData.price; 
+      this.mainImgPath = this.detailData.imagen;
+      this.totalPrice  = this.detailData.precio; 
    }
 
    /**
@@ -89,6 +85,25 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
 
    public addToCart(value:any) {
       this.embryoService.addToCart(value);
+
+      let toastOption: ToastOptions = {
+         title: "Añadiendo producto al carrito",
+         msg: "Producto añadido",
+         showClose: true,
+         timeout: 3000,
+         theme: "material"
+      };
+      let resultado: string;
+      
+      this.embryoService.addToCart(value).subscribe((res: HttpResponse<any>) => {
+         resultado = res.statusText;
+         this.toastyService.wait(toastOption);
+         },
+         (error) => {
+           console.log("error: " + error.statusText);
+         }
+       ); 
+       this.embryoService.calculateLocalCartProdCounts();
    }
    public buyNow(value:any) {
       this.embryoService.buyNow(value);

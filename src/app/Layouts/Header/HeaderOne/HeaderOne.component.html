@@ -15,7 +15,8 @@
         <div fxFlex.xs="60" fxFlex.sm="60" fxFlex.md="50" fxFlex.lg="33%" fxFlex.xl="33%">
           <span fxFlex></span>
           <div class="list-flex user-tool">
-            <embryo-HeaderCart [currency]="embryoService?.currency" [cartProducts]="embryoService?.localStorageCartProducts" [count]="embryoService?.navbarCartCount" (removeProductData)="openConfirmationPopup($event)"></embryo-HeaderCart>
+            <embryo-HeaderCart [routerLink]="['/cart']"></embryo-HeaderCart>
+            <!--<embryo-HeaderCart [currency]="embryoService?.currency" [cartProducts]="embryoService?.localStorageCartProducts" [count]="embryoService?.navbarCartCount" (removeProductData)="openConfirmationPopup($event)"></embryo-HeaderCart>-->
             <button class="follow-products" (click)="followProduct()">Consulta tu pedido</button>
             <!--
             <embryo-WishList [currency]="embryoService?.currency" [wishListProducts]="embryoService?.localStorageWishlist" [count]="embryoService?.navbarWishlistProdCount" (removeWishListData)="openWishlistConfirmationPopup($event)" (addAllWishlistToCart)="addAllWishlistToCart($event)" (addToCart)="addToCart($event)"></embryo-WishList>

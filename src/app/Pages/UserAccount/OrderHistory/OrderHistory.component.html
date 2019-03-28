@@ -22,11 +22,12 @@
 <mat-card>
    <h4 class="mb-3">Consulta tu pedido</h4>
 
-    <div >
+    <div > 
       <mat-form-field class="inputId">
         <input  matInput type="nombre" [(ngModel)]="id_reserve" placeholder="ID" required>
       </mat-form-field>&nbsp;
       <button mat-raised-button color="accent" class="search" (click)="searchOrder(id_reserve)" >buscar</button>
+      <button mat-raised-button color="accent" class="search" (click)="limpiar()" >limpiar</button>
     </div><br>
 
   <table mat-table [dataSource]="dataSource" class="w-100">
@@ -71,7 +72,7 @@
          <th mat-header-cell *matHeaderCellDef> Opción </th>
          <td mat-cell *matCellDef="let element">
 
-            <a (click)="reviewPopup(detailData)" class="accent-color">   <i class="material-icons">
+            <a (click)="PedidoPopup(element.orderid)" class="accent-color">   <i class="material-icons">
                remove_red_eye
             </i></a>  
          </td>

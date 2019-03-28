@@ -17,15 +17,6 @@ export class ReviewPopupComponent implements OnInit {
   reviews : any;//
 
 
-  id                : any;
-  type              : any;
-  apiResponse       : any;
-  singleProductData : any;
-  productsList      : any;
-
-  
-  
-
   constructor( public dialogRef: MatDialogRef<ReviewPopupComponent>) { 
  
   }

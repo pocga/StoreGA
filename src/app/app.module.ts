@@ -70,6 +70,8 @@ import { FixedHeaderComponent } from './Layouts/Header/FixedHeader/FixedHeader.c
 import {SignInComponent} from './Pages/Session/SignIn/SignIn.component';
 import { OrderHistoryComponent } from './Pages/UserAccount/OrderHistory/OrderHistory.component';
 import { ProductsListComponent } from './Pages/Products/ProductsList/ProductsList.component';
+import {PanelProductsComponent} from './Pages/Products/PanelProducts/PanelProducts.component';
+import {OrderPopupComponent} from './Pages/UserAccount/OrderPopup/OrderPopup.component'
 //import { DetailPageComponent } from './Pages/Products/DetailPage/DetailPage.component';
 //import { ShopDetailsComponent } from './Templates/ShopDetails/ShopDetails.component';
 
@@ -81,6 +83,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
   // DetailPageComponent,
+  OrderPopupComponent,
    OrderHistoryComponent,
    SignInComponent,
     AppComponent,
@@ -100,8 +103,13 @@ export function createTranslateLoader(http: HttpClient) {
     HeaderThreeComponent,
     FixedHeaderComponent,
     ProductsListComponent,
+    PanelProductsComponent,
     
   ],
+  entryComponents : [
+   OrderPopupComponent,
+   
+   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'embryo-seo-pre'}),
     BrowserAnimationsModule,

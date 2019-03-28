@@ -23,6 +23,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
    }
 
    ngOnInit() {
+
    }
 
    ngAfterViewChecked() : void {
@@ -47,7 +48,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
    public calculateProductSinglePrice(product:any, value: any) {
       let price = 0;
       product.quantity = value;
-      price = product.price*value;
+      price = product.precio*value;
       return price;
    }
 
@@ -55,7 +56,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
       let subtotal = 0;
       if(this.embryoService.localStorageCartProducts && this.embryoService.localStorageCartProducts.length>0) {
          for(let product of this.embryoService.localStorageCartProducts) {
-            subtotal += (product.price *product.quantity);
+            subtotal += (product.precio *product.cantidad);
          }
          return subtotal;
       }
@@ -67,7 +68,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
       let total = 0;
       if(this.embryoService.localStorageCartProducts && this.embryoService.localStorageCartProducts.length>0) {
          for(let product of this.embryoService.localStorageCartProducts) {
-            total += (product.price*product.quantity);
+            total += (product.precio*product.cantidad);
          }
          total += (this.embryoService.shipping+this.embryoService.tax);
          return total;
@@ -83,8 +84,8 @@ export class CartComponent implements OnInit, AfterViewChecked {
    }
 
    public getQuantityValue(product) {
-      if(product.quantity) {
-         return product.quantity
+      if(product.cantidad) {
+         return product.cantidad
       } else {
          return 1;
       }

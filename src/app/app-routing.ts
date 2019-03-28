@@ -12,6 +12,7 @@ import {SignInComponent} from './Pages/Session/SignIn/SignIn.component';
 import { OrderHistoryComponent } from './Pages/UserAccount/OrderHistory/OrderHistory.component';
 import { ProductsListComponent } from './Pages/Products/ProductsList/ProductsList.component';
 import { DetailPageComponent } from './Pages/Products/DetailPage/DetailPage.component';
+import { PanelProductsComponent } from './Pages/Products/PanelProducts/PanelProducts.component';
 
 export const AppRoutes : Routes = [
    {
@@ -39,10 +40,10 @@ export const AppRoutes : Routes = [
       path : 'home',
       component : MainComponent,
       children: [ 
-         
+         //ProductsListComponent
          {
             path : '',
-            component : ProductsListComponent
+            component : PanelProductsComponent , 
             /*
             children: [
                { 

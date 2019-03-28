@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient ,HttpResponse,HttpHeaders} from '@angular/common/http';
 import { Observable ,  BehaviorSubject } from 'rxjs';
 import { MatDialogRef, MatDialog, MatDialogConfig, MatSidenav } from '@angular/material';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from "@angular/fire/database";
@@ -9,7 +9,7 @@ import 'rxjs/Rx';
 import { ReviewPopupComponent } from '../Global/ReviewPopup/ReviewPopup.component';
 import { ConfirmationPopupComponent } from '../Global/ConfirmationPopup/ConfirmationPopup.component';
 import {ThankPopupComponent}  from '../Pages/Checkout/thankPopup/thank-popup.component';
-
+import {OrderPopupComponent} from '../Pages/UserAccount/OrderPopup/OrderPopup.component'
 interface Response {
   data     : any;
 }
@@ -37,6 +37,15 @@ export class EmbryoService {
    navbarCartCount : number = 0;
    navbarWishlistProdCount = 0;
    buyUserCartProducts : any;
+
+    config = {
+      headers: new HttpHeaders({
+         'Content-Type': 'application/json',
+         'Access-Control-Allow-Origin': "*",
+         'Access-Control-Allow-Methods': "DELETE, POST, GET, OPTIONS",
+         'Access-Control-Allow-Headers': "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With" 
+      })
+   };
    
    constructor(private http:HttpClient, 
                private dialog: MatDialog, 
@@ -52,12 +61,23 @@ export class EmbryoService {
 
       this.db.object("products").valueChanges().subscribe(res => {this.setCartItemDefaultValue(res['gadgets'][1])});
    }
+   public productList(){
 
+   }
    public PopupThank(){
       let review: MatDialogRef<ThankPopupComponent>;
       review = this.dialog.open(ThankPopupComponent);
       return review.afterClosed();
    }
+
+   public PedidoPopup(orderid){
+      console.log("popup pedidos");
+      let review: MatDialogRef<OrderPopupComponent>;
+      review = this.dialog.open(OrderPopupComponent);
+      return review.afterClosed();
+   }
+   
+
    public reserve(){
       let toastOption: ToastOptions = {
          title: "Gracias por su compra",
@@ -85,30 +105,11 @@ export class EmbryoService {
       localStorage.setItem("cart_item", JSON.stringify(products));
       this.calculateLocalCartProdCounts();
    }
-   /*
-   public reviewPopup(singleProductDetails, reviews)
-   {
-      let review: MatDialogRef<ReviewPopupComponent>;
-      const dialogConfig = new MatDialogConfig();
    
-      if(this.isDirectionRtl) {
-         dialogConfig.direction = 'rtl';
-      } else {
-         dialogConfig.direction = 'ltr';
-      }
-
-      review = this.dialog.open(ReviewPopupComponent, dialogConfig);
-      review.componentInstance.singleProductDetails = singleProductDetails;
-      review.componentInstance.reviews = reviews;
-
-      return review.afterClosed();
-   }*/
-   public reviewPopup(detailData)
-   {
+   public reviewPopup(detailData) {
       let review: MatDialogRef<ReviewPopupComponent>;
       review = this.dialog.open(ReviewPopupComponent);
       review.componentInstance.detailData = detailData;
-
       return review.afterClosed();
    }
 
@@ -130,8 +131,26 @@ export class EmbryoService {
       ----------  Cart Product Function  ----------
    */
 
+   // returning LocalCarts Product Count
+   public calculateLocalCartProdCounts() {
+      this.localStorageCartProducts = null;
+      this.localStorageCartProducts = this.http.get('http://localhost:8080/carrito/eliana/productos', this.config);
+      console.log("respuesta: "+ this.localStorageCartProducts );
+      console.log("respuesta stringify: "+ JSON.stringify(this.localStorageCartProducts) );
+      //console.log("respuesta parse "+ JSON.parse(JSON.stringify(this.localStorageCartProducts)) );
+
+      //this.localStorageCartProducts = JSON.parse(localStorage.getItem("cart_item")) || [];
+      this.navbarCartCount = +((this.localStorageCartProducts).length);
+   }
+
    // Adding new Product to cart in localStorage
    public addToCart(data: any, type:any=""){
+      
+      let producto={idProducto: 1, cantidad:1};
+      console.log(data);
+      return this.http.post('http://localhost:8080/carrito/eliana/productos', producto, this.config);
+
+      /*
       let products : any;
       products = JSON.parse(localStorage.getItem("cart_item")) || [];
       let productsLength = products.length; 
@@ -151,23 +170,18 @@ export class EmbryoService {
             return  true;
          }
       });
-      if (!found) { products.push(data); }
+      if (!found) { products.push(data);}
 
       if(productsLength == products.length) {
-         toastOption.title = "Product Already Added";
-         toastOption.msg = "You have already added this product to cart list";
-         console.log("entro");
-      }
-
-      if(type == 'wishlist'){
-         this.removeLocalWishlistProduct(data);
+         toastOption.title = "Producto agregado anteriormente";
+         toastOption.msg = "El producto ya ha sido agerdado";
       }
 
       this.toastyService.wait(toastOption);
       setTimeout(() => {
          localStorage.setItem("cart_item", JSON.stringify(products));
          this.calculateLocalCartProdCounts();
-      }, 500);
+      }, 500);*/
    }
 
    public buyNow(data:any) {
@@ -193,12 +207,7 @@ export class EmbryoService {
       localStorage.setItem("cart_item", JSON.stringify(products))
    }
 
-   // returning LocalCarts Product Count
-   public calculateLocalCartProdCounts() {
-      this.localStorageCartProducts = null;
-      this.localStorageCartProducts = JSON.parse(localStorage.getItem("cart_item")) || [];
-      this.navbarCartCount = +((this.localStorageCartProducts).length);
-   }
+
 
    // Removing cart from local
    public removeLocalCartProduct(product: any) {

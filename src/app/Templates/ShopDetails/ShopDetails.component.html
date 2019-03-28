@@ -25,7 +25,7 @@
               
             <div class="product-detail-content">
               <!--<a href="javascript:void(0)" [routerLink]="['/home']">Volver a Comprar</a>-->
-              <h3>{{detailData?.name}}</h3>
+              <h3>{{detailData.categoria}}</h3>
               
               <!---->
 
@@ -39,16 +39,16 @@
               <!---->
 
               <div class="product-detail-price">
-                <h4 class="accent-color">{{totalPrice | currency:currency}} </h4>
+                <h4 class="accent-color">{{detailData.precio | currency:currency}} </h4>
               </div>
               <ul class="no-style mb-4">
                 <li>
                   <span class="font-medium"> Disponibilidad </span>: 
-                    <span *ngIf="detailData?.availablity">Si</span>
-                    <span *ngIf="!(detailData?.availablity)">Agotado</span>
+                  <span *ngIf="detailData.cantidadDisponible > 0">Si</span>
+                  <span *ngIf="detailData.cantidadDisponible < 0">Agotado</span>
                 </li>
                 <li>
-                  <span class="font-medium">Código del Producto</span>: {{detailData?.product_code}}
+                  <span class="font-medium">Código del Producto</span>: {{detailData.idProducto}}
                 </li>
                 <!--
                 <li>
@@ -58,7 +58,7 @@
               </ul>
               <div class="short-des">
                 <span class="font-medium">Descripción:</span>
-                <p>{{detailData?.description}}
+                <p>{{detailData.descripcion}}
                 </p>
               </div>
               <!--
