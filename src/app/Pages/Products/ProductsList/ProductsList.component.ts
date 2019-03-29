@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+/*import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, Params }   from '@angular/router';
 import { Observable ,  Subscription } from 'rxjs';
 
@@ -92,3 +92,4 @@ export class ProductsListComponent implements OnInit {
       return hits;
    }
 }
+*/

@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit,Output, EventEmitter } from '@angular/
 import { FormControl, FormGroup, FormBuilder,FormArray, Validators } from '@angular/forms';
 import { EmbryoService } from '../../../Services/Embryo.service';
 import { Router, NavigationEnd } from '@angular/router';
+import {HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-Payment',
@@ -11,6 +12,11 @@ import { Router, NavigationEnd } from '@angular/router';
 export class PaymentComponent implements OnInit, AfterViewInit{
 
    @Output() reserve: EventEmitter<any> = new EventEmitter();
+
+   public datosBusqueda = [];
+   public countRol: number;
+   public totales = [];
+   public datosUsuario= [];
 
    step = 0;
    isDisabledPaymentStepTwo  = true;
@@ -67,7 +73,9 @@ export class PaymentComponent implements OnInit, AfterViewInit{
       }
    ]
 
-   paymentFormOne   : FormGroup;
+  paymentFormOne   : FormGroup;
+  public datos_usuario;
+
 
    constructor(public embryoService : EmbryoService, 
                private formGroup : FormBuilder,
@@ -105,6 +113,17 @@ export class PaymentComponent implements OnInit, AfterViewInit{
             bank_card_value : [null]
          })
       });
+
+      this.embryoService.getDataCart().subscribe((response) => {
+         this.datosBusqueda = Object.keys(response).map(
+             function(key) {
+               return response[key]; });
+                
+         this.countRol = this.datosBusqueda.length;
+         this.totales=this.datosBusqueda[2];
+         //this.datosBusqueda=this.datosBusqueda[1];
+         console.log(this.datosBusqueda); 
+       });
    }
 
    ngAfterViewInit() {
@@ -146,8 +165,48 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    }
 
    public submitPayment() {
+
+      this.datos_usuario=this.paymentFormOne.value;
       
-      this.embryoService.PopupThank();
+      //console.log(this.datos_usuario.user_details.first_name);
+      //console.log(this.datos_usuario.user_details.city_state);
+      //console.log(this.datos_usuario.user_details.mobile);
+      //console.log(this.datos_usuario.user_details.street_name_number);
+      //console.log(this.datos_usuario);
+
+      var uuid4 = require('uuid4');
+      var id = uuid4();
+      console.log("id aleatorio"+id)
+      this.datosUsuario= [{  "ciudadDestinatario":this.datos_usuario.user_details.city_state,
+      "direccionDestinatario": this.datos_usuario.user_details.street_name_number,
+      "fecha": "yyyy-MM-dd'T'HH:mm:ss",
+      "idPedido": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "idUsuario": "eliana",
+      "nombreDestinatario": this.datos_usuario.user_details.first_name,
+      "productos": [
+         {
+            "cantidad": 0,
+            "idProducto": 0
+         }
+      ],
+      "telefonoDestinatario": this.datos_usuario.user_details.mobile
+      }];
+
+      
+
+      console.log(this.datosUsuario);
+      
+      let resultado;
+      this.embryoService.confirmarPedido(this.datosBusqueda).subscribe((res: HttpResponse<any>) => {
+         resultado = res.statusText;
+         this.embryoService.PopupThank();
+         },
+         (error) => {
+           console.log("error: " + JSON.stringify(error));
+         }
+           );
+
+      
      
       /*
       let userDetailsGroup = <FormGroup>(this.paymentFormOne.controls['user_details']);

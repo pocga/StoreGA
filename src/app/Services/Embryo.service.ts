@@ -118,8 +118,8 @@ export class EmbryoService {
       let confirmationPopup: MatDialogRef<ConfirmationPopupComponent>;
       confirmationPopup = this.dialog.open(ConfirmationPopupComponent);
       confirmationPopup.componentInstance.message = message;
-
       return confirmationPopup.afterClosed();
+      
    }
 
    public getProducts() {
@@ -133,20 +133,52 @@ export class EmbryoService {
 
    // returning LocalCarts Product Count
    public calculateLocalCartProdCounts() {
-      this.localStorageCartProducts = null;
-      this.localStorageCartProducts = this.http.get('http://localhost:8080/carrito/eliana/productos', this.config);
-      console.log("respuesta: "+ this.localStorageCartProducts );
-      console.log("respuesta stringify: "+ JSON.stringify(this.localStorageCartProducts) );
-      //console.log("respuesta parse "+ JSON.parse(JSON.stringify(this.localStorageCartProducts)) );
 
-      //this.localStorageCartProducts = JSON.parse(localStorage.getItem("cart_item")) || [];
+      this.localStorageCartProducts = null;
+      this.localStorageCartProducts = JSON.parse(localStorage.getItem("cart_item")) || [];
       this.navbarCartCount = +((this.localStorageCartProducts).length);
+      //console.log(this.localStorageCartProducts.length)
+   }
+
+   public confirmarPedido(data){
+      console.log( data)
+
+      return this.http.post('', '');
+      //return this.http.post('http://localhost:8080/carrito/eliana/productos', '');
+   }
+   public getAllCatalogo(){
+      return this.http.get('http://localhost:4000/catalogo/productos/');
+   }
+     
+   public deleteCart(data) {
+      
+      let deleteProduct=data.producto.idProducto;
+      console.log("id:"+deleteProduct)
+
+      var httpOptions = {
+         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+         observe: 'response' as 'response'  
+      };
+
+      return this.http.delete('http://localhost:8080/carrito/eliana/productos/'+deleteProduct, httpOptions)
+     // return this.http.delete('https://ga2ihmwvj5.execute-api.us-east-1.amazonaws.com/test/eventos', '')
+   }
+
+   public getDataCart(){
+      return this.http.get('http://localhost:8080/carrito/eliana/productos');
+   }
+
+   public putDataCart(data,value:any) {
+      
+      let producto={"idProducto": data.idProducto, "cantidad":value};
+      return this.http.put('http://localhost:8080/carrito/eliana/productos', producto);
+    //  return this.http.put('http://localhost:8080/carrito/eliana/productos', );
    }
 
    // Adding new Product to cart in localStorage
    public addToCart(data: any, type:any=""){
       
-      let producto={idProducto: 1, cantidad:1};
+      let producto={"idProducto": 4, "cantidad":1};
       console.log(data);
       return this.http.post('http://localhost:8080/carrito/eliana/productos', producto, this.config);
 
@@ -207,7 +239,9 @@ export class EmbryoService {
       localStorage.setItem("cart_item", JSON.stringify(products))
    }
 
-
+   public updateLocalCartProduct(product:any) {
+      localStorage.setItem("cart_item", JSON.stringify(product))
+   }
 
    // Removing cart from local
    public removeLocalCartProduct(product: any) {

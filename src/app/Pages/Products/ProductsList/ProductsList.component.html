@@ -1,34 +1,34 @@
 
-<!---->
+<!--
 <ng-container *ngIf="pageTitle">
 <embryo-PageTitle heading="{{pageTitle}}" subHeading="{{subPageTitle}}"></embryo-PageTitle>
 <div class="inner-container section-gap">
-  <div class="container">
-    <!-- Products with free api key  -->
+  <div class="container">-->
+    <!-- Products with free api key  
     <ais-instantsearch
       [config]="{
         appId: 'latency',
           apiKey: '6be0576ff61c053d5f9a3225e2a90f76',
           indexName: 'ikea'
         }" (change)="checkProducts()"
-      > 
+      > -->
 
-      <!--new-->
-      <div class="mat-card mb-4 menu-search">
-         <!--<div class="facet-category-title">Mostrar resultados por</div>-->
+      <!--new
+      <div class="mat-card mb-4 menu-search">-->
+         <!--<div class="facet-category-title">Mostrar resultados por</div>
          <ais-hierarchical-menu
               
               [attributes]="['category']"
               [sortBy]="['name:asc']"
             >
             </ais-hierarchical-menu>
-      </div>
-      <!--new-->
+      </div>-->
+      <!--new
 
       <div fxLayout="row wrap"  class="col-gap">
 
         
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="15">
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="15">-->
           
           <!--
           <div class="mat-card mb-4">
@@ -43,7 +43,7 @@
               [sortBy]="['name:asc']"
             >
             </ais-hierarchical-menu>
-          </div>-->
+          </div>
    
           <div class="mat-card mb-4">
             <ais-panel header="Categorias">
@@ -71,13 +71,13 @@
               <ais-panel header="Precios">
                 <ais-range-slider attribute="price" [pips]="true" [tooltips]="true" [min]="0"></ais-range-slider>
               </ais-panel>
-            </div>
+            </div>-->
 
             <!--
             <div class="mat-card mb-4">
               <ais-panel header="CUSTOMER RATINGS"></ais-panel>
               <ais-rating-menu attribute="rating" andUpLabel=""></ais-rating-menu>
-            </div>-->
+            </div>
 
             <div class="mat-card mb-4">
               <ais-clear-refinements buttonLabel="Limpiar filtros"></ais-clear-refinements>
@@ -107,8 +107,8 @@
                   { value: 3, label: '3 por página' },
                   { value: 6, label: '6 por página' },
                   { value: 12, label: '12 por página', default:true}
-              ]"></ais-hits-per-page>
-              <!--vista mosaico -->
+              ]"></ais-hits-per-page>-->
+              <!--vista mosaico
               <ais-hits [transformItems]="transformHits">
                 <ng-template let-hits="hits" let-results="results">
                   <ng-container *ngIf="(hits && hits.length>0); else errorBlock">
@@ -119,7 +119,7 @@
                     Producto no encontrado
                   </ng-template>
                 </ng-template> 
-              </ais-hits><!--vista mosaico-->
+              </ais-hits> --><!--vista mosaico
               <ais-pagination></ais-pagination>
             </div>
             
@@ -128,5 +128,5 @@
       </ais-instantsearch>
     </div>
   </div>
-</ng-container>
+</ng-container>-->
 

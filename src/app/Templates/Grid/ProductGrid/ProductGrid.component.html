@@ -1,13 +1,13 @@
-<div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap" *ngIf="products && products.length > 0">
-  <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="{{lg}}" fxFlex.xl="{{xl}}" *ngFor="let product of products; let i=index; trackBy: trackByObjectID">
+<!--div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap" *ngIf="products && products.length > 0">
+  <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="{{lg}}" fxFlex.xl="{{xl}}" *ngFor="let product of produc<ts; let i=index; trackBy: trackByObjectID">
      <mat-card class="example-card" *ngIf="gridLength && (i<gridLength)">
       <a class="p-link" [routerLink]="[ product?.type, product?.id]">
         <img width="626" height="800" mat-card-image [src]="product?.image" alt="Photo of a Shiba Inu">
       </a>
-      <!--
+      
       <div class="wishlist-icon {{i}}-wishlist" id="{{i}}-wishlist">
          <a (click)="productAddToWishlist(product, i+'-wishlist')"><i  class="material-icons"> favorite </i></a>
-      </div>-->
+      </div>
 
         <mat-card-content class="product-content relative">
            <h5><a [routerLink]="[ product?.type, product?.id]" class="title-link">{{product?.name}}</a> </h5>
@@ -27,28 +27,28 @@
                
            </div>
         </mat-card-content>
-     </mat-card>
+     </mat-card>-->
 
      
-     <!-- Multiple show products grid -->
+     <!-- Multiple show products grid 
      <mat-card class="example-card" *ngIf="!gridLength">
         <a class="p-link" *ngIf="product?.id" [routerLink]="[ product?.type, product?.id]">
           <img width="626" height="800" mat-card-image [src]="product?.image" alt="Photo">
-        </a>
-        <!--<a class="p-link" *ngIf="!product?.id" [routerLink]="['/home/accessories/17']">-->
+        </a>-->
+        <!--<a class="p-link" *ngIf="!product?.id" [routerLink]="['/home/accessories/17']">
         <a class="p-link" *ngIf="!product?.id" (click)="reviewPopup(detailData)">
           <img width="626" height="800" mat-card-image [src]="product?.image" [ngClass]="{ transparent: !loaded }" (load)="onLoad()" alt="Photo">
-        </a>
+        </a>-->
         <!--
         <div class="wishlist-icon {{i}}-wishlist" id="{{i}}-wishlist">
             <a (click)="productAddToWishlist(product, i+'-wishlist')"><i  class="material-icons"> favorite </i></a>
-         </div>-->
+         </div>
 
         <mat-card-content class="product-content relative">
 
            <h5><a *ngIf="product?.id" [routerLink]="[ product?.type, product?.id]" class="title-link">{{product?.name}}</a> </h5>
-           <!--<h5><a *ngIf="!product?.id" [routerLink]="['/home/accessories/17']" class="title-link">{{product?.name}}</a> </h5>-->
-           <h5><a *ngIf="!product?.id"  (click)="reviewPopup(detailData)"class="title-link">{{product?.name}}</a> </h5>
+         -->  <!--<h5><a *ngIf="!product?.id" [routerLink]="['/home/accessories/17']" class="title-link">{{product?.name}}</a> </h5>-->
+          <!-- <h5><a *ngIf="!product?.id"  (click)="reviewPopup(detailData)"class="title-link">{{product?.name}}</a> </h5>
            <div>
               <div fxFlex fxLayoutAlign="space-between">
                  <h6 class="accent-color">{{product?.price | currency: currency}}</h6>
@@ -62,12 +62,12 @@
            </div>
             <div class="m-icon" *ngIf="!checkCartAlready(product)">
                <button mat-fab *ngIf="product?.id" [routerLink]="[ product?.type, product?.id]"><i class="material-icons">remove_red_eye</i> </button>
-               <!--<button mat-fab *ngIf="!product?.id"[routerLink]="['/home/accessories/17']"><i class="material-icons">remove_red_eye</i> </button>-->
-               <button mat-fab *ngIf="!product?.id"  (click)="reviewPopup(detailData)" ><i class="material-icons">remove_red_eye</i> </button>
+            -->   <!--<button mat-fab *ngIf="!product?.id"[routerLink]="['/home/accessories/17']"><i class="material-icons">remove_red_eye</i> </button>-->
+            <!--   <button mat-fab *ngIf="!product?.id"  (click)="reviewPopup(detailData)" ><i class="material-icons">remove_red_eye</i> </button>
            </div>
           
         </mat-card-content>
      </mat-card>
   </div>
-</div>
+</div>-->
 

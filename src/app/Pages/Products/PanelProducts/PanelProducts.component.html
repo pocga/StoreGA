@@ -6,50 +6,46 @@
     <div class="inner-container section-gap">
         <div class="container" >
             <!-- Products with free api key  -->
-            <button (click)="checkProducts()" type="button" class="btn btn-outline-primary">buscar</button>
-              
+                <!--<button (click)="checkProducts()" type="button" class="btn btn-outline-primary">buscar</button>-->
+                <button color="accent" class="button-lg" mat-raised-button type="button" (click)="checkProducts()">Todos los productos</button><br><br>
                 <div class="mat-card mb-4 menu-search">
-                    <h4>Categorias</h4>
-                    <ul>
-                        <li>Categoria1</li>
-                        <li>Categoria2</li>
-                        <li>Categoria2</li>
+                    <ul class="listacategorias">
+                        <li *ngFor="let item of categorias">{{item}} &nbsp;</li>  
                     </ul>
                 </div>
-              
-        
+                     
                 <div fxLayout="row wrap"  class="col-gap">
                     <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="15">
                     
-                        
+                            
                         <div class="mat-card mb-4">
-                            <h4>Categorias</h4>
-                            <ul>
-                                <li>Categoria1</li>
-                                <li>Categoria2</li>
-                                <li>Categoria2</li>
-                            </ul>
+                                
+                            <div class="custom-control custom-checkbox" >
+                                <h5>Categorias</h5>
+                                <li class="listacategoriasfiltros" *ngFor="let item of categorias">
+                                    <input type="checkbox">{{item}}<br><br>                                        
+                                </li>
+                            </div>
                         </div>
             
-                        <div class="mat-card mb-4">
-                            <h4>Disponibilidad</h4>
-                            <ul>
-                                <li>Si</li>
-                                <li>No</li>
-                            </ul>
+                        <div class="mat-card mb-4">                            
+                            <div class="custom-control custom-checkbox" >
+                                <h5>Disponibilidad</h5>
+                                <li class="listacategoriasfiltros" >
+                                    <input type="checkbox">Si<br><br>   
+                                    <input type="checkbox">No<br><br>                                     
+                                </li>
+                            </div>
+                            
                         </div>
             
                         <div class="mat-card mb-4">
                             <h4>Precio</h4>
+                            
                         </div>
             
-                        <div class="mat-card mb-4">
-                            <button>Limpiar Filtros</button>
-                        </div>
                     </div>
             
-
-
 
                     <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="80" fxFlex.xl="80" class="algolia-main-list">
                     
@@ -64,7 +60,7 @@
                             <div class="container">
                                 <h3 class="h3 product-list">Listado de Productos</h3>
                                 <div class="row">
-                                    <div class="col-md-3 col-sm-6" *ngFor="let item of data.producto">
+                                    <div class="col-md-3 col-sm-6" *ngFor="let item of datosBusqueda">
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#">

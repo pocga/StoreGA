@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+/*import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {EmbryoService } from '../../../Services/Embryo.service';
 import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
 import {HttpResponse} from '@angular/common/http';
@@ -82,7 +82,7 @@ export class ProductGridComponent implements OnInit {
          let element = document.getElementById(parentClass).className += " wishlist-active";
       }
       this.addToWishList.emit(value);
-   }*/
+   }
 
    public checkCartAlready(singleProduct) {
       let products = JSON.parse(localStorage.getItem("cart_item")) || [];
@@ -91,4 +91,4 @@ export class ProductGridComponent implements OnInit {
       }
    }
 
-}
+}*/

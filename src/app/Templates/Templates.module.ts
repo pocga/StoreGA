@@ -29,7 +29,7 @@ import { MatButtonModule,
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { GlobalModule } from '../Global/Global.module';
-import { ProductGridComponent } from './Grid/ProductGrid/ProductGrid.component';
+//import { ProductGridComponent } from './Grid/ProductGrid/ProductGrid.component';
 import { Grid3Component } from './Grid/Grid3/Grid3.component';
 import { ReviewComponent } from './Review/Review.component';
 //import { ShopDetailsComponent } from './ShopDetails/ShopDetails.component';
@@ -66,13 +66,13 @@ import { ReviewComponent } from './Review/Review.component';
       GlobalModule
    ],
    declarations: [
-      ProductGridComponent,
+    //  ProductGridComponent,
       Grid3Component,
       ReviewComponent,
     // ShopDetailsComponent
    ],
    exports: [
-      ProductGridComponent,
+   //   ProductGridComponent,
       Grid3Component,
       ReviewComponent,
       //ShopDetailsComponent
