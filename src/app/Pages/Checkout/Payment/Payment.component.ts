@@ -3,6 +3,9 @@ import { FormControl, FormGroup, FormBuilder,FormArray, Validators } from '@angu
 import { EmbryoService } from '../../../Services/Embryo.service';
 import { Router, NavigationEnd } from '@angular/router';
 import {HttpResponse} from '@angular/common/http';
+import * as moment from 'moment';
+import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY } from '@angular/cdk/overlay/typings/overlay-directives';
+
 
 @Component({
   selector: 'app-Payment',
@@ -16,8 +19,8 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    public datosBusqueda = [];
    public countRol: number;
    public totales = [];
-   public datosUsuario= [];
-
+   public datosUsuario;
+   public datos=[];
    step = 0;
    isDisabledPaymentStepTwo  = true;
    isDisabledPaymentStepThree = false;
@@ -122,7 +125,8 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          this.countRol = this.datosBusqueda.length;
          this.totales=this.datosBusqueda[2];
          //this.datosBusqueda=this.datosBusqueda[1];
-         console.log(this.datosBusqueda); 
+        // console.log(this.datosBusqueda);
+          
        });
    }
 
@@ -176,33 +180,43 @@ export class PaymentComponent implements OnInit, AfterViewInit{
 
       var uuid4 = require('uuid4');
       var id = uuid4();
-      console.log("id aleatorio"+id)
-      this.datosUsuario= [{  "ciudadDestinatario":this.datos_usuario.user_details.city_state,
+     // console.log(this.datosBusqueda[1]);
+      this.datos=this.datosBusqueda[1];
+     // console.log(this.datos)
+      let productos
+      let productos1=[];
+      let fecha= moment().format();
+      //console.log(fecha)
+      
+      for (var i=0;i<this.datos.length;i++){
+         productos= {"cantidad": this.datos[i].cantidad,"idProducto":this.datos[i].producto.idProducto} 
+         //console.log(productos);
+         productos1[i]=productos;
+      }
+
+
+      this.datosUsuario= {  
+      "ciudadDestinatario":this.datos_usuario.user_details.city_state,
       "direccionDestinatario": this.datos_usuario.user_details.street_name_number,
-      "fecha": "yyyy-MM-dd'T'HH:mm:ss",
-      "idPedido": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      
+      
       "idUsuario": "eliana",
       "nombreDestinatario": this.datos_usuario.user_details.first_name,
-      "productos": [
-         {
-            "cantidad": 0,
-            "idProducto": 0
-         }
-      ],
+      "productos": productos1,
       "telefonoDestinatario": this.datos_usuario.user_details.mobile
-      }];
-
+      };
+     
       
 
-      console.log(this.datosUsuario);
-      
+
       let resultado;
-      this.embryoService.confirmarPedido(this.datosBusqueda).subscribe((res: HttpResponse<any>) => {
+      this.embryoService.confirmarPedido(this.datosUsuario).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;
+         console.log(res);
          this.embryoService.PopupThank();
          },
          (error) => {
-           console.log("error: " + JSON.stringify(error));
+           console.log(error);
          }
            );
 

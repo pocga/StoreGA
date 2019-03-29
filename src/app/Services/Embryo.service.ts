@@ -141,9 +141,8 @@ export class EmbryoService {
    }
 
    public confirmarPedido(data){
-      console.log( data)
-
-      return this.http.post('', '');
+      //console.log(data)
+      return this.http.post('http://localhost:8080/pedidos',data);
       //return this.http.post('http://localhost:8080/carrito/eliana/productos', '');
    }
    public getAllCatalogo(){
@@ -178,7 +177,7 @@ export class EmbryoService {
    // Adding new Product to cart in localStorage
    public addToCart(data: any, type:any=""){
       
-      let producto={"idProducto": 4, "cantidad":1};
+      let producto={"idProducto": 3, "cantidad":1};
       console.log(data);
       return this.http.post('http://localhost:8080/carrito/eliana/productos', producto, this.config);
 

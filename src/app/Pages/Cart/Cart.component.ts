@@ -37,8 +37,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
         this.totales=this.datosBusqueda[2];
         this.datosBusqueda=this.datosBusqueda[1];
         console.log(this.datosBusqueda); 
-      });
-      
+      });      
    }
 
    ngAfterViewChecked() : void {
