@@ -24,8 +24,8 @@ export class EmbryoService {
    newArrivalSelectedTab       : any = 0;
 
    /**** Get currency code:- https://en.wikipedia.org/wiki/ISO_4217 *****/
-   currency  : string = 'USD';
-   language  : string = 'english';     
+   currency  : string = '';
+   language  : string = '';     
 
    shipping  : number = 12.95;
    tax       : number = 27.95;
@@ -64,16 +64,19 @@ export class EmbryoService {
    public productList(){
 
    }
-   public PopupThank(){
+   public PopupThank(res){
+      
       let review: MatDialogRef<ThankPopupComponent>;
       review = this.dialog.open(ThankPopupComponent);
-      return review.afterClosed();
+      review.componentInstance.res = res;
+      return review.afterClosed();  
    }
 
    public PedidoPopup(orderid){
       console.log("popup pedidos");
       let review: MatDialogRef<OrderPopupComponent>;
       review = this.dialog.open(OrderPopupComponent);
+      review.componentInstance.orderid = orderid;
       return review.afterClosed();
    }
    
@@ -139,7 +142,9 @@ export class EmbryoService {
       this.navbarCartCount = +((this.localStorageCartProducts).length);
       //console.log(this.localStorageCartProducts.length)
    }
-
+   public getPedidos(){
+      return this.http.get('http://localhost:8080/pedidos');
+   }
    public confirmarPedido(data){
       //console.log(data)
       return this.http.post('http://localhost:8080/pedidos',data);
@@ -158,14 +163,26 @@ export class EmbryoService {
          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
          observe: 'response' as 'response'  
       };
-
       return this.http.delete('http://localhost:8080/carrito/eliana/productos/'+deleteProduct, httpOptions)
-     // return this.http.delete('https://ga2ihmwvj5.execute-api.us-east-1.amazonaws.com/test/eventos', '')
+     
+   }
+
+
+   public deleteOrder(data) {
+
+      var httpOptions = {
+         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+         observe: 'response' as 'response'  
+      };
+
+      return this.http.delete('http://localhost:8080/pedidos/'+data, httpOptions)
+     
    }
 
    public getDataCart(){
       return this.http.get('http://localhost:8080/carrito/eliana/productos');
    }
+
 
    public putDataCart(data,value:any) {
       
@@ -177,7 +194,7 @@ export class EmbryoService {
    // Adding new Product to cart in localStorage
    public addToCart(data: any, type:any=""){
       
-      let producto={"idProducto": 3, "cantidad":1};
+      let producto={"idProducto": 1, "cantidad":1};
       console.log(data);
       return this.http.post('http://localhost:8080/carrito/eliana/productos', producto, this.config);
 
@@ -214,6 +231,17 @@ export class EmbryoService {
          this.calculateLocalCartProdCounts();
       }, 500);*/
    }
+
+   public getCategories(){
+      return this.http.get('http://localhost:4000/catalogo/productos/categorias');
+   }
+   public getPrice(){
+      return this.http.get('http://localhost:4000/catalogo/productos/rango');
+   }
+   public getOnlyCategoria(value){
+      return this.http.get('http://localhost:4000/catalogo/productos?categ='+value);
+   }
+
 
    public buyNow(data:any) {
       let products : any;

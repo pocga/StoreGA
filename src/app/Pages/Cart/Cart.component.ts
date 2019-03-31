@@ -19,7 +19,8 @@ export class CartComponent implements OnInit, AfterViewChecked {
    public datosBusqueda = [];
    public countRol: number;
    public totales = [];
-   
+   public datosBusquedaShow = [];
+
    constructor(public embryoService : EmbryoService, 
                private router: Router,
                private loadingBar: LoadingBarService,
@@ -27,17 +28,17 @@ export class CartComponent implements OnInit, AfterViewChecked {
    }
 
    ngOnInit() {
+      this.callCart();
+   }
 
+   public callCart(){
       this.embryoService.getDataCart().subscribe((response) => {
-        this.datosBusqueda = Object.keys(response).map(
-            function(key) {
-              return response[key]; });
-               
-        this.countRol = this.datosBusqueda.length;
-        this.totales=this.datosBusqueda[2];
-        this.datosBusqueda=this.datosBusqueda[1];
-        console.log(this.datosBusqueda); 
-      });      
+         this.datosBusqueda = Object.keys(response).map(key => response[key]);   
+         this.countRol = this.datosBusqueda.length;
+         this.totales=this.datosBusqueda[2];
+         this.datosBusquedaShow=this.datosBusqueda[1];
+         console.log(this.datosBusqueda); 
+       }); 
    }
 
    ngAfterViewChecked() : void {
@@ -54,7 +55,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
                    ()  => this.getPopupResponse(this.popupResponse, value)
                    
                   );
-       
+      
    }
 
    public getPopupResponse(response, value) {
@@ -63,12 +64,14 @@ export class CartComponent implements OnInit, AfterViewChecked {
          let resultado;
          this.embryoService.deleteCart(value).subscribe((res: HttpResponse<any>) => {
             resultado = res.statusText;
+            this.datosBusquedaShow=[];
+            this.callCart(); 
             },
             (error) => {
             console.log(error)
             
             }
-              );        
+              );       
       }
    }
 

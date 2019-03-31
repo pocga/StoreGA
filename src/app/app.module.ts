@@ -72,6 +72,9 @@ import { OrderHistoryComponent } from './Pages/UserAccount/OrderHistory/OrderHis
 //import { ProductsListComponent } from './Pages/Products/ProductsList/ProductsList.component';
 import {PanelProductsComponent} from './Pages/Products/PanelProducts/PanelProducts.component';
 import {OrderPopupComponent} from './Pages/UserAccount/OrderPopup/OrderPopup.component'
+import { Ng5SliderModule } from 'ng5-slider';
+
+
 //import { DetailPageComponent } from './Pages/Products/DetailPage/DetailPage.component';
 //import { ShopDetailsComponent } from './Templates/ShopDetails/ShopDetails.component';
 
@@ -105,12 +108,14 @@ export function createTranslateLoader(http: HttpClient) {
     //ProductsListComponent,
     PanelProductsComponent,
     
+    
   ],
   entryComponents : [
    OrderPopupComponent,
    
    ],
   imports: [
+   Ng5SliderModule,
     BrowserModule.withServerTransition({appId: 'embryo-seo-pre'}),
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes, {onSameUrlNavigation: 'reload'}),

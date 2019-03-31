@@ -3,41 +3,41 @@
     <h3>Detalle de pedido </h3>
 </div>
 
-<!--
-<div class="inner-container bg-white cart-page section-gap" >
-  <div class="container">
-    <div class="cart-wrapper">
-      <div class="cart-shop-list mb-5 text-center  card-shadow">
-        <div fxLayout='row wrap' fxLayoutAlign="start center" class="cart-item" >
-          <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="20" fxFlex.xl="20" class="cart-product-image">
-            <div class="cart-item-thumb">
-
-              <a href="javascript:void(0)" class="p-link">
-                <img width="626" height="800" class="card-shadow" [src]="assets/images/h-slider-1.jpg" alt="cart image">
-              </a>
-
+<div class="inner-container bg-white cart-page section-gap">
+    <div class="container">
+      <div class="cart-wrapper">
+        <div class="cart-shop-list mb-5 text-center  card-shadow">
+          <div fxLayout='row wrap' fxLayoutAlign="start center" class="cart-item" *ngFor="let item of productsDetail">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="20" fxFlex.xl="20" class="cart-product-image">
+              <div class="cart-item-thumb">
+                <a href="#" class="p-link">
+                  <img width="626" height="800" class="card-shadow" src="{{item.producto.miniatura}}" alt="cart image">
+                </a>
+              </div>
             </div>
-          </div>
-          <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="90" fxFlex.lg="80" fxFlex.xl="80">
-            <div fxLayout='row wrap' fxLayoutAlign="center center" class="cart-product-info">
-              <div fxFlex.xs="100" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="40" fxFlex.xl="40">
-                <h5>Nombre producto</h5>
-                <p class="mb-0">Entrega en 3-4 días | Gratis</p>
-                <p> 10 días para cambio </p>
-              </div>
-              <div fxFlex.xs="50" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="20">
-                <h4>Cantidad: 4 </h4>
-              </div>
-              <div fxFlex.xs="50" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="20">
-                <div class="cart-item-price">
-                  <h4>Precio: $500</h4>
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="90" fxFlex.lg="80" fxFlex.xl="80">
+              <div fxLayout='row wrap' fxLayoutAlign="center center" class="cart-product-info">
+                <div fxFlex.xs="100" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="40" fxFlex.xl="40">
+                  <h5>{{item.producto.descripcion}}</h5>
+                  <p class="mb-0">Entrega en 3-4 días | Gratis</p>
+                  <p> 10 días para cambio </p>
                 </div>
+                <div fxFlex.xs="50" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="20">
+                  <div class="cart-item-price">
+                      
+                    <h5>{{(item.producto.precio) | currency:'COP' }} X {{(item.cantidad)}}</h5>
+                  </div>
+                </div>
+               
               </div>
-        
             </div>
           </div>
         </div>
       </div>
     </div>
+    <h4>Total pedido</h4>
+  {{total | currency:'COP'}}
   </div>
-</div>-->
+
+
+

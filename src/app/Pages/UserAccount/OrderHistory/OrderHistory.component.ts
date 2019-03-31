@@ -3,14 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {EmbryoService } from '../../../Services/Embryo.service';
 import { NumericSelectorState } from 'angular-instantsearch/numeric-selector/numeric-selector';
-
-const order_history = [
-   { orderid:5, name: 'JUANA LOPEZ', price: 1.0079, status: 'Sent',action:''},
-   { orderid:7, name: 'CARLOS TORO', price: 5.0026, status: 'In processing',action:''},
-   { orderid:9, name: 'ANA AGUIRRE', price: 6.941, status: 'Sent',action:''},
-   { orderid:6, name: 'LUCAS CEBALLOS', price: 11.0122, status: 'Return',action:''},
-   { orderid:4, name: 'LAURA POSADA', price: 10.811, status: 'Sent',action:''},
-];
+import { element } from '@angular/core/src/render3';
+import {HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-OrderHistory',
@@ -19,23 +13,42 @@ const order_history = [
 })
 export class OrderHistoryComponent implements OnInit {
    
-   displayedColumns = ['orderid', 'name', 'price', 'status','action'];
-   dataSource = order_history;
+   displayedColumns = ['orderid', 'name', 'fecha', 'status','action','eliminar'];
+   public datosPedidos=[];
+   public id_reserve: any;
+   public order_history: any;
+   public dataSource: any;
    
-
-  
-   public  id_reserve: number;
-
    constructor(public embryoService : EmbryoService) { }
 
    ngOnInit() {
-      this.ordernarDesc(order_history,'orderid');   
-     // this.ordernarDesc(order_history,''); 
-      console.log(order_history);
-     // console.log(data.orderid);
+      this.callPedidos();
+ 
    }
+
+   public callPedidos(){
+      this.embryoService.getPedidos().subscribe(response => {
+         this.datosPedidos = Object.keys(response).map(key => response[key]);
+
+        this.dataSource = this.datosPedidos.map(pedido => {
+            return {
+                    "orderid": pedido.idPedido,
+                    "name": pedido.idUsuario,
+                    "fecha" : pedido.fecha,
+                    "status":'Enviado',
+                    "action":'',
+                    "eliminar":'',
+                    "pedidos": pedido.productos
+                  }
+         })
+
+         this.order_history = this.dataSource;
+         console.log(this.datosPedidos)
+       });
+   }
+
    PedidoPopup(orderid){
-      console.log("ID: "+ orderid);
+      console.log(orderid)
       this.embryoService.PedidoPopup(orderid);   
    }
    /*
@@ -43,14 +56,29 @@ export class OrderHistoryComponent implements OnInit {
       this.embryoService.reviewPopup(detailData);
    }*/
    limpiar(){
-      console.log("limpiar");
-      this.dataSource=order_history;
+      this.dataSource = this.order_history;
+      this.id_reserve = "";
    }
-   searchOrder(id_reserve){ 
-      id_reserve = parseInt(id_reserve);     
-      for (var i=0;i<order_history.length;i++){ 
-         if (order_history[i].orderid==id_reserve){
-            this.dataSource=[order_history[i]]
+   deletePedido(value){
+      console.log(value)
+      let resultado;
+      
+      this.embryoService.deleteOrder(value).subscribe((res: HttpResponse<any>) => {
+         resultado = res.statusText;
+         console.log(res);
+         },
+         (error) => {
+         console.log(error)
+         
+         }
+           ); 
+           this.callPedidos();
+   }
+
+   searchOrder(id_reserve){
+      for (var i=0;i<this.dataSource.length;i++){ 
+         if ( this.dataSource[i].orderid == id_reserve ){
+            this.dataSource=[this.dataSource[i]]
          }
       }
    }

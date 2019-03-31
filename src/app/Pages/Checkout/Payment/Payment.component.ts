@@ -171,26 +171,13 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    public submitPayment() {
 
       this.datos_usuario=this.paymentFormOne.value;
-      
-      //console.log(this.datos_usuario.user_details.first_name);
-      //console.log(this.datos_usuario.user_details.city_state);
-      //console.log(this.datos_usuario.user_details.mobile);
-      //console.log(this.datos_usuario.user_details.street_name_number);
-      //console.log(this.datos_usuario);
-
-      var uuid4 = require('uuid4');
-      var id = uuid4();
-     // console.log(this.datosBusqueda[1]);
       this.datos=this.datosBusqueda[1];
-     // console.log(this.datos)
       let productos
       let productos1=[];
-      let fecha= moment().format();
-      //console.log(fecha)
+   
       
       for (var i=0;i<this.datos.length;i++){
          productos= {"cantidad": this.datos[i].cantidad,"idProducto":this.datos[i].producto.idProducto} 
-         //console.log(productos);
          productos1[i]=productos;
       }
 
@@ -198,8 +185,6 @@ export class PaymentComponent implements OnInit, AfterViewInit{
       this.datosUsuario= {  
       "ciudadDestinatario":this.datos_usuario.user_details.city_state,
       "direccionDestinatario": this.datos_usuario.user_details.street_name_number,
-      
-      
       "idUsuario": "eliana",
       "nombreDestinatario": this.datos_usuario.user_details.first_name,
       "productos": productos1,
@@ -212,13 +197,12 @@ export class PaymentComponent implements OnInit, AfterViewInit{
       let resultado;
       this.embryoService.confirmarPedido(this.datosUsuario).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;
-         console.log(res);
-         this.embryoService.PopupThank();
+         this.embryoService.PopupThank(res);
          },
          (error) => {
            console.log(error);
          }
-           );
+      );
 
       
      

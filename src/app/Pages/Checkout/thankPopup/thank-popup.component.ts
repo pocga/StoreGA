@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { Router, ActivatedRoute, Params }   from '@angular/router';
 
@@ -8,12 +8,15 @@ import { Router, ActivatedRoute, Params }   from '@angular/router';
   
 })
 export class ThankPopupComponent implements OnInit {
+  
+  @Input() res : any;
 
    constructor(public dialogRef: MatDialogRef<ThankPopupComponent>) {
      
    }
 
    ngOnInit() {
+     
    }
 
 }
