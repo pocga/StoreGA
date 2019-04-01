@@ -20,13 +20,16 @@ export class PanelProductsComponent implements OnInit {
     public maxPrice;
     public minPrice;
     valueRangePrice;
+    values = [];
 
     minValue: number;
     maxValue: number;
     options: Options;
+
+    public optionYes:boolean = false
+    public optionNo:boolean = false
   
    constructor(private embryoService:EmbryoService,private toastyService: ToastaService ) {
-   
     }
    
   ngOnInit() {   
@@ -139,23 +142,46 @@ export class PanelProductsComponent implements OnInit {
         });                
 
     }
-    applyFilter(valuePriceLow: any, valuePriceHigh: any, optionYes: any, optionNo: any,item){
-      console.log(item)
-      this.maxPrice=valuePriceHigh;
-      this.minPrice=valuePriceLow;
-      let OpcionYes=optionYes;
-      let OpcionNo=optionNo;
+    applyFilter(valuePriceLow: any, valuePriceHigh: any){
+      
+      const valuesFilter = {
+        "categorias": this.values.join(),
+        "disponibilidad": (this.optionYes === this.optionNo) ? '' : (this.optionYes === true) ? true : false,
+        "from": valuePriceLow,
+        "to": valuePriceHigh
+      }
+      
+      this.embryoService.getCatalogByFilter(valuesFilter).subscribe(response => {
+        //let catalogFound = Object.keys(response).map( key => response[key]);
+        //this.datosBusqueda = catalogFound[0]
+        console.log(response);             
+      });                
+
+
+    }
+    cathEventDisponibilityYes(isChecked:boolean){
+        this.optionYes=isChecked; 
     }
 
-    cathEvent(event){
-      console.log('los datos', event);
+    cathEventDisponibilityNo(isChecked:boolean){
+      this.optionNo=isChecked;
+    }
+
+    cathEvent(item:any, isChecked:boolean){
+
+      if (isChecked){
+        this.values.push((item === 'Televisores') ? 'TV' : item);
+      }else {
+        let index=this.values.indexOf(item);
+        this.values.splice(index,1);
+      }
     }
     
     
 
-    reviewPopup(detailData){ //detail product
-      console.log('Comentario ', detailData)
+    reviewPopup(detailData){ 
       this.embryoService.reviewPopup(detailData);
    }
+
 
 }

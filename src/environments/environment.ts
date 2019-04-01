@@ -11,7 +11,9 @@ export const environment = {
     projectId: "embryo-version-2",
     storageBucket: "embryo-version-2.appspot.com",
     messagingSenderId: "73552048992"
-  }
+  },
+
+  BASE_URL:'https://jsc2p92uk1.execute-api.us-east-1.amazonaws.com/v1/'
 };
 
 /*

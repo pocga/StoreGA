@@ -7,8 +7,8 @@
         <div class="container" >
             <!-- Products with free api key  -->
                 <!--<button (click)="checkProducts()" type="button" class="btn btn-outline-primary">buscar</button>-->
-                <button color="accent" class="button-lg" mat-raised-button type="button" (click)="checkAllProducts()">Todos los productos</button><br><br>
-                <div class="mat-card mb-4">
+                
+                <div class="mat-card mb-4 container-filter-top">
                     <ul class="listacategorias">
                         <li  (click)="selectCategorias(item)" *ngFor="let item of categorias">{{item}} &nbsp;</li>  
                     </ul>
@@ -19,42 +19,40 @@
                     
                             
                         <div class="mat-card mb-4">
-                                
-                            <div class="custom-control custom-checkbox" >
-                                <h5>Categorias</h5>
-                                <li class="listacategoriasfiltros" *ngFor="let item of categorias">
-                                    <input type="checkbox" class="form-check-input"  [(ngModel)]="categories">
-                                    <label class="form-check-label" >{{item}}</label>                                      
+                                <div class="tittle">Categorias</div>
+                            <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
+
+                                <li class="listacategoriasfiltros" >
+                                    <mat-checkbox (change)="cathEvent(item,$event.checked)" >{{item}}</mat-checkbox>
                                 </li>
                             </div>
                         </div>
             
                         <div class="mat-card mb-4">                            
-                            <div class="custom-control custom-checkbox" >
-                                <h5>Disponibilidad</h5>
+                          <div class="tittle">Disponibilidad</div>
+                            <div class="custom-control custom-checkbox">
                                 <li class="listacategoriasfiltros" >
-                                    <input type="checkbox" class="form-check-input" [(ngModel)]="optionYes">
-                                    <label class="form-check-label" >Si</label>                                         
-                                </li>
-                                <li class="listacategoriasfiltros" >
-                                    <input type="checkbox" class="form-check-input" [(ngModel)]="optionNo">
-                                    <label class="form-check-label" >No</label>                                         
+                                        <mat-checkbox (change)="cathEventDisponibilityYes($event.checked)">Si</mat-checkbox>                    
+                                    </li>
+                                    <li class="listacategoriasfiltros" >
+                                        <mat-checkbox (change)="cathEventDisponibilityNo($event.checked)">No</mat-checkbox>                      
                                 </li>
                             </div>
                         </div>
             
                         <div class="mat-card mb-4">
-                            <h4>Precio</h4>    
+                                <div class="tittle">Precio</div>   
                             <div class="custom-slider">
                                 <ng5-slider (change)="changeprice(value)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
                             </div>
                         </div>
 
-                        <div class="mat-card mb-4">
-                            <button color="accent" class="button-lg" mat-raised-button type="button" (click)="applyFilter(minValue,maxValue,optionYes,optionNo,categories)" >Aplicar Filtrar</button><br><br>
+                        <div class="mat-card mb-4 container-button">
+                            <button color="accent" class="button-lg" mat-raised-button type="button" (click)="applyFilter(minValue,maxValue)" >Aplicar Filtros</button>
+                            <button color="accent" class="button-lg" mat-raised-button type="button" (click)="checkAllProducts()">Todos los productos</button>
                         </div>
 
-
+                        
             
                     </div>
             

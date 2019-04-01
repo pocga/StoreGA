@@ -1,7 +1,44 @@
+.container-filter-top {
+    display: flex;
+    justify-content: center;
+
+    ul {
+        margin-top: 15px;
+
+        li {
+            font-size: 18px;
+            font-weight: bold;
+            padding-left: 8px;
+
+            &:hover {
+                cursor: pointer;
+                font-size: 19px;
+            }
+        }
+    }
+}
+
+.tittle {
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.container-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    button {
+        margin: 15px 13px 15px 10px
+    }
+}
 
 .listacategorias li{
     display: inline; 
 }
+
 .listacategoriasfiltros{
     list-style:none;
     padding-bottom: 10px;

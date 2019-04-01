@@ -5,7 +5,7 @@ import { MatDialogRef, MatDialog, MatDialogConfig, MatSidenav } from '@angular/m
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from "@angular/fire/database";
 import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
 import 'rxjs/Rx';
-
+import { environment } from '../../environments/environment'
 import { ReviewPopupComponent } from '../Global/ReviewPopup/ReviewPopup.component';
 import { ConfirmationPopupComponent } from '../Global/ConfirmationPopup/ConfirmationPopup.component';
 import {ThankPopupComponent}  from '../Pages/Checkout/thankPopup/thank-popup.component';
@@ -143,15 +143,15 @@ export class EmbryoService {
       //console.log(this.localStorageCartProducts.length)
    }
    public getPedidos(){
-      return this.http.get('http://localhost:8080/pedidos');
+      return this.http.get(`${environment.BASE_URL}pedidos`);
    }
    public confirmarPedido(data){
       //console.log(data)
-      return this.http.post('http://localhost:8080/pedidos',data);
+      return this.http.post(`${environment.BASE_URL}pedidos`, data);
       //return this.http.post('http://localhost:8080/carrito/eliana/productos', '');
    }
    public getAllCatalogo(){
-      return this.http.get('http://localhost:4000/catalogo/productos/');
+      return this.http.get(`http://localhost:4000/catalogo/productos/`);
    }
      
    public deleteCart(data) {
@@ -163,7 +163,7 @@ export class EmbryoService {
          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
          observe: 'response' as 'response'  
       };
-      return this.http.delete('http://localhost:8080/carrito/eliana/productos/'+deleteProduct, httpOptions)
+      return this.http.delete(`${environment.BASE_URL}carrito/eliana/productos/${deleteProduct}`, httpOptions)
      
    }
 
@@ -175,73 +175,42 @@ export class EmbryoService {
          observe: 'response' as 'response'  
       };
 
-      return this.http.delete('http://localhost:8080/pedidos/'+data, httpOptions)
+      return this.http.delete(`${environment.BASE_URL}pedidos/${data}`, httpOptions)
      
    }
 
    public getDataCart(){
-      return this.http.get('http://localhost:8080/carrito/eliana/productos');
+      return this.http.get(`${environment.BASE_URL}carrito/eliana/productos`);
    }
 
 
    public putDataCart(data,value:any) {
       
       let producto={"idProducto": data.idProducto, "cantidad":value};
-      return this.http.put('http://localhost:8080/carrito/eliana/productos', producto);
+      return this.http.put(`${environment.BASE_URL}carrito/eliana/productos`, producto);
     //  return this.http.put('http://localhost:8080/carrito/eliana/productos', );
    }
 
    // Adding new Product to cart in localStorage
    public addToCart(data: any, type:any=""){
-      
       let producto={"idProducto": 1, "cantidad":1};
       console.log(data);
-      return this.http.post('http://localhost:8080/carrito/eliana/productos', producto, this.config);
-
-      /*
-      let products : any;
-      products = JSON.parse(localStorage.getItem("cart_item")) || [];
-      let productsLength = products.length; 
-
-      let toastOption: ToastOptions = {
-         title: "Añadiendo producto al carrito",
-         msg: "Producto añadido",
-         showClose: true,
-         timeout: 3000,
-         theme: "material"
-      };
-
-      let found = products.some(function (el, index) {
-         if(el.name == data.name){
-            if(!data.quantity) { data.quantity = 1}
-            products[index]['quantity'] = data.quantity;
-            return  true;
-         }
-      });
-      if (!found) { products.push(data);}
-
-      if(productsLength == products.length) {
-         toastOption.title = "Producto agregado anteriormente";
-         toastOption.msg = "El producto ya ha sido agerdado";
-      }
-
-      this.toastyService.wait(toastOption);
-      setTimeout(() => {
-         localStorage.setItem("cart_item", JSON.stringify(products));
-         this.calculateLocalCartProdCounts();
-      }, 500);*/
+      return this.http.post(`${environment.BASE_URL}carrito/eliana/productos`, producto, this.config);
    }
 
    public getCategories(){
-      return this.http.get('http://localhost:4000/catalogo/productos/categorias');
+      return this.http.get(`http://localhost:4000/catalogo/productos/categorias`);
    }
    public getPrice(){
-      return this.http.get('http://localhost:4000/catalogo/productos/rango');
+      return this.http.get(`http://localhost:4000/catalogo/productos/rango`);
    }
    public getOnlyCategoria(value){
-      return this.http.get('http://localhost:4000/catalogo/productos?categ='+value);
+      return this.http.get(`http://localhost:4000/catalogo/productos?categ=${value}`);
    }
-
+   public getCatalogByFilter(options){
+      return this.http.get(
+         `http://localhost:4000/catalogo/productos?categ=${options.categorias}&disp=${options.disponibilidad}&from=${options.from}&to=${options.to}`);
+   }
 
    public buyNow(data:any) {
       let products : any;
