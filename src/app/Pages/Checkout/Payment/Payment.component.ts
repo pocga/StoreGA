@@ -181,19 +181,17 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          productos1[i]=productos;
       }
 
-
+      let user= this.embryoService.token();
+      console.log(user)
       this.datosUsuario= {  
       "ciudadDestinatario":this.datos_usuario.user_details.city_state,
       "direccionDestinatario": this.datos_usuario.user_details.street_name_number,
-      "idUsuario": "eliana",
+      "idUsuario": user.email,
       "nombreDestinatario": this.datos_usuario.user_details.first_name,
       "productos": productos1,
       "telefonoDestinatario": this.datos_usuario.user_details.mobile
       };
      
-      
-
-
       let resultado;
       this.embryoService.confirmarPedido(this.datosUsuario).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;

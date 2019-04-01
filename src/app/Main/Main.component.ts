@@ -9,6 +9,7 @@ import { Directionality } from '@angular/cdk/bidi';
 import { MediaChange } from '@angular/flex-layout';
 import { TranslateService } from '@ngx-translate/core';
 import { Meta, Title } from "@angular/platform-browser";
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -28,6 +29,7 @@ export class MainComponent implements OnInit {
                dir: Directionality,
                public translate: TranslateService,
                private router: Router,
+               private _authService: AuthService,
                meta: Meta, title: Title) { 
 
       title.setTitle('Embryo - Angular Material Design eCommerce Template');

@@ -13,11 +13,14 @@ import { OrderHistoryComponent } from './Pages/UserAccount/OrderHistory/OrderHis
 //import { ProductsListComponent } from './Pages/Products/ProductsList/ProductsList.component';
 import { DetailPageComponent } from './Pages/Products/DetailPage/DetailPage.component';
 import { PanelProductsComponent } from './Pages/Products/PanelProducts/PanelProducts.component';
+import { AuthGuard } from './Core/guards/auth.guard';
 
 export const AppRoutes : Routes = [
+
    {
       path : '',
-      component: SignInComponent,
+      redirectTo: 'home',
+      //component: SignInComponent,
       pathMatch: 'full',
      
    },
@@ -35,10 +38,17 @@ export const AppRoutes : Routes = [
    },                {
       path: 'home/:type/:id',
       component: DetailPageComponent
-   },    
+   },  
+ 
+   { path: 'managetoken', 
+   component: SignInComponent,
+   //loadChildren: 'app/Modules/login.module#LoginModule'
+   },
+           
     {
       path : 'home',
       component : MainComponent,
+      canActivate:[AuthGuard],
       children: [ 
          //ProductsListComponent
          {

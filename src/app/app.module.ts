@@ -73,6 +73,8 @@ import { OrderHistoryComponent } from './Pages/UserAccount/OrderHistory/OrderHis
 import {PanelProductsComponent} from './Pages/Products/PanelProducts/PanelProducts.component';
 import {OrderPopupComponent} from './Pages/UserAccount/OrderPopup/OrderPopup.component'
 import { Ng5SliderModule } from 'ng5-slider';
+import { AuthService } from './Services/auth.service';
+import { AuthGuard } from './Core/guards/auth.guard';
 
 
 //import { DetailPageComponent } from './Pages/Products/DetailPage/DetailPage.component';
@@ -168,7 +170,9 @@ export function createTranslateLoader(http: HttpClient) {
   ],
    providers: [
       MenuItems,
-      EmbryoService
+      EmbryoService,
+      AuthService ,
+      AuthGuard
    ],
    bootstrap: [AppComponent]
 })
