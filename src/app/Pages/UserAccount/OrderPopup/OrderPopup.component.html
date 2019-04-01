@@ -35,8 +35,11 @@
         </div>
       </div>
     </div>
-    <h4>Total pedido</h4>
-  {{total | currency:'COP'}}
+
+  <div class="totalOrder">
+      <button mat-raised-button color="accent" class="button-lg-x">Total Pedido = {{total | currency:'COP'}}</button><br>
+      
+  </div>
   </div>
 
 

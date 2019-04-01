@@ -35,7 +35,6 @@ export class PanelProductsComponent implements OnInit {
   ngOnInit() {   
      this.getCategories();
      this.getPrice();
-    
   }
 
   public getPrice(){
@@ -141,8 +140,8 @@ export class PanelProductsComponent implements OnInit {
           this.datosBusqueda=datosBusquedas[0];          
         });                
 
-    }
-    applyFilter(valuePriceLow: any, valuePriceHigh: any){
+  }
+  applyFilter(valuePriceLow: any, valuePriceHigh: any){
       
       const valuesFilter = {
         "categorias": this.values.join(),
@@ -156,18 +155,16 @@ export class PanelProductsComponent implements OnInit {
         //this.datosBusqueda = catalogFound[0]
         console.log(response);             
       });                
-
-
     }
     cathEventDisponibilityYes(isChecked:boolean){
         this.optionYes=isChecked; 
-    }
+  }
 
-    cathEventDisponibilityNo(isChecked:boolean){
+  cathEventDisponibilityNo(isChecked:boolean){
       this.optionNo=isChecked;
-    }
+  }
 
-    cathEvent(item:any, isChecked:boolean){
+  cathEvent(item:any, isChecked:boolean){
 
       if (isChecked){
         this.values.push((item === 'Televisores') ? 'TV' : item);
@@ -175,13 +172,13 @@ export class PanelProductsComponent implements OnInit {
         let index=this.values.indexOf(item);
         this.values.splice(index,1);
       }
-    }
+  }
     
     
 
-    reviewPopup(detailData){ 
+  reviewPopup(detailData){ 
       this.embryoService.reviewPopup(detailData);
-   }
+  }
 
 
 }

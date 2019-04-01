@@ -152,8 +152,7 @@ export class EmbryoService {
    }
    public getAllCatalogo(){
       return this.http.get(`http://localhost:4000/catalogo/productos/`);
-   }
-     
+   } 
    public deleteCart(data) {
       
       let deleteProduct=data.producto.idProducto;
@@ -193,8 +192,10 @@ export class EmbryoService {
 
    // Adding new Product to cart in localStorage
    public addToCart(data: any, type:any=""){
+      console.log(data.idProducto)
+      data=parseInt(data.idProducto);
+      console.log(data)
       let producto={"idProducto": 1, "cantidad":1};
-      console.log(data);
       return this.http.post(`${environment.BASE_URL}carrito/eliana/productos`, producto, this.config);
    }
 
@@ -208,6 +209,7 @@ export class EmbryoService {
       return this.http.get(`http://localhost:4000/catalogo/productos?categ=${value}`);
    }
    public getCatalogByFilter(options){
+      console.log(options)
       return this.http.get(
          `http://localhost:4000/catalogo/productos?categ=${options.categorias}&disp=${options.disponibilidad}&from=${options.from}&to=${options.to}`);
    }

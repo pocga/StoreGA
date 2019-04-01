@@ -18,7 +18,8 @@ export class OrderHistoryComponent implements OnInit {
    public id_reserve: any;
    public order_history: any;
    public dataSource: any;
-   
+   popupResponse  : any;
+
    constructor(public embryoService : EmbryoService) { }
 
    ngOnInit() {
@@ -29,7 +30,7 @@ export class OrderHistoryComponent implements OnInit {
    public callPedidos(){
       this.embryoService.getPedidos().subscribe(response => {
          this.datosPedidos = Object.keys(response).map(key => response[key]);
-
+         
         this.dataSource = this.datosPedidos.map(pedido => {
             return {
                     "orderid": pedido.idPedido,
@@ -41,14 +42,13 @@ export class OrderHistoryComponent implements OnInit {
                     "pedidos": pedido.productos
                   }
          })
-
+         
+         this.ordernarDesc(this.dataSource,'fecha');
          this.order_history = this.dataSource;
-         console.log(this.datosPedidos)
        });
    }
 
    PedidoPopup(orderid){
-      console.log(orderid)
       this.embryoService.PedidoPopup(orderid);   
    }
    /*
@@ -59,21 +59,35 @@ export class OrderHistoryComponent implements OnInit {
       this.dataSource = this.order_history;
       this.id_reserve = "";
    }
+
    deletePedido(value){
       console.log(value)
-      let resultado;
-      
-      this.embryoService.deleteOrder(value).subscribe((res: HttpResponse<any>) => {
-         resultado = res.statusText;
-         console.log(res);
-         },
-         (error) => {
-         console.log(error)
-         
-         }
-           ); 
-           this.callPedidos();
+      let message = "¿Esta seguro que desea eliminar el producto?";
+      this.embryoService.confirmationPopup(message).
+         subscribe(res => {this.popupResponse = res
+         },                
+                   err => console.log(err),
+                   ()  => this.getPopupResponse(this.popupResponse, value)
+                   
+                  );
    }
+
+   public getPopupResponse(response, value) {
+      
+      if(response){
+         let resultado;
+         this.embryoService.deleteOrder(value).subscribe((res: HttpResponse<any>) => {
+            resultado = res.statusText;
+            this.callPedidos();
+            },
+            (error) => {
+            console.log(error)
+            }
+              ); 
+                  
+      }
+   }
+
 
    searchOrder(id_reserve){
       for (var i=0;i<this.dataSource.length;i++){ 
