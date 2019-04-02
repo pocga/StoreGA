@@ -32,7 +32,7 @@ export class MainComponent implements OnInit {
                private _authService: AuthService,
                meta: Meta, title: Title) { 
 
-      title.setTitle('Embryo - Angular Material Design eCommerce Template');
+      title.setTitle('TechShop');
 
       meta.addTags([
          { name: 'author',   content: 'The IRON Network'},

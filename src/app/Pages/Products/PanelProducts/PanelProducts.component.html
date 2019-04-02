@@ -19,7 +19,7 @@
                     
                             
                         <div class="mat-card mb-4">
-                                <div class="tittle">Categorias</div>
+                                <div class="tittle">Categorías</div>
                             <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
 
                                 <li class="listacategoriasfiltros" >
@@ -69,7 +69,9 @@
 
                             <div class="container">
                                 <h3 class="h3 product-list">Listado de Productos</h3>
-                                <div class="row">
+                                <h5 *ngIf="(lengthvalue.length==0)">No se encontro producto con esas especificaciones</h5>
+                                    
+                                <div class="row" >
                                     <div class="col-md-3 col-sm-6" *ngFor="let item of datosBusqueda">
                                         <div class="product-grid">
                                             <div class="product-image">
@@ -89,10 +91,10 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
+                                </div>             
                             </div>
+                            
                             <hr>
-
                         </div>
 
                     </div>

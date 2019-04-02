@@ -26,16 +26,19 @@ export class OrderHistoryComponent implements OnInit {
       this.callPedidos();
       let user= this.embryoService.token();
       let rol=user["custom:role"];
-        
+      //let username=user["cognito:username"]       
       if (rol=="Administrador"){
          this.administrador=true;         
       }else {
          this.administrador=false;  
       }  
+
+      
  
    }
 
    public callPedidos(){
+      
       this.embryoService.getPedidos().subscribe(response => {
          this.datosPedidos = Object.keys(response).map(key => response[key]);
          console.log(this.datosPedidos)
@@ -53,9 +56,10 @@ export class OrderHistoryComponent implements OnInit {
          
         // this.ordernarDesc(this.dataSource,'fecha');
          this.order_history = this.dataSource;
-         console.log(this.datosPedidos )
-
-       });
+        // data=parseInt(data.idProducto);
+         //this.ordernarDesc(this.dataSource,'fecha' );
+         let arrayOrdenado = this.dataSource.sort((a,b)=> Number(new Date(a.fecha)) - Number(new Date(b.fecha)));
+      });
    }
 
    PedidoPopup(orderid){

@@ -74,10 +74,8 @@
          <th mat-header-cell *matHeaderCellDef> Opción </th>
          <td mat-cell *matCellDef="let element">
 
-            <a (click)="PedidoPopup(element.pedidos)" class="accent-color">
-              <i class="material-icons cursor-pointer">
-                remove_red_eye
-              </i>
+            <a (click)="PedidoPopup(element.pedidos)" >
+              <i class="material-icons cursor-pointer" data-tip="Ver" class="fa fa-search"></i>            
             </a>  
          </td>
     </ng-container>

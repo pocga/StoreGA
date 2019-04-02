@@ -27,6 +27,8 @@ export class PanelProductsComponent implements OnInit {
   minValue: number;
   maxValue: number;
   options: Options;
+  public found :boolean;
+  private lengthvalue: any;
 
   constructor(private embryoService:EmbryoService,private toastyService: ToastaService ) {
   }
@@ -34,6 +36,8 @@ export class PanelProductsComponent implements OnInit {
   ngOnInit() {   
     this.getCategories();
     this.getPrice();
+   
+    
   }
 
   public getPrice(){
@@ -73,7 +77,7 @@ export class PanelProductsComponent implements OnInit {
     }); 
   }
   selectCategorias(value){
-    
+    this.lengthvalue=['.'];
     if (value=="Televisores"){
       value="TV"
     }
@@ -115,16 +119,18 @@ export class PanelProductsComponent implements OnInit {
   }
 
   checkAllProducts(){
-
+    this.lengthvalue=['.'];
     this.index++;
     if (this.index >=1){
       this.products_list = true;
     }
-    this.embryoService.getAllCatalogo().subscribe((response) => {     
+    this.embryoService.getAllCatalogo().subscribe((response) => { 
+          
       let datosBusquedas = Object.keys(response).map(function(key) { return response[key];});
       this.datosBusqueda=datosBusquedas[0]; 
-      // this.datosBusqueda=datosBusquedas;     
+      // this.datosBusqueda=datosBusquedas; 
       console.log(this.datosBusqueda); 
+      
     });                
   }
   applyFilter(valuePriceLow: any, valuePriceHigh: any){
@@ -139,8 +145,9 @@ export class PanelProductsComponent implements OnInit {
       let catalogFound = Object.keys(response).map( key => response[key]);
       this.datosBusqueda = catalogFound[0]
       this.products_list = true;
-      console.log(response);             
-    });                
+      console.log(response);   
+      this.lengthvalue =this.datosBusqueda;
+    });               
   }
 
   cathEventDisponibilityYes(isChecked:boolean){
