@@ -127,8 +127,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          this.countRol = this.datosBusqueda.length;
          this.totales=this.datosBusqueda[2];
          //this.datosBusqueda=this.datosBusqueda[1];
-        // console.log(this.datosBusqueda);
-          
+        console.log(this.datosBusqueda);
        });
    }
 
@@ -186,12 +185,14 @@ export class PaymentComponent implements OnInit, AfterViewInit{
             productos= {"cantidad": this.datos[i].cantidad,"idProducto":this.datos[i].producto.idProducto} 
             productos1[i]=productos;
          }
-
+         console.log(productos1)
          let user= this.embryoService.token();
+         user=user["cognito:username"];
+
          this.datosUsuario= {  
          "ciudadDestinatario":this.datos_usuario.user_details.city_state,
          "direccionDestinatario": this.datos_usuario.user_details.street_name_number,
-         "idUsuario": user.email,
+         "idUsuario": user,
          "nombreDestinatario": this.datos_usuario.user_details.first_name,
          "productos": productos1,
          "telefonoDestinatario": this.datos_usuario.user_details.mobile

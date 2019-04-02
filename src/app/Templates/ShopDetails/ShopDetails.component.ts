@@ -34,7 +34,7 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
    }
 
    ngOnInit() {
-      
+      console.log(this.detailData) 
       this.mainImgPath = this.detailData.imagen;
       this.totalPrice  = this.detailData.precio; 
 
@@ -81,7 +81,7 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
          theme: "material"
       };
       let resultado: string;
-      
+      console.log(value)
       this.embryoService.addToCart(value,this.cantidad).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;
          this.toastyService.wait(toastOption);

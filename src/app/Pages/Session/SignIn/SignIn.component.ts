@@ -18,12 +18,12 @@ export class SignInComponent implements OnInit {
     auth.parseCognitoWebResponse(curUrl); // pass Url to parseCognitoWebResponse function for storage token info
     let user= this.embryoService.token();
     let rol=user["custom:role"];
-      
+    
     if (rol=="Administrador"){
-       console.log("todos los pedidos")
+       
        this.router.navigate(['/order-history']);
     }else {
-       console.log("pedidos usuario")
+       
        this.router.navigate(['/home']);
     }    
 

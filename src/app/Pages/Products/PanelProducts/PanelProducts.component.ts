@@ -67,10 +67,9 @@ export class PanelProductsComponent implements OnInit {
   
   public getCategories() {
     this.embryoService.getCategories().subscribe((response) => {
-      console.log(response);
       this.categorias = Object.keys(response).map(key => response[key]);  
-      this.categorias = this.categorias[0];
-      //this.categorias=this.categorias.categorias
+      this.categorias = this.categorias[2]
+      
     }); 
   }
   selectCategorias(value){
@@ -124,7 +123,8 @@ export class PanelProductsComponent implements OnInit {
     this.embryoService.getAllCatalogo().subscribe((response) => {     
       let datosBusquedas = Object.keys(response).map(function(key) { return response[key];});
       this.datosBusqueda=datosBusquedas[0]; 
-      // this.datosBusqueda=datosBusquedas;          
+      // this.datosBusqueda=datosBusquedas;     
+      console.log(this.datosBusqueda); 
     });                
   }
   applyFilter(valuePriceLow: any, valuePriceHigh: any){
@@ -162,6 +162,7 @@ export class PanelProductsComponent implements OnInit {
   }
     
   reviewPopup(detailData){ 
+    console.log(detailData)
     this.embryoService.reviewPopup(detailData);
   }
 

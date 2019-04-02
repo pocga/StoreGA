@@ -10,7 +10,7 @@
                 
                 <div class="mat-card mb-4 container-filter-top">
                     <ul class="listacategorias">
-                        <li  (click)="selectCategorias(item)" *ngFor="let item of categorias">{{item}} &nbsp;</li>  
+                        <li  (click)="selectCategorias(item.categoria)" *ngFor="let item of categorias">{{item.categoria}} &nbsp;</li>  
                     </ul>
                 </div>
                      
@@ -23,7 +23,7 @@
                             <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
 
                                 <li class="listacategoriasfiltros" >
-                                    <mat-checkbox (change)="cathEvent(item,$event.checked)" >{{item}}</mat-checkbox>
+                                    <mat-checkbox (change)="cathEvent(item.categoria,$event.checked)" >{{item.categoria}}</mat-checkbox>
                                 </li>
                             </div>
                         </div>

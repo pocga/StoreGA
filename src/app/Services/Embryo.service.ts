@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient ,HttpResponse,HttpHeaders} from '@angular/common/http';
 import { Observable ,  BehaviorSubject } from 'rxjs';
 import { MatDialogRef, MatDialog, MatDialogConfig, MatSidenav } from '@angular/material';
@@ -16,7 +16,8 @@ interface Response {
 }
 
 @Injectable()
-export class EmbryoService {
+export class EmbryoService  {
+   
 
    sidenavOpen                 : boolean = false;
    paymentSidenavOpen          : boolean = false;
@@ -39,6 +40,7 @@ export class EmbryoService {
    navbarWishlistProdCount = 0;
    buyUserCartProducts : any;
 
+   private username:any;
     config = {
       headers: new HttpHeaders({
          'Content-Type': 'application/json',
@@ -60,10 +62,14 @@ export class EmbryoService {
       this.calculateLocalWishlistProdCounts();
       localStorage.removeItem("user");
       localStorage.removeItem("byProductDetails");
-
+                  
       this.db.object("products").valueChanges().subscribe(res => {this.setCartItemDefaultValue(res['gadgets'][1])});
+       
    }
-
+  
+     
+   
+   
    public token(){
       return this.authService.getDecodedAccessToken(localStorage.getItem("idToken"));
    }
@@ -148,15 +154,16 @@ export class EmbryoService {
    }
    public getPedidos(){
 
+      
       let user= this.token();
       let rol=user["custom:role"];
-      console.log(user);
+      this.username=user["cognito:username"]
+      
       if (rol=="Administrador"){
-         console.log("todos los pedidos")
          return this.http.get(`${environment.BASE_URL}pedidos`);
-      }else {
-         console.log("pedidos")
-         return this.http.get(`${environment.BASE_URL}pedidos/usuarios/${user.email}/`);
+      }else {        
+         
+         return this.http.get(`${environment.BASE_URL}pedidos/usuarios/${this.username}`);
       }     
    }
    public confirmarPedido(data){
@@ -164,6 +171,7 @@ export class EmbryoService {
    }
 
    public deleteCart(data) {
+      
       
       let deleteProduct=data.producto.idProducto;
       console.log("id:"+deleteProduct)
@@ -173,8 +181,8 @@ export class EmbryoService {
          observe: 'response' as 'response'  
       };
       let user= this.token();
-      
-      return this.http.delete(`${environment.BASE_URL}carrito/${user.email}/productos/${deleteProduct}`, httpOptions)
+      this.username=user["cognito:username"]
+      return this.http.delete(`${environment.BASE_URL}carrito/${this.username}/productos/${deleteProduct}`, httpOptions)
      
    }
 
@@ -192,45 +200,50 @@ export class EmbryoService {
 
    public getDataCart(){
       let user= this.token();
-      return this.http.get(`${environment.BASE_URL}carrito/${user.email}/productos`);
+      this.username=user["cognito:username"]
+      return this.http.get(`${environment.BASE_URL}carrito/${this.username}/productos`);
    }
 
 
    public putDataCart(data,value:any) {
-      let user= this.token();
       
+      let user= this.token();
+      this.username=user["cognito:username"]
 
       let producto={"idProducto": data.idProducto, "cantidad":value};
-      return this.http.put(`${environment.BASE_URL}carrito/${user.email}/productos`, producto);
+      return this.http.put(`${environment.BASE_URL}carrito/${this.username}/productos`, producto);
     //  return this.http.put('http://localhost:8080/carrito/eliana/productos', );
    }
 
    
    public addToCart(data: any, type:any){
-      //data=parseInt(data.idProducto); //id producto
-      let user= this.token(); //usuario
-      let producto={"idProducto": 1, "cantidad":1};
-      let producto1={"idProducto": data.idProducto, "cantidad":type};
-      console.log(producto1)
-      return this.http.post(`${environment.BASE_URL}carrito/${user.email}/productos`, producto, this.config);
+      let user= this.token();
+      this.username=user["cognito:username"]
+      data=parseInt(data.idProducto); //id producto
+      console.log(data)
+     // let producto={"idProducto": 1, "cantidad":1};
+     let producto={"idProducto": data, "cantidad":type};
+      
+      return this.http.post(`${environment.BASE_URL}carrito/${this.username}/productos`, producto, this.config);
    }
 
    public getAllCatalogo(){
-      
-      return this.http.get(`http://localhost:4000/catalogo/productos/`);
+      return this.http.get(`${environment.BASE_URL}catalogo/productos/`);
    } 
    public getCategories(){
+      let user= this.token();
+      this.username=user["cognito:username"]
       return this.http.get(`${environment.BASE_URL}catalogo/productos/categorias`);
    }
    public getPrice(){
-      return this.http.get(`http://localhost:4000/catalogo/productos/rango`);
+      return this.http.get(`${environment.BASE_URL}catalogo/productos/rango`);
    }
    public getOnlyCategoria(value){
-      return this.http.get(`http://localhost:4000/catalogo/productos?categ=${value}`);
+      return this.http.get(`${environment.BASE_URL}catalogo/productos?categ=${value}`);
    }
    public getCatalogByFilter(options){
       return this.http.get(
-      `http://localhost:4000/catalogo/productos?categ=${options.categorias}&disp=${options.disponibilidad}&from=${options.from}&to=${options.to}`);
+      `${environment.BASE_URL}catalogo/productos?categ=${options.categorias}&disp=${options.disponibilidad}&from=${options.from}&to=${options.to}`);
    }
 
    public buyNow(data:any) {

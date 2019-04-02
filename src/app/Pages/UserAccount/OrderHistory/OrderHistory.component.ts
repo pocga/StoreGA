@@ -38,7 +38,7 @@ export class OrderHistoryComponent implements OnInit {
    public callPedidos(){
       this.embryoService.getPedidos().subscribe(response => {
          this.datosPedidos = Object.keys(response).map(key => response[key]);
-         
+         console.log(this.datosPedidos)
         this.dataSource = this.datosPedidos.map(pedido => {
             return {
                     "orderid": pedido.idPedido,
@@ -51,8 +51,10 @@ export class OrderHistoryComponent implements OnInit {
                   }
          })
          
-         this.ordernarDesc(this.dataSource,'fecha');
+        // this.ordernarDesc(this.dataSource,'fecha');
          this.order_history = this.dataSource;
+         console.log(this.datosPedidos )
+
        });
    }
 
