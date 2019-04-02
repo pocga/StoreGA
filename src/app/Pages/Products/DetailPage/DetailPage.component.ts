@@ -44,10 +44,10 @@ export class DetailPageComponent implements OnInit {
          }
       }
    }
-
+/*
    public addToCart(value) {
-      this.embryoService.addToCart(value);
-   }
+      this.embryoService.addToCart(value,);
+   }*/
 
    public addToWishList(value) {
       this.embryoService.addToWishlist(value);

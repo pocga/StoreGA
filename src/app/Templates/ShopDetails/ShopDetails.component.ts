@@ -24,7 +24,7 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
    quantityArray : number[] = [1,2,3,4,5,6,7,8,9,10];
    productReviews : any;
 
-  
+  public cantidad="1";
 
    constructor(private route: ActivatedRoute,
                private router: Router, 
@@ -62,30 +62,17 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
 
    public calculatePrice(detailData:any, value: any) {
       detailData.quantity = value;
+      this.cantidad=value;
       this.totalPrice = detailData.price*value;
    }
-   /*
-   public reviewPopup(detailData) {
-      let reviews : any = null;
-      for(let review of this.productReviews) {
-         // if((review.id == detailData.id) && (review.type == detailData.type) && (review.category == detailData.category)){
-         //    singleProduct = review;
-         //    break;
-         // }
 
-        reviews = review.user_rating;
-      }
-
-      this.embryoService.reviewPopup(detailData);
-   }*/
 
    public addToWishlist(value:any) {
       this.embryoService.addToWishlist(value);
    }
 
    public addToCart(value:any) {
-      this.embryoService.addToCart(value);
-
+      
       let toastOption: ToastOptions = {
          title: "Añadiendo producto al carrito",
          msg: "Producto añadido",
@@ -95,7 +82,7 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
       };
       let resultado: string;
       
-      this.embryoService.addToCart(value).subscribe((res: HttpResponse<any>) => {
+      this.embryoService.addToCart(value,this.cantidad).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;
          this.toastyService.wait(toastOption);
          },

@@ -76,9 +76,11 @@ export class PaymentComponent implements OnInit, AfterViewInit{
       }
    ]
 
-  paymentFormOne   : FormGroup;
-  public datos_usuario;
+   paymentFormOne   : FormGroup;
+   public datos_usuario;
 
+   paymentForm   : FormGroup;
+   public requeriredForm : boolean=false;
 
    constructor(public embryoService : EmbryoService, 
                private formGroup : FormBuilder,
@@ -91,16 +93,16 @@ export class PaymentComponent implements OnInit, AfterViewInit{
 
       this.paymentFormOne = this.formGroup.group({
          user_details       : this.formGroup.group({
-            first_name         : ['', [Validators.required]],
-            last_name          : ['', [Validators.required]],
+            first_name         : ['', [Validators.required,]],
+           // last_name          : ['', [Validators.required]],Validators.pattern('/^[a-zA-Z]+$/')
             street_name_number : ['', [Validators.required]],
-            apt                : ['', [Validators.required]],
-            zip_code           : ['', [Validators.required]],
+          //  apt                : ['', [Validators.required]],
+           // zip_code           : ['', [Validators.required]],
             city_state         : ['', [Validators.required]],
-            country            : ['', [Validators.required]],
+           // country            : ['', [Validators.required]],
             mobile             : ['', [Validators.required]],
-            email              : ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-            share_email        : ['', [Validators.pattern(this.emailPattern)]],
+           // email              : ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+            //share_email        : ['', [Validators.pattern(this.emailPattern)]],
          }),
          offers             : this.formGroup.group({
             discount_code   : [''],
@@ -170,65 +172,44 @@ export class PaymentComponent implements OnInit, AfterViewInit{
 
    public submitPayment() {
 
-      this.datos_usuario=this.paymentFormOne.value;
-      this.datos=this.datosBusqueda[1];
-      let productos
-      let productos1=[];
-   
-      
-      for (var i=0;i<this.datos.length;i++){
-         productos= {"cantidad": this.datos[i].cantidad,"idProducto":this.datos[i].producto.idProducto} 
-         productos1[i]=productos;
-      }
-
-      let user= this.embryoService.token();
-      console.log(user)
-      this.datosUsuario= {  
-      "ciudadDestinatario":this.datos_usuario.user_details.city_state,
-      "direccionDestinatario": this.datos_usuario.user_details.street_name_number,
-      "idUsuario": user.email,
-      "nombreDestinatario": this.datos_usuario.user_details.first_name,
-      "productos": productos1,
-      "telefonoDestinatario": this.datos_usuario.user_details.mobile
-      };
-     
-      let resultado;
-      this.embryoService.confirmarPedido(this.datosUsuario).subscribe((res: HttpResponse<any>) => {
-         resultado = res.statusText;
-         this.embryoService.PopupThank(res);
-         },
-         (error) => {
-           console.log(error);
-         }
-      );
-
-      
-     
-      /*
       let userDetailsGroup = <FormGroup>(this.paymentFormOne.controls['user_details']);
-      if(userDetailsGroup.valid)
-      {
-         switch (this.step) {
-            case 0:
-               this.step = 1;
-               this.isDisabledPaymentStepTwo = false;
-               break;
-            case 1:
-               this.step = 2;
-               break;
-            
-            default:
-               // code...
-               break;
-         }
-      } else {
-         this.isDisabledPaymentStepTwo = true;
-         this.isDisabledPaymentStepThree = true;
-         for (let i in userDetailsGroup.controls) {
-            userDetailsGroup.controls[i].markAsTouched();
-         }
-      }*/
 
+      if(userDetailsGroup.valid){
+         this.requeriredForm =false;
+
+         this.datos_usuario=this.paymentFormOne.value;
+         this.datos=this.datosBusqueda[1];
+         let productos
+         let productos1=[];
+         
+         for (var i=0;i<this.datos.length;i++){
+            productos= {"cantidad": this.datos[i].cantidad,"idProducto":this.datos[i].producto.idProducto} 
+            productos1[i]=productos;
+         }
+
+         let user= this.embryoService.token();
+         this.datosUsuario= {  
+         "ciudadDestinatario":this.datos_usuario.user_details.city_state,
+         "direccionDestinatario": this.datos_usuario.user_details.street_name_number,
+         "idUsuario": user.email,
+         "nombreDestinatario": this.datos_usuario.user_details.first_name,
+         "productos": productos1,
+         "telefonoDestinatario": this.datos_usuario.user_details.mobile
+         };
+
+         let resultado;
+         this.embryoService.confirmarPedido(this.datosUsuario).subscribe((res: HttpResponse<any>) => {
+            resultado = res.statusText;
+            this.embryoService.PopupThank(res);
+            console.log(this.datosUsuario);
+            },
+            (error) => {
+            console.log(error);
+            }
+         );
+      }  else {
+         this.requeriredForm =true  
+      }
    }
    returnCart(){
       this.router.navigate(['/cart/']);

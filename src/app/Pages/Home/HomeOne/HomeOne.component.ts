@@ -109,10 +109,10 @@ export class HomeoneComponent implements OnInit, AfterViewChecked{
    public getBlogList() {
       this.embryoService.getBlogList().valueChanges().subscribe(res => {this.blogList = res});
    }
-
+/*
    public addToCart(value) {
       this.embryoService.addToCart(value);
-   }
+   }*/
 
    public getProductRevies() {
       this.embryoService.getProductReviews().valueChanges().subscribe(res => {this.productReviews = res});

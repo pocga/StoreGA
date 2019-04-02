@@ -86,7 +86,6 @@ export class EmbryoService {
       return review.afterClosed();
    }
    
-
    public reserve(){
       let toastOption: ToastOptions = {
          title: "Gracias por su compra",
@@ -128,7 +127,6 @@ export class EmbryoService {
       confirmationPopup = this.dialog.open(ConfirmationPopupComponent);
       confirmationPopup.componentInstance.message = message;
       return confirmationPopup.afterClosed();
-      
    }
 
    public getProducts() {
@@ -149,14 +147,22 @@ export class EmbryoService {
       //console.log(this.localStorageCartProducts.length)
    }
    public getPedidos(){
-      return this.http.get(`${environment.BASE_URL}pedidos`);
+
+      let user= this.token();
+      let rol=user["custom:role"];
+      console.log(user);
+      if (rol=="Administrador"){
+         console.log("todos los pedidos")
+         return this.http.get(`${environment.BASE_URL}pedidos`);
+      }else {
+         console.log("pedidos")
+         return this.http.get(`${environment.BASE_URL}pedidos/usuarios/${user.email}/`);
+      }     
    }
    public confirmarPedido(data){
       return this.http.post(`${environment.BASE_URL}pedidos`, data);
    }
-   public getAllCatalogo(){
-      return this.http.get(`http://localhost:4000/catalogo/productos/`);
-   } 
+
    public deleteCart(data) {
       
       let deleteProduct=data.producto.idProducto;
@@ -186,7 +192,6 @@ export class EmbryoService {
 
    public getDataCart(){
       let user= this.token();
-    
       return this.http.get(`${environment.BASE_URL}carrito/${user.email}/productos`);
    }
 
@@ -200,20 +205,22 @@ export class EmbryoService {
     //  return this.http.put('http://localhost:8080/carrito/eliana/productos', );
    }
 
-   // Adding new Product to cart in localStorage
-   public addToCart(data: any, type:any=""){
-      console.log(data.idProducto)
-      data=parseInt(data.idProducto);
-     // console.log(data)
-
-      let user= this.token();
-      console.log(user.email);
+   
+   public addToCart(data: any, type:any){
+      //data=parseInt(data.idProducto); //id producto
+      let user= this.token(); //usuario
       let producto={"idProducto": 1, "cantidad":1};
+      let producto1={"idProducto": data.idProducto, "cantidad":type};
+      console.log(producto1)
       return this.http.post(`${environment.BASE_URL}carrito/${user.email}/productos`, producto, this.config);
    }
 
+   public getAllCatalogo(){
+      
+      return this.http.get(`http://localhost:4000/catalogo/productos/`);
+   } 
    public getCategories(){
-      return this.http.get(`http://localhost:4000/catalogo/productos/categorias`);
+      return this.http.get(`${environment.BASE_URL}catalogo/productos/categorias`);
    }
    public getPrice(){
       return this.http.get(`http://localhost:4000/catalogo/productos/rango`);
@@ -222,13 +229,8 @@ export class EmbryoService {
       return this.http.get(`http://localhost:4000/catalogo/productos?categ=${value}`);
    }
    public getCatalogByFilter(options){
-      console.log(options)
-    
-     // var from = options.from.toString();
-     // var to=options.to.toString();
-
       return this.http.get(
-         `http://localhost:4000/catalogo/productos?categ=${options.categorias}&disp=${options.disponibilidad}&from=${options.from}&to=${options.to}`);
+      `http://localhost:4000/catalogo/productos?categ=${options.categorias}&disp=${options.disponibilidad}&from=${options.from}&to=${options.to}`);
    }
 
    public buyNow(data:any) {

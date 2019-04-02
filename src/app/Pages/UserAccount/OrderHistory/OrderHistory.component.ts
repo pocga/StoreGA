@@ -19,11 +19,19 @@ export class OrderHistoryComponent implements OnInit {
    public order_history: any;
    public dataSource: any;
    popupResponse  : any;
-
+   public administrador: boolean
    constructor(public embryoService : EmbryoService) { }
 
    ngOnInit() {
       this.callPedidos();
+      let user= this.embryoService.token();
+      let rol=user["custom:role"];
+        
+      if (rol=="Administrador"){
+         this.administrador=true;         
+      }else {
+         this.administrador=false;  
+      }  
  
    }
 

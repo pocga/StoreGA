@@ -83,11 +83,11 @@
     </ng-container>
 
 
-    <ng-container matColumnDef="eliminar">
+    <ng-container matColumnDef="eliminar" >
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
 
-           <a (click)="deletePedido(element.orderid)" class="accent-color ">   
+           <a *ngIf="administrador" (click)="deletePedido(element.orderid)" class="accent-color ">   
              <i class="material-icons cursor-pointer">
               close
              </i>

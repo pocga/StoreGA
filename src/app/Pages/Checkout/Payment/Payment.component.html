@@ -40,9 +40,9 @@
                     
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="33" fxFlex.xl="33">          
                       <div class="mb-2">
-                        <mat-form-field class="w-100">
-                          <input matInput type="text" placeholder="Nombre" formControlName="first_name" required>
-                          <mat-error *ngIf="paymentFormOne.get('user_details.first_name').hasError('required') && paymentFormOne.get('user_details.first_name').touched">This field should not be empty.</mat-error>
+                        <mat-form-field class="w-100"><!--pattern="[A-Za-z]"-->
+                          <input matInput type="text" placeholder="Nombre" formControlName="first_name"  required>
+                          <mat-error *ngIf="paymentFormOne.get('user_details.first_name').hasError('required') && paymentFormOne.get('user_details.first_name').touched">Este campo es requerido</mat-error>
                         </mat-form-field>
                       </div>
                     </div>
@@ -60,7 +60,7 @@
                       <div class="mb-2">
                         <mat-form-field class="w-100">
                           <input matInput type="text" formControlName="street_name_number" placeholder="Dirección de entrega">
-                          <mat-error *ngIf="paymentFormOne.get('user_details.street_name_number').hasError('required') && paymentFormOne.get('user_details.street_name_number').touched">This field should not be empty.</mat-error>
+                          <mat-error *ngIf="paymentFormOne.get('user_details.street_name_number').hasError('required') && paymentFormOne.get('user_details.street_name_number').touched">Este campo es requerido</mat-error>
                         </mat-form-field>
                       </div>
                     </div>
@@ -88,17 +88,18 @@
                   <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
                       <div class="mb-2">
-                        <mat-form-field class="w-100">
-                          <input matInput type="text" placeholder="Cuidad" formControlName="city_state" required>
-                          <mat-error *ngIf="paymentFormOne.get('user_details.city_state').hasError('required') && paymentFormOne.get('user_details.city_state').touched">This field should not be empty.</mat-error>
+                        <mat-form-field class="w-100"><!--pattern="[A-Za-z]"-->
+                          <input matInput type="text" placeholder="Cuidad" formControlName="city_state"  required>
+                          <mat-error *ngIf="paymentFormOne.get('user_details.city_state').hasError('required') && paymentFormOne.get('user_details.city_state').touched">Este campo es requerido</mat-error>
                         </mat-form-field>
                       </div>
                     </div>
 
                     <div class="mb-2">
                         <mat-form-field class="w-100">
-                          <input matInput type="text" placeholder="Teléfono" formControlName="mobile" required>
-                          <mat-error *ngIf="paymentFormOne.get('user_details.mobile').hasError('required') && paymentFormOne.get('user_details.mobile').touched">This field should not be empty.</mat-error>
+                          <input matInput type="number" placeholder="Teléfono" formControlName="mobile" required>
+                          <mat-error *ngIf="paymentFormOne.get('user_details.mobile').hasError('required') && paymentFormOne.get('user_details.mobile').touched ">Este campo es requerido</mat-error>
+                          
                         </mat-form-field>
                     </div>
                     <!--
@@ -133,7 +134,9 @@
                       </div>
                     </div>
                   </div>-->
-
+                  
+                    <mat-error *ngIf="requeriredForm">Campos incompletos o no válidos</mat-error>
+                  
                   <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
                       <!--
