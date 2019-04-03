@@ -17,7 +17,9 @@
           <div class="list-flex user-tool">
             <embryo-HeaderCart  [routerLink]="['/cart']"></embryo-HeaderCart>
             <!--<embryo-HeaderCart [currency]="embryoService?.currency" [cartProducts]="embryoService?.localStorageCartProducts" [count]="embryoService?.navbarCartCount" (removeProductData)="openConfirmationPopup($event)"></embryo-HeaderCart>-->
-            <button class="follow-products" (click)="followProduct()">Consulta tu pedido</button>
+            <button class="follow-products" (click)="followProduct()">
+              <a class="tittle-follow">Consulta tu pedido</a>
+            </button>
             
             <!--
             <embryo-WishList [currency]="embryoService?.currency" [wishListProducts]="embryoService?.localStorageWishlist" [count]="embryoService?.navbarWishlistProdCount" (removeWishListData)="openWishlistConfirmationPopup($event)" (addAllWishlistToCart)="addAllWishlistToCart($event)" (addToCart)="addToCart($event)"></embryo-WishList>

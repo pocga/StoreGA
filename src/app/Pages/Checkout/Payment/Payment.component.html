@@ -43,18 +43,11 @@
                         <mat-form-field class="w-100"><!--pattern="[A-Za-z]"-->
                           <input matInput type="text" placeholder="Nombre" formControlName="first_name"  required>
                           <mat-error *ngIf="paymentFormOne.get('user_details.first_name').hasError('required') && paymentFormOne.get('user_details.first_name').touched">Este campo es requerido</mat-error>
+                          <mat-error *ngIf="paymentFormOne.get('user_details.first_name').hasError('pattern') && paymentFormOne.get('user_details.city_state').touched ">Ingrese nombre válido</mat-error>
                         </mat-form-field>
                       </div>
                     </div>
-                    <!--
-                    <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="33" fxFlex.xl="33">
-                      <div class="mb-2">
-                        <mat-form-field class="w-100">
-                          <input matInput type="text" placeholder="Last Name" formControlName="last_name" required>
-                          <mat-error *ngIf="paymentFormOne.get('user_details.last_name').hasError('required') && paymentFormOne.get('user_details.last_name').touched">This field should not be empty.</mat-error>
-                        </mat-form-field>
-                      </div>
-                    </div>-->
+                    
 
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="33" fxFlex.xl="33">
                       <div class="mb-2">
@@ -65,32 +58,14 @@
                       </div>
                     </div>
                   </div>
-                  <!--
-                  <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
-                    
-                    <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                      <div class="mb-2">
-                        <mat-form-field class="w-100">
-                          <input matInput type="text" placeholder="Apt Building Name" formControlName="apt" required>
-                          <mat-error *ngIf="paymentFormOne.get('user_details.apt').hasError('required') && paymentFormOne.get('user_details.apt').touched">This field should not be empty.</mat-error>
-                        </mat-form-field>
-                      </div>
-                    </div>
-                    <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                      <div class="mb-2">
-                        <mat-form-field class="w-100">
-                          <input matInput type="text" placeholder="Zip Code" formControlName="zip_code" required>
-                          <mat-error *ngIf="paymentFormOne.get('user_details.zip_code').hasError('required') && paymentFormOne.get('user_details.zip_code').touched">This field should not be empty.</mat-error>
-                        </mat-form-field>
-                      </div>
-                    </div>
-                  </div>-->
+                  
                   <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
                       <div class="mb-2">
-                        <mat-form-field class="w-100"><!--pattern="[A-Za-z]"-->
-                          <input matInput type="text" placeholder="Cuidad" formControlName="city_state"  required>
+                        <mat-form-field class="w-100">
+                          <input matInput type="text" placeholder="Cuidad" formControlName="city_state" required>
                           <mat-error *ngIf="paymentFormOne.get('user_details.city_state').hasError('required') && paymentFormOne.get('user_details.city_state').touched">Este campo es requerido</mat-error>
+                          <mat-error *ngIf="paymentFormOne.get('user_details.city_state').hasError('pattern') && paymentFormOne.get('user_details.city_state').touched ">Ingrese una cuidad válida</mat-error>
                         </mat-form-field>
                       </div>
                     </div>
@@ -102,55 +77,16 @@
                           
                         </mat-form-field>
                     </div>
-                    <!--
-                    <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                      <div class="mb-2">
-                        <mat-form-field class="w-100">
-                          <input matInput type="text" placeholder="Country" formControlName="country" required>
-                          <mat-error *ngIf="paymentFormOne.get('user_details.country').hasError('required') && paymentFormOne.get('user_details.country').touched">This field should not be empty.</mat-error>
-                        </mat-form-field>
-                      </div>
-                    </div>-->
+                    
 
                   </div>
-                  <!--
-                  <h4>Enter Your Contact Infomation</h4>
-                  <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
-                    <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                      <div class="mb-2">
-                        <mat-form-field class="w-100">
-                          <input matInput type="text" placeholder="Mobile" formControlName="mobile" required>
-                          <mat-error *ngIf="paymentFormOne.get('user_details.mobile').hasError('required') && paymentFormOne.get('user_details.mobile').touched">This field should not be empty.</mat-error>
-                        </mat-form-field>
-                      </div>
-                    </div>
-                    <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                      <div class="mb-2">
-                        <mat-form-field class="w-100">
-                          <input matInput type="email" placeholder="Email" formControlName="email" required>
-                          <mat-error *ngIf="paymentFormOne.get('user_details.email').hasError('required') && paymentFormOne.get('user_details.email').touched">This field should not be empty.</mat-error>
-                          <mat-error *ngIf="paymentFormOne.get('user_details.email').hasError('pattern') && paymentFormOne.get('user_details.email').touched">Please enter a valid email.</mat-error>
-                        </mat-form-field>
-                      </div>
-                    </div>
-                  </div>-->
+                  
                   
                     <mat-error *ngIf="requeriredForm">Campos incompletos o no válidos</mat-error>
                   
                   <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                      <!--
-                      <h4>Share with other?</h4>
-                      <p>If you want to share order and shipping details with someone else then enter the email of that
-                        person. We will send order updates to this email also.
-                      </p>
-
-                      <div class="mb-2">
-                        <mat-form-field class="w-100">
-                          <input matInput type="email" placeholder="Email" formControlName="share_email">
-                          <mat-error *ngIf="paymentFormOne.get('user_details.share_email').hasError('pattern') && paymentFormOne.get('user_details.share_email').touched">Please enter a valid email.</mat-error>
-                        </mat-form-field>
-                      </div>-->
+                      
 
                       <button color="accent" class="button-lg" mat-raised-button type="button" (click)="submitPayment()">Continuar</button><br><br>
                       <button color="accent" class="button-lg" mat-raised-button type="button" (click)="returnCart()">Volver </button>
@@ -162,76 +98,7 @@
               </div>
             </div>
           </mat-expansion-panel>
-          <!--
-          <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" [disabled]="isDisabledPaymentStepTwo">
-            <mat-expansion-panel-header>
-              <h4 class="mb-0">Unlock Offers or Apply PromoCodes</h4>
-            </mat-expansion-panel-header>
-            
-            <mat-tab-group>
-              <mat-tab label="Offer Code">
-                <div class="mat-inner-tab">
-                  <div class="header-mat-tab bg-grey text-center">
-                    <div class="mb-4"><img src="assets/images/discount.png" alt=""></div>
-                    <h4 class="mb-5">Apply for Embryo offer/Discount</h4>
-                  </div>
-                  <div class="container-mat-tab">
-                    <div fxLayout='row wrap' fxLayoutAlign="center center">
-                      <div fxLayout.xs="100" fxLayout.sm="100" fxLayout.md="50" fxLayout.lg="50" fxLayout.xl="50">
-                        <div fxLayoutAlign="start center" formGroupName="offers">
-                          <mat-form-field class="w-100">
-                            <input matInput type="text" formControlName="discount_code" placeholder="Enter Code">
-                          </mat-form-field>
-                          <button mat-icon-button type="button" (click)="submitPayment()">
-                            <i class="material-icons">send</i>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div fxLayout='row wrap' fxLayoutAlign="center center" class="text-center">
-                      <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                        <p class="text-muted mb-0">*Only Valid coupon or offer code is acceptable.</p>
-                        <p class="text-muted"> To know your coupon valid or not click <a href="javascript:void()">Here</a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </mat-tab>
-              <mat-tab label="Credit/Debit/NetBanking" *ngIf="offerCards && offerCards.length>0">
-                <div class="mat-inner-tab text-center" formGroupName="offers">
-                  <div class="header-mat-tab bg-grey">
-                    <div class="mb-4"> <img src="assets/images/card.png" alt=""></div>
-                    <h4 class="mb-5">Apply for Card offers</h4>
-                  </div>
-                  <hr class="dark-border">
-                  <div >
-                    <div class="card-radio">
-                     
-                        <mat-radio-group formControlName="card_type">
-                          <mat-radio-button *ngFor="let card of offerCards" [value]="card?.id" >
-                            <span class="font-bold"> {{card?.content}}</span>
-                            <p class="text-muted">{{card?.name}}</p>
-                          </mat-radio-button>
-                        </mat-radio-group>
-                      
-                    </div>
-                  </div>
-                  <hr class="dark-border">
-                  <div>
-                    <h4 class="mb-5">Select Offer Name</h4>
-                  </div>
-                    <mat-form-field>
-                      <mat-select formControlName="card_type_offer_name">
-                        <mat-option value=null>None</mat-option>
-                        <mat-option value="option1">Option 1</mat-option>
-                        <mat-option value="option2">Option 2</mat-option>
-                        <mat-option value="option3">Option 3</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                </div>
-              </mat-tab>
-            </mat-tab-group>
-          </mat-expansion-panel>-->
+          
           
           <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" [disabled]="isDisabledPaymentStepThree">
             <mat-expansion-panel-header>

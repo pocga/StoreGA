@@ -25,6 +25,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    isDisabledPaymentStepTwo  = true;
    isDisabledPaymentStepThree = false;
    emailPattern        : any = /\S+@\S+\.\S+/;
+   //Pattern        : any = /\S+@\S+\.\S+/;
    offerCards : any = [
       {
          id: 1,
@@ -77,10 +78,12 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    ]
 
    paymentFormOne   : FormGroup;
+   paymentFormTree   : FormGroup;
    public datos_usuario;
 
    paymentForm   : FormGroup;
    public requeriredForm : boolean=false;
+   textPattern        : any = '^[a-zA-Z]+$' // '/^[A-Za-z]*\s()[A-Za-z]*$/'; ///^[a-zA-Z]+$/ '/[a-zA-Z]/'  
 
    constructor(public embryoService : EmbryoService, 
                private formGroup : FormBuilder,
@@ -91,14 +94,21 @@ export class PaymentComponent implements OnInit, AfterViewInit{
 
    ngOnInit() {
 
+      this.paymentFormTree = this.formGroup.group({
+         first_name         : ['', [Validators.required,Validators.pattern(this.textPattern)]],
+         street_name_number : ['', [Validators.required]],
+         city_state         : ['', [Validators.required,Validators.pattern(this.textPattern)]],
+         mobile             : ['', [Validators.required]]
+      });
+
       this.paymentFormOne = this.formGroup.group({
          user_details       : this.formGroup.group({
-            first_name         : ['', [Validators.required,]],
-           // last_name          : ['', [Validators.required]],Validators.pattern('/^[a-zA-Z]+$/')
+            first_name         : ['', [Validators.required,Validators.pattern(this.textPattern)]],//Validators.pattern('/^[a-zA-Z]+$/')
+           // last_name          : ['', [Validators.required]],
             street_name_number : ['', [Validators.required]],
           //  apt                : ['', [Validators.required]],
            // zip_code           : ['', [Validators.required]],
-            city_state         : ['', [Validators.required]],
+            city_state         : ['', [Validators.required,Validators.pattern(this.textPattern)]],//,Validators.pattern(this.textPattern)]
            // country            : ['', [Validators.required]],
             mobile             : ['', [Validators.required]],
            // email              : ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -169,7 +179,14 @@ export class PaymentComponent implements OnInit, AfterViewInit{
       return total; 
    }
 
+   public getErrorMessage() {
+      return this.paymentFormTree.hasError('required') ? 'El campo es obligaorio' :
+          this.paymentFormTree.hasError('city_state','name') ? 'Campos o válido' :
+              '';
+   }
+
    public submitPayment() {
+
 
       let userDetailsGroup = <FormGroup>(this.paymentFormOne.controls['user_details']);
 
