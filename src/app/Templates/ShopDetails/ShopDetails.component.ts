@@ -31,6 +31,8 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
                public embryoService : EmbryoService,private toastyService: ToastaService
                ) {
       this.embryoService.getProductReviews().valueChanges().subscribe(res => {this.productReviews = res});
+     
+      
    }
 
    ngOnInit() {
@@ -77,9 +79,10 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
          title: "Añadiendo producto al carrito",
          msg: "Producto añadido",
          showClose: true,
-         timeout: 3000,
-         theme: "material"
+         timeout: 20000,
+         theme: "material"  
       };
+     
       let resultado: string;
       console.log(value)
       this.embryoService.addToCart(value,this.cantidad).subscribe((res: HttpResponse<any>) => {

@@ -50,4 +50,6 @@ $accent: mat-color($my-theme-accent);
   background: $accent;
 }
 
-
+.cdk-overlay-dark-backdrop{
+  background: rgba(0, 0, 0,0.15) !important;
+}

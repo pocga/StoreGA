@@ -153,8 +153,7 @@ export class EmbryoService  {
       //console.log(this.localStorageCartProducts.length)
    }
    public getPedidos(){
-
-      
+    
       let user= this.token();
       let rol=user["custom:role"];
       this.username=user["cognito:username"]
@@ -222,7 +221,7 @@ export class EmbryoService  {
       data=parseInt(data.idProducto); //id producto
       console.log(data)
      // let producto={"idProducto": 1, "cantidad":1};
-     let producto={"idProducto": data, "cantidad":type};
+      let producto={"idProducto": data, "cantidad":type};
       
       return this.http.post(`${environment.BASE_URL}carrito/${this.username}/productos`, producto, this.config);
    }

@@ -3,12 +3,14 @@
 }
 
 .follow-products{
-  background:  #F16113;
+  background:  #ff5722;
   color: #fff;
   border: 1px solid #fff;
   height: 30px;
-  font: oblique bold 70% cursive;
+  font-size:15px;
+  font-family: inherit;
 }
+
 
 @media(max-width:959px) {
   .responsive-toggle {

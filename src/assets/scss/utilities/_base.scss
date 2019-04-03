@@ -214,3 +214,7 @@ body app-main,body .mat-drawer-content {
   overflow-x:hidden;
   overflow-y: auto;
 }
+
+.cdk-overlay-dark-backdrop{
+  background: rgba(0, 0, 0,0.15) !important;
+}
