@@ -90,7 +90,14 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
          this.toastyService.wait(toastOption);
          },
          (error) => {
-           console.log("error: " + error.statusText);
+           let toastOption: ToastOptions = {
+            title: "ERROR",
+            msg: error.error.descripcionRespuesta,
+            showClose: true,
+            timeout: 3000,
+            theme: "material"
+          };
+          this.toastyService.wait(toastOption);
          }
        ); 
        this.embryoService.calculateLocalCartProdCounts();

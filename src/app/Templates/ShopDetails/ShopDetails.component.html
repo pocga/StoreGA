@@ -45,7 +45,7 @@
                 <li>
                   <span class="font-medium"> Disponibilidad </span>: 
                   <span *ngIf="detailData.cantidadDisponible > 0">Si</span>
-                  <span *ngIf="detailData.cantidadDisponible < 0">Agotado</span>
+                  <span *ngIf="detailData.cantidadDisponible == 0">No</span>
                 </li>
                 <li>
                   <span class="font-medium">Código del Producto</span>: {{detailData.idProducto}}

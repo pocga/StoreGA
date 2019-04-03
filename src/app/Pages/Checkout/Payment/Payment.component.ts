@@ -24,9 +24,10 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    step = 0;
    isDisabledPaymentStepTwo  = true;
    isDisabledPaymentStepThree = false;
+
    emailPattern        : any = /\S+@\S+\.\S+/;
    //Pattern        : any = /\S+@\S+\.\S+/;
-  /* 
+  
    offerCards : any = [
       {
          id: 1,
@@ -76,7 +77,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          id:5,
          image:"assets/images/client-logo-5.png"
       }
-   ]*/
+   ]
 
    paymentFormOne   : FormGroup;
   
@@ -90,7 +91,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
                private formGroup : FormBuilder,
                public router: Router) {
 
-      this.embryoService.removeBuyProducts();
+     // this.embryoService.removeBuyProducts();
    }
 
    ngOnInit() {
@@ -109,8 +110,8 @@ export class PaymentComponent implements OnInit, AfterViewInit{
             mobile             : ['', [Validators.required]],
            // email              : ['', [Validators.required, Validators.pattern(this.emailPattern)]],
             //share_email        : ['', [Validators.pattern(this.emailPattern)]],
-         })
-         /*
+         }),
+      
          offers             : this.formGroup.group({
             discount_code   : [''],
             card_type       : [1],
@@ -123,7 +124,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
             expiry_date     : ['', [Validators.required]],
             card_id         : [1],
             bank_card_value : [null]
-         })*/
+         })
       });
 
       this.embryoService.getDataCart().subscribe((response) => {
@@ -140,7 +141,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
 
    ngAfterViewInit() {
    }
-   /*
+   
    public setStep(index: number) {
       this.step = index;
       switch (index) {
@@ -155,12 +156,12 @@ export class PaymentComponent implements OnInit, AfterViewInit{
             
             break;
       }
-   }*/
+   }
    /*
    public toggleRightSidenav() {
       this.embryoService.paymentSidenavOpen = !this.embryoService.paymentSidenavOpen;
    }*/
-   /*
+   
    public getCartProducts() {
       let total = 0;
       if(this.embryoService.localStorageCartProducts && this.embryoService.localStorageCartProducts.length>0) {
@@ -174,7 +175,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          return total;
       } 
       return total; 
-   }*/
+   }
 
 
 
@@ -225,7 +226,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    returnCart(){
       this.router.navigate(['/cart/']);
    }
-   /*
+   
    public selectedPaymentTabChange(value) {
       let paymentGroup = <FormGroup>(this.paymentFormOne.controls['payment']); 
 
@@ -265,7 +266,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
             paymentGroup.controls[i].markAsTouched();
          }
       }
-   }*/
+   }
 }
 
 

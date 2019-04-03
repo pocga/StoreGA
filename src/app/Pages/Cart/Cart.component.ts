@@ -113,14 +113,18 @@ export class CartComponent implements OnInit, AfterViewChecked {
       } else {
          return 1;
       }
+     
+   }
+   public totalCost(){
+      console.log(this.totales)
    }
 
    changeQuantity(item, value:any){
-   
+      
       let resultado;
       this.embryoService.putDataCart(item,value).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;
-
+         this.callCart();
          let toastOption: ToastOptions = {
             title: "MODIFICANDO",
             msg: "El producto se modifico correctamente",
