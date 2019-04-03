@@ -41,15 +41,7 @@ export class EmbryoService  {
    buyUserCartProducts : any;
 
    private username:any;
-    config = {
-      headers: new HttpHeaders({
-         'Content-Type': 'application/json',
-         'Access-Control-Allow-Origin': "*",
-         'Access-Control-Allow-Methods': "DELETE, POST, GET, OPTIONS",
-         'Access-Control-Allow-Headers': "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With" 
-      })
-   };
-   
+    
    constructor(private http:HttpClient, 
                private dialog: MatDialog, 
                private db: AngularFireDatabase,
@@ -67,9 +59,6 @@ export class EmbryoService  {
        
    }
   
-     
-   
-   
    public token(){
       return this.authService.getDecodedAccessToken(localStorage.getItem("idToken"));
    }
@@ -223,7 +212,7 @@ export class EmbryoService  {
      // let producto={"idProducto": 1, "cantidad":1};
       let producto={"idProducto": data, "cantidad":type};
       
-      return this.http.post(`${environment.BASE_URL}carrito/${this.username}/productos`, producto, this.config);
+      return this.http.post(`${environment.BASE_URL}carrito/${this.username}/productos`, producto);
    }
 
    public getAllCatalogo(){

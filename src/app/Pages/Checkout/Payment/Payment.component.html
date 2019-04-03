@@ -20,7 +20,7 @@
 </mat-toolbar><br>
 <embryo-PageTitle heading="Payment Information"></embryo-PageTitle>
 
-<div class="inner-container section-gap" *ngIf="(embryoService.localStorageCartProducts && embryoService.localStorageCartProducts.length>0); else elseBlock">
+<div class="inner-container section-gap" >
    <div class="checkout-option">
     <div class="container">
       
@@ -40,7 +40,7 @@
                     
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="33" fxFlex.xl="33">          
                       <div class="mb-2">
-                        <mat-form-field class="w-100"><!--pattern="[A-Za-z]"-->
+                        <mat-form-field class="w-100">
                           <input matInput type="text" placeholder="Nombre" formControlName="first_name"  required>
                           <mat-error *ngIf="paymentFormOne.get('user_details.first_name').hasError('required') && paymentFormOne.get('user_details.first_name').touched">Este campo es requerido</mat-error>
                           <mat-error *ngIf="paymentFormOne.get('user_details.first_name').hasError('pattern') && paymentFormOne.get('user_details.city_state').touched ">Ingrese nombre válido</mat-error>
@@ -77,13 +77,11 @@
                           
                         </mat-form-field>
                     </div>
-                    
-
                   </div>
                   
                   
-                    <mat-error *ngIf="requeriredForm">Campos incompletos o no válidos</mat-error>
-                  
+                  <mat-error *ngIf="requeriredForm">Campos incompletos o no válidos</mat-error>
+                  <!--
                   <div fxLayout="row wrap" fxLayoutAlign="none" class="col-gap">
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
                       
@@ -92,17 +90,17 @@
                       <button color="accent" class="button-lg" mat-raised-button type="button" (click)="returnCart()">Volver </button>
                       
                     </div>
-                  </div>
+                  </div>-->
+
               </div>
               <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
               </div>
             </div>
           </mat-expansion-panel>
           
-          
+          <!--
           <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" [disabled]="isDisabledPaymentStepThree">
             <mat-expansion-panel-header>
-              <!--<h4 class="mb-0">Payment Options</h4>-->
             </mat-expansion-panel-header>
             <mat-tab-group (selectedTabChange)="selectedPaymentTabChange($event)">
               <mat-tab label="Offer Code">
@@ -191,14 +189,14 @@
                 </div>
               </mat-tab>
             </mat-tab-group>
-          </mat-expansion-panel>
+          </mat-expansion-panel>-->
         
         </form>
       </mat-accordion>
     </div>
   </div>
 </div>
-
+<!--
 <ng-template #elseBlock>
   <div class="section-gap-lg text-center">
     <div class="mb-4">
@@ -207,7 +205,7 @@
     <h4> Your Shopping Bag is empty.</h4>
     <a href="javascript:void(0)" class="primary-color" [routerLink]="['/']">Go for Shopping</a>
   </div>
-</ng-template>
+</ng-template>-->
 
 
 

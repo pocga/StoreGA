@@ -23,7 +23,7 @@
                             <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
 
                                 <li class="listacategoriasfiltros" >
-                                    <mat-checkbox (change)="cathEvent(item.categoria,$event.checked)" >{{item.categoria}}</mat-checkbox>
+                                    <mat-checkbox  (change)="cathEvent(item.categoria,$event.checked)" >{{item.categoria}}</mat-checkbox>
                                 </li>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                                         <mat-checkbox (change)="cathEventDisponibilityYes($event.checked)">Si</mat-checkbox>                    
                                     </li>
                                     <li class="listacategoriasfiltros" >
-                                        <mat-checkbox (change)="cathEventDisponibilityNo($event.checked)">No</mat-checkbox>                      
+                                        <mat-checkbox  (change)="cathEventDisponibilityNo($event.checked)">No</mat-checkbox>                      
                                 </li>
                             </div>
                         </div>

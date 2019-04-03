@@ -54,11 +54,10 @@ export class OrderHistoryComponent implements OnInit {
                   }
          })
          
-        // this.ordernarDesc(this.dataSource,'fecha');
-         this.order_history = this.dataSource;
-        // data=parseInt(data.idProducto);
-         //this.ordernarDesc(this.dataSource,'fecha' );
+         this.order_history = this.dataSource;      
+         this.ordernarDesc(this.dataSource,'fecha' );
          let arrayOrdenado = this.dataSource.sort((a,b)=> Number(new Date(a.fecha)) - Number(new Date(b.fecha)));
+         this.ordernarDesc(this.dataSource,'fecha' );
       });
    }
 
