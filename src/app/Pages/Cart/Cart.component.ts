@@ -115,11 +115,19 @@ export class CartComponent implements OnInit, AfterViewChecked {
       }
      
    }
-   public totalCost(){
-      console.log(this.totales)
-   }
+
+   public validaNumericos(event) {
+      var x = event.charCode || event.keyCode;
+      if( x > 0   ){
+        return true; 
+       }
+       return false;        
+  }
 
    changeQuantity(item, value:any){
+      
+
+
       
       let resultado;
       this.embryoService.putDataCart(item,value).subscribe((res: HttpResponse<any>) => {
