@@ -242,6 +242,8 @@ export class EmbryoService  {
       return this.http.get(`${environment.BASE_URL}catalogo/productos?categ=${value}`);
    }
    public getCatalogByFilter(options){
+      console.log(options)
+
       return this.http.get(
       `${environment.BASE_URL}catalogo/productos?categ=${options.categorias}&disp=${options.disponibilidad}&from=${options.from}&to=${options.to}`);
    }
