@@ -5,6 +5,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import {HttpResponse} from '@angular/common/http';
 import { EmbryoService } from '../../Services/Embryo.service';
 import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'embryo-Cart',
@@ -116,19 +117,9 @@ export class CartComponent implements OnInit, AfterViewChecked {
      
    }
 
-   public validaNumericos(event) {
-      var x = event.charCode || event.keyCode;
-      if( x > 0   ){
-        return true; 
-       }
-       return false;        
-  }
 
    changeQuantity(item, value:any){
-      
-
-
-      
+            
       let resultado;
       this.embryoService.putDataCart(item,value).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;
