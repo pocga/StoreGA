@@ -65,15 +65,15 @@ export class CartComponent implements OnInit, AfterViewChecked {
          let resultado;
          this.embryoService.deleteCart(value).subscribe((res: HttpResponse<any>) => {
             resultado = res.statusText;
-            this.datosBusquedaShow=[];
-            this.callCart(); 
+            this.callCart();            
+            console.log(res) 
             },
-            (error) => {
-            console.log(error)
-            
+            (error) => {             
+            console.log(error)           
             }
-              );       
+              );      
       }
+
    }
 
 
@@ -128,7 +128,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
             title: "MODIFICANDO",
             msg: "El producto se modifico correctamente",
             showClose: true,
-            timeout: 3000,
+            timeout: 1000,
             theme: "material"
          };
          this.toastyService.wait(toastOption);
@@ -139,7 +139,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
             title: "ERROR",
             msg: "El producto supera el limite disponible",
             showClose: true,
-            timeout: 3000,
+            timeout: 1000,
             theme: "material"
          };
          this.toastyService.wait(toastOption);

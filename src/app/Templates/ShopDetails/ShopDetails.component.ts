@@ -79,7 +79,7 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
          title: "Añadiendo producto al carrito",
          msg: "Producto añadido",
          showClose: true,
-         timeout: 20000,
+         timeout: 1000,
          theme: "material"  
       };
      
@@ -94,7 +94,7 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
             title: "ERROR",
             msg: error.error.descripcionRespuesta,
             showClose: true,
-            timeout: 3000,
+            timeout: 1000,
             theme: "material"
           };
           this.toastyService.wait(toastOption);

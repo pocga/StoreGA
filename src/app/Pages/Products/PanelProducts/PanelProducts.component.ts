@@ -95,7 +95,7 @@ export class PanelProductsComponent implements OnInit {
       title: "Añadiendo producto al carrito",
       msg: "Producto añadido",
       showClose: true,
-      timeout: 2000,
+      timeout: 1000,
       theme: "material"
    };
    let resultado: string;
@@ -112,7 +112,7 @@ export class PanelProductsComponent implements OnInit {
         title: "ERROR",
         msg: error.error.descripcionRespuesta,
         showClose: true,
-        timeout: 3000,
+        timeout: 1000,
         theme: "material"
       };
       this.toastyService.wait(toastOption);

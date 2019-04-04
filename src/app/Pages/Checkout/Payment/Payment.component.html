@@ -25,7 +25,7 @@
     <div class="container">
       
     <div class="view-cart text-right mb-5">
-      <button mat-raised-button color="accent" >Total pedido : {{totales.totalPrecio | currency:'COP'}}</button>
+      <button mat-raised-button color="accent" >Total pedido : {{totales.totalPrecio | currency:'COP':true:'1.0-0'}}</button>
     </div>
     
       <mat-accordion class="mat-ex-wrapper">
@@ -72,9 +72,9 @@
 
                     <div class="mb-2">
                         <mat-form-field class="w-100">
-                          <input matInput type="number" placeholder="Teléfono" formControlName="mobile" required>
+                          <input matInput type="texto" placeholder="Teléfono" formControlName="mobile" required>
                           <mat-error *ngIf="paymentFormOne.get('user_details.mobile').hasError('required') && paymentFormOne.get('user_details.mobile').touched ">Este campo es requerido</mat-error>
-                          
+                          <mat-error *ngIf="paymentFormOne.get('user_details.mobile').hasError('pattern') && paymentFormOne.get('user_details.mobile').touched ">Ingrese una cuidad válida</mat-error>
                         </mat-form-field>
                     </div>
                     

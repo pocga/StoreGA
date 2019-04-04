@@ -20,6 +20,8 @@ export class OrderHistoryComponent implements OnInit {
    public dataSource: any;
    popupResponse  : any;
    public administrador: boolean
+   public desactivar:boolean=false;
+
    constructor(public embryoService : EmbryoService) { }
 
    ngOnInit() {
@@ -71,10 +73,10 @@ export class OrderHistoryComponent implements OnInit {
    limpiar(){
       this.dataSource = this.order_history;
       this.id_reserve = "";
+      this.desactivar=false;
    }
 
    deletePedido(value){
-      console.log(value)
       let message = "¿Esta seguro que desea eliminar el producto?";
       this.embryoService.confirmationPopup(message).
          subscribe(res => {this.popupResponse = res
@@ -91,6 +93,7 @@ export class OrderHistoryComponent implements OnInit {
          let resultado;
          this.embryoService.deleteOrder(value).subscribe((res: HttpResponse<any>) => {
             resultado = res.statusText;
+            this.id_reserve = "";
             this.callPedidos();
             },
             (error) => {
@@ -102,11 +105,22 @@ export class OrderHistoryComponent implements OnInit {
    }
 
 
+   
+
    searchOrder(id_reserve){
+      this.dataSource = this.order_history;
+      let cont=0;
       for (var i=0;i<this.dataSource.length;i++){ 
          if ( this.dataSource[i].orderid == id_reserve ){
             this.dataSource=[this.dataSource[i]]
-         }
+            cont++;
+            this.desactivar=false;
+         } 
+      }
+      if (cont==0){
+         this.dataSource=[''];
+         this.id_reserve = "";
+         this.desactivar=true;
       }
    }
 

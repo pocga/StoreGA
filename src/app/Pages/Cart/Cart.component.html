@@ -49,7 +49,7 @@
                 </div>
                 <div fxFlex.xs="50" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="20">
                   <div class="cart-item-price">
-                    <h4>{{ calculateProductSinglePrice(item.producto, item.cantidad) | currency:'COP'}}</h4>
+                    <h4>{{ calculateProductSinglePrice(item.producto, item.cantidad) | currency:'COP':true:'1.0-0'}}</h4>
                    
                    
                   </div>
@@ -70,7 +70,7 @@
             <hr class="spacer">
             <div class="mb-4">
               <h4>Total</h4><span fxFlex></span>
-              <h4>{{totales.totalPrecio | currency:'COP'}}</h4>
+              <h4>{{totales.totalPrecio | currency:'COP':true:'1.0-0'}}</h4>
             </div>
             <div> <span fxFlex></span><button mat-raised-button color="accent" class="button-lg" (click)="updateLocalCartProduct()">Continuar</button></div><br>
             <div> <span fxFlex></span><button mat-raised-button color="accent" class="button-lg" [routerLink]="['/home/']">Volver</button></div>
