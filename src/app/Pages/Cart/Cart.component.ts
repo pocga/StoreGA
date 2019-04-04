@@ -117,9 +117,9 @@ export class CartComponent implements OnInit, AfterViewChecked {
      
    }
 
-
    changeQuantity(item, value:any){
-            
+      
+     
       let resultado;
       this.embryoService.putDataCart(item,value).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;

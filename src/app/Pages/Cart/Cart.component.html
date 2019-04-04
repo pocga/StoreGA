@@ -45,7 +45,7 @@
                 <div fxFlex.xs="50" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="20">
                   <mat-form-field class="w-100" (change)="changeQuantity(item.producto,searchFile.value)">
                     <input onkeyDown="return false" matInput type="number" #searchFile [value]="getQuantityValue(item)"  #quantity  min="1" max="{{item.producto.cantidadDisponible}}" placeholder="Cantidad"  >
-                  </mat-form-field>
+                  </mat-form-field><!---->
                 </div>
                 <div fxFlex.xs="50" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="20">
                   <div class="cart-item-price">
