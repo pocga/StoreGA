@@ -43,13 +43,17 @@
                   <p> 10 días para cambio </p>
                 </div>
                 <div fxFlex.xs="50" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="20">
-                  <mat-form-field class="w-100" (change)="changeQuantity(item.producto,searchFile.value)">
-                    <input onkeyDown="return false" matInput type="number" #searchFile [value]="getQuantityValue(item)"  #quantity  min="1" max="{{item.producto.cantidadDisponible}}" placeholder="Cantidad"  >
-                  </mat-form-field>
+                  <div class="changequantity">
+                    <mat-form-field class="w-100" (change)="changeQuantity(item.producto,searchFile.value)">
+                      <input  (keypress)="keyyPress($event)" matInput type="number" #searchFile [value]="getQuantityValue(item)"  #quantity  min="1" max="{{item.producto.cantidadDisponible}}" placeholder="Cantidad" maxlength="3" >
+                      <h6 *ngIf="valido">Cantidad no disponible o inválido</h6>
+                    </mat-form-field>
+                    
+                  </div>
                 </div>
                 <div fxFlex.xs="50" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="20">
                   <div class="cart-item-price">
-                    <h4>{{ calculateProductSinglePrice(item.producto, item.cantidad) | currency:'COP'}}</h4>
+                    <h4>{{ calculateProductSinglePrice(item.producto, item.cantidad) | currency:'COP':true:'1.0-0'}}</h4>
                    
                    
                   </div>
@@ -70,7 +74,7 @@
             <hr class="spacer">
             <div class="mb-4">
               <h4>Total</h4><span fxFlex></span>
-              <h4>{{totales.totalPrecio | currency:'COP'}}</h4>
+              <h4>{{totales.totalPrecio | currency:'COP':true:'1.0-0'}}</h4>
             </div>
             <div> <span fxFlex></span><button mat-raised-button color="accent" class="button-lg" (click)="updateLocalCartProduct()">Continuar</button></div><br>
             <div> <span fxFlex></span><button mat-raised-button color="accent" class="button-lg" [routerLink]="['/home/']">Volver</button></div>

@@ -86,6 +86,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    paymentForm   : FormGroup;
    public requeriredForm : boolean=false;
    textPattern        : any = '^[a-zA-Z]+$' // '/^[A-Za-z]*\s()[A-Za-z]*$/'; ///^[a-zA-Z]+$/ '/[a-zA-Z]/'  
+   numberPattern : any = '^(0|[1-9][0-9]*)$'
 
    constructor(public embryoService : EmbryoService, 
                private formGroup : FormBuilder,
@@ -107,7 +108,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
            // zip_code           : ['', [Validators.required]],
             city_state         : ['', [Validators.required,Validators.pattern(this.textPattern)]],//,Validators.pattern(this.textPattern)]
            // country            : ['', [Validators.required]],
-            mobile             : ['', [Validators.required]],
+            mobile             : ['', [Validators.required,Validators.pattern(this.numberPattern)]],
            // email              : ['', [Validators.required, Validators.pattern(this.emailPattern)]],
             //share_email        : ['', [Validators.pattern(this.emailPattern)]],
          }),

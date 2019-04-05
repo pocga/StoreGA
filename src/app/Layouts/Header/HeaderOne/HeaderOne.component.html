@@ -17,9 +17,15 @@
           <div class="list-flex user-tool">
             <embryo-HeaderCart  [routerLink]="['/cart']"></embryo-HeaderCart>
             <!--<embryo-HeaderCart [currency]="embryoService?.currency" [cartProducts]="embryoService?.localStorageCartProducts" [count]="embryoService?.navbarCartCount" (removeProductData)="openConfirmationPopup($event)"></embryo-HeaderCart>-->
-            <button class="follow-products" (click)="followProduct()">
+            
+            <!--<button class="follow-products" (click)="followProduct()">
               <a class="tittle-follow">Consulta tu pedido</a>
+            </button>-->
+            
+            <button class="follow-order" (click)="followProduct()">
+              <a   class="fa fa-truck"></a>
             </button>
+            
             
             <!--
             <embryo-WishList [currency]="embryoService?.currency" [wishListProducts]="embryoService?.localStorageWishlist" [count]="embryoService?.navbarWishlistProdCount" (removeWishListData)="openWishlistConfirmationPopup($event)" (addAllWishlistToCart)="addAllWishlistToCart($event)" (addToCart)="addToCart($event)"></embryo-WishList>
@@ -30,33 +36,12 @@
       </div>
     </div>
   </mat-toolbar-row>
-
+ <!--
   <mat-toolbar-row class="header-v1-bottom main-menu-wrap">
     <div class="container">
       <div class="header-v1-bottom-inner">
         <embryo-Menu></embryo-Menu>
-        <!--
-        <div class="search-box">
-          <button type="button" mat-fab (click)="toggleSearch()">
-            <i class="material-icons notranslate">
-              search
-            </i>
-          </button>
-
-        </div>
-        <div class="search-form">
-          
-          <form>
-            <input type="text" placeholder="Search and hit enter">
-            <button type="button" mat-fab class="close-btn" (click)="toggleSearch()">
-              <i class="material-icons">
-                close
-              </i>
-            </button>
-          </form>
-            
-        </div>
-          -->
+        
         <button class="responsive-toggle" mat-icon-button (click)="toggleSidebar()">
           <i class="material-icons">menu</i>
         </button>
@@ -92,6 +77,6 @@
             </div>
         </div>
       </div>
-    </mat-toolbar-row>
+    </mat-toolbar-row>-->
 </mat-toolbar>
 <embryo-FixedHeader></embryo-FixedHeader>

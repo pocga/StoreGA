@@ -24,10 +24,11 @@ export const AppRoutes : Routes = [
       pathMatch: 'full',
      
    },
+   /*
    {
       path: 'order-history',
       component: OrderHistoryComponent
-   },
+   },*/
    {
       path: 'cart',
       component: CartComponent
@@ -39,6 +40,10 @@ export const AppRoutes : Routes = [
       path: 'home/:type/:id',
       component: DetailPageComponent
    },  
+   {
+      path: 'order-history',
+      component: OrderHistoryComponent
+   },
  
    { path: 'managetoken', 
    component: SignInComponent,
@@ -54,25 +59,8 @@ export const AppRoutes : Routes = [
          {
             path : '',
             component : PanelProductsComponent , 
-            /*
-            children: [
-               { 
-                  path: ':type', 
-                  component: ProductsListComponent 
-               },
-
-            ]*/
-         },
-
-         /*
-         {
-            path : 'home-two',
-            component : HomeTwoComponent
-         },
-         {
-            path : 'home-three',
-            component : HomeThreeComponent
-         },*/
+            
+         },           
          {
           path: 'not-found',
           component: NotFoundComponent

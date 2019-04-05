@@ -1,5 +1,12 @@
 .select-group .mat-form-field {
 	width: 110px;
 }
+@media screen and (max-width: 500px){
+    .product-detail-content { 
+        margin-top: -30px !important; 
+    }.relative { 
+        margin-top: -20px !important; 
+    }
+}
 
 

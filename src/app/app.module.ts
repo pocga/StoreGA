@@ -75,6 +75,8 @@ import {OrderPopupComponent} from './Pages/UserAccount/OrderPopup/OrderPopup.com
 import { Ng5SliderModule } from 'ng5-slider';
 import { AuthService } from './Services/auth.service';
 import { AuthGuard } from './Core/guards/auth.guard';
+import { TokenInterceptor } from './Core/Interceptor/token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 //import { DetailPageComponent } from './Pages/Products/DetailPage/DetailPage.component';
@@ -172,7 +174,13 @@ export function createTranslateLoader(http: HttpClient) {
       MenuItems,
       EmbryoService,
       AuthService ,
-      AuthGuard
+      AuthGuard,
+      TokenInterceptor,
+      {
+      provide: HTTP_INTERCEPTORS,
+         useClass: TokenInterceptor,
+         multi: true
+      }
    ],
    bootstrap: [AppComponent]
 })
