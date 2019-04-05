@@ -2,3 +2,8 @@
     margin-top: -61px;
     width: 860px;
 }
+@media screen and (max-width: 500px){
+    .carousel{ 
+        width: 100% !important; 
+    }
+}

@@ -192,6 +192,24 @@ a:before{
 @media only screen and (max-width:990px){.product-grid{margin-bottom:30px}
 }
 
+@media screen and (max-width: 500px){
+    .col-md-3{ 
+        width: 50% !important; 
+    }
+}
+@media screen and (max-width: 500px){
+    .mb-4{
+        width: 100% !important; 
+        display: inline-block !important;
+    }.listacategoriasfiltros{display: inline-block !important;}
+    .custom-checkbox{
+        display: inline-block !important;
+    }.mb-4{margin-top: -10px !important;}
+    .categories{margin-top: -15px !important; }
+}
+
+
+
 ::ng-deep {
     .custom-slider .ng5-slider .ng5-slider-bar {
       background: #ffe4d1;
@@ -238,5 +256,5 @@ a:before{
     }
   }
   @media(max-width:560px) {
-      
+
   }
