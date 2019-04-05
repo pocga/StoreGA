@@ -28,4 +28,11 @@
     display: block;
   }
 }
+@media(max-width:500px) {
+  .follow-order {
+    transform: scale(0.85);
+  }
+}
+
+
 

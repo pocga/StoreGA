@@ -197,6 +197,7 @@ a:before{
         width: 50% !important; 
     }
 }
+
 @media screen and (max-width: 500px){
     .mb-4{
         width: 100% !important; 
@@ -206,8 +207,8 @@ a:before{
         display: inline-block !important;
     }.mb-4{margin-top: -10px !important;}
     .categories{margin-top: -15px !important; }
+    .container-button{display: inline-block !important; }
 }
-
 
 
 ::ng-deep {

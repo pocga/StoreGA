@@ -17,41 +17,41 @@
                 <div fxLayout="row wrap"  class="col-gap">
                     <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="15">
                     
-                            
-                        <div class="mat-card mb-4 categories">
-                                <div class="tittle">Categorías</div>
-                            <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
+                        <div class="seccion">    
+                            <div class="mat-card mb-4 categories">
+                                    <div class="tittle">Categorías</div>
+                                <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
 
-                                <li class="listacategoriasfiltros" >
-                                    <mat-checkbox  (change)="cathEvent(item.categoria,$event.checked)" >{{item.categoria}}</mat-checkbox>
-                                </li>
-                            </div>
-                        </div>
-            
-                        <div class="mat-card mb-4">                            
-                          <div class="tittle">Disponibilidad</div>
-                            <div class="custom-control custom-checkbox">
-                                <li class="listacategoriasfiltros" >
-                                        <mat-checkbox (change)="cathEventDisponibilityYes($event.checked)">Si</mat-checkbox>                    
-                                    </li>
                                     <li class="listacategoriasfiltros" >
-                                        <mat-checkbox  (change)="cathEventDisponibilityNo($event.checked)">No</mat-checkbox>                      
-                                </li>
+                                        <mat-checkbox  (change)="cathEvent(item.categoria,$event.checked)" >{{item.categoria}}</mat-checkbox>
+                                    </li>
+                                </div>
+                            </div>
+                
+                            <div class="mat-card mb-4">                            
+                            <div class="tittle">Disponibilidad</div>
+                                <div class="custom-control custom-checkbox">
+                                    <li class="listacategoriasfiltros" >
+                                            <mat-checkbox (change)="cathEventDisponibilityYes($event.checked)">Si</mat-checkbox>                    
+                                        </li>
+                                        <li class="listacategoriasfiltros" >
+                                            <mat-checkbox  (change)="cathEventDisponibilityNo($event.checked)">No</mat-checkbox>                      
+                                    </li>
+                                </div>
+                            </div>
+                
+                            <div class="mat-card mb-4">
+                                    <div class="tittle">Precio</div>   
+                                <div class="custom-slider">
+                                    <ng5-slider (change)="changeprice(value)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+                                </div>
+                            </div>
+                            
+                            <div class="mat-card mb-4 container-button">
+                                <button color="accent" class="button-lg" mat-raised-button type="button" (click)="applyFilter(minValue,maxValue)" >Aplicar Filtros</button>
+                                <button color="accent" class="button-lg" mat-raised-button type="button" (click)="checkAllProducts()">Todos los productos</button>
                             </div>
                         </div>
-            
-                        <div class="mat-card mb-4">
-                                <div class="tittle">Precio</div>   
-                            <div class="custom-slider">
-                                <ng5-slider (change)="changeprice(value)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
-                            </div>
-                        </div>
-
-                        <div class="mat-card mb-4 container-button">
-                            <button color="accent" class="button-lg" mat-raised-button type="button" (click)="applyFilter(minValue,maxValue)" >Aplicar Filtros</button>
-                            <button color="accent" class="button-lg" mat-raised-button type="button" (click)="checkAllProducts()">Todos los productos</button>
-                        </div>
-
                         
             
                     </div>

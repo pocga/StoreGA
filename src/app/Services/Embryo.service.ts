@@ -128,6 +128,10 @@ export class EmbryoService  {
       this.products = this.db.object("products");
       return this.products;
    }
+   public getSlidesImage(){
+
+      return this.http.get(`${environment.BASE_URL}catalogo/productos/imagenes`);
+   }
 
    /*
       ----------  Cart Product Function  ----------
@@ -144,6 +148,7 @@ export class EmbryoService  {
    public getPedidos(){
     
       let user= this.token();
+      console.log(user)
       let rol=user["custom:role"];
       this.username=user["cognito:username"]
       

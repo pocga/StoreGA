@@ -16,3 +16,8 @@
 .cursor-pointer:hover {
   cursor: pointer;
 }
+@media screen and (max-width: 500px){
+    .container-filter{
+        width: 60% !important;
+    }.button-lg{width: 10% !important; }
+}

@@ -13,7 +13,7 @@ import {HttpResponse} from '@angular/common/http';
 })
 export class OrderHistoryComponent implements OnInit {
    
-   displayedColumns = ['orderid', 'name', 'fecha', 'status','action','eliminar'];
+   displayedColumns = ['orderid', 'name', 'fecha','action','eliminar'];
    public datosPedidos=[];
    public id_reserve: any;
    public order_history: any;
@@ -49,7 +49,7 @@ export class OrderHistoryComponent implements OnInit {
                     "orderid": pedido.idPedido,
                     "name": pedido.usuario.email,
                     "fecha" : pedido.fecha,
-                    "status":'Enviado',
+                   
                     "action":'',
                     "eliminar":'',
                     "pedidos": pedido.productos
@@ -60,7 +60,7 @@ export class OrderHistoryComponent implements OnInit {
          this.ordernarDesc(this.dataSource,'fecha' );
          let arrayOrdenado = this.dataSource.sort((a,b)=> Number(new Date(a.fecha)) - Number(new Date(b.fecha)));
          this.ordernarDesc(this.dataSource,'fecha' );
-      });
+      },err => console.log(err),);
    }
 
    PedidoPopup(orderid){

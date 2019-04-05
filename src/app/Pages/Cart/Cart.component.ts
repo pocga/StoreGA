@@ -20,7 +20,10 @@ export class CartComponent implements OnInit, AfterViewChecked {
    public datosBusqueda = [];
    public countRol: number;
    public totales = [];
+   public cantidad:boolean=false;
+   public valido:boolean=false;
    public datosBusquedaShow = [];
+
 
    constructor(public embryoService : EmbryoService, 
                private router: Router,
@@ -33,13 +36,14 @@ export class CartComponent implements OnInit, AfterViewChecked {
    }
 
    public callCart(){
+      console.log(this.datosBusquedaShow.length)
       this.embryoService.getDataCart().subscribe((response) => {
          this.datosBusqueda = Object.keys(response).map(key => response[key]);   
          this.countRol = this.datosBusqueda.length;
          this.totales=this.datosBusqueda[2];
          this.datosBusquedaShow=this.datosBusqueda[1];
-         console.log(this.datosBusqueda); 
-       }); 
+         console.log(this.datosBusqueda)
+       }, err =>  this.datosBusquedaShow = []);
    }
 
    ngAfterViewChecked() : void {
@@ -62,11 +66,11 @@ export class CartComponent implements OnInit, AfterViewChecked {
    public getPopupResponse(response, value) {
       
       if(response){
+
          let resultado;
          this.embryoService.deleteCart(value).subscribe((res: HttpResponse<any>) => {
             resultado = res.statusText;
             this.callCart();            
-            console.log(res) 
             },
             (error) => {             
             console.log(error)           
@@ -75,8 +79,6 @@ export class CartComponent implements OnInit, AfterViewChecked {
       }
 
    }
-
-
 
    public calculateTotalPrice() {
       let subtotal = 0;
@@ -119,36 +121,49 @@ export class CartComponent implements OnInit, AfterViewChecked {
 
 
    changeQuantity(item, value:any){
-            
-      let resultado;
-      this.embryoService.putDataCart(item,value).subscribe((res: HttpResponse<any>) => {
-         resultado = res.statusText;
-         this.callCart();
-         let toastOption: ToastOptions = {
-            title: "MODIFICANDO",
-            msg: "El producto se modifico correctamente",
-            showClose: true,
-            timeout: 1000,
-            theme: "material"
-         };
-         this.toastyService.wait(toastOption);
-         console.log("si");
-         },
-         (error) => {
-           let toastOption: ToastOptions = {
-            title: "ERROR",
-            msg: "El producto supera el limite disponible",
-            showClose: true,
-            timeout: 1000,
-            theme: "material"
-         };
-         this.toastyService.wait(toastOption);
-         console.log("no");
-         }
-           );
-           
-   }
+      
+      if (value<=item.cantidadDisponible && value!=0){
+         this.valido=false;
+         
+         let resultado;
+         this.embryoService.putDataCart(item,value).subscribe((res: HttpResponse<any>) => {
+            resultado = res.statusText;
+            this.callCart();
+            let toastOption: ToastOptions = {
+               title: "MODIFICANDO",
+               msg: "El producto se modifico correctamente",
+               showClose: true,
+               timeout: 1000,
+               theme: "material"
+            };
+            this.toastyService.wait(toastOption);
+            console.log("si");
+            },
+            (error) => {
+            let toastOption: ToastOptions = {
+               title: "ERROR",
+               msg: "El producto supera el limite disponible",
+               showClose: true,
+               timeout: 1000,
+               theme: "material"
+            };
+            this.toastyService.wait(toastOption);
+            console.log("no");
+            }
+            );
 
+      }else {this.valido=true}
+            
+   }
+   public keyyPress(event: any) {
+      const pattern = /[0-9]/;
+      const inputChar = String.fromCharCode(event.charCode);
+ 
+      if (!pattern.test(inputChar)) {    
+          // invalid character, prevent input
+          event.preventDefault();
+      }
+   }
    public calculateProductSinglePrice(product:any, value: any) {
       
       let precio :number;

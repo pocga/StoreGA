@@ -18,7 +18,7 @@
       </div>
     </mat-toolbar-row>
 </mat-toolbar><br>
-<!---->
+
 <mat-card>
    <h4 class="mb-3">Consulta tu pedido</h4>
 
@@ -61,12 +61,12 @@
       <td mat-cell *matCellDef="let element">{{element.fecha}}</td>
     </ng-container>
 
-    <!-- Status Column -->
+    <!-- Status Column 
     
     <ng-container matColumnDef="status">
          <th mat-header-cell *matHeaderCellDef> Estado </th>
          <td mat-cell *matCellDef="let element"><a *ngIf="!desactivar">Enviado</a></td>
-    </ng-container>
+    </ng-container>-->
 
        
     <!-- Actions Column -->
@@ -99,5 +99,5 @@
   </table><br><br>
   <h6 *ngIf="desactivar" >No existen pedidos con ese ID</h6>
 
-  <div> <span fxFlex></span><button mat-raised-button color="accent" class="button-lg" [routerLink]="['/home/']">Volver</button></div>
+  <div class="buttonreturn"> <span fxFlex></span><button mat-raised-button color="accent" class="button-lg" [routerLink]="['/home/']">Volver</button></div>
 </mat-card>
