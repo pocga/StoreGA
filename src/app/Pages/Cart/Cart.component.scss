@@ -1,9 +1,18 @@
-/*
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}*/
+.cart-product-info a{
+  
+  font-family: 'PT Sans' !important;
+ }
+.descripcionProducto{
+  font-weight: bold;
+
+}
+.cart-total a{
+  font-family: 'PT Sans' !important;
+}
+.empty a{
+  font-family: 'PT Sans' !important;
+}
 
 

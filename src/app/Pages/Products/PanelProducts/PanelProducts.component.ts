@@ -55,14 +55,18 @@ export class PanelProductsComponent implements OnInit {
         switch (label) {
           case LabelType.Low:
           this.minPrice=valueRangePrice;
-            return '<b class="values-precio"></b> $' +valueRangePrice;
+          
+            return '<b class="values-precio"></b> '  ;
+            //return '<b class="values-precio"></b> $' + valueRangePrice ;
     
           case LabelType.High:
           this.maxPrice=valueRangePrice;
-            return '<b class="values-precio"> </b> $' + valueRangePrice;
+            return '<b class="values-precio"> </b> ';
+            //return '<b class="values-precio"> </b> $' + valueRangePrice;
               
           default:
-            return '$' + valueRangePrice;
+            return '' ;
+           // return '$' + valueRangePrice;
           }          
         }          
       };  

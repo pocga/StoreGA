@@ -25,7 +25,7 @@
     <div class="container">
       
     <div class="view-cart text-right mb-5">
-      <button mat-raised-button color="accent" >Total pedido : {{totales.totalPrecio | currency:'COP':true:'1.0-0'}}</button>
+      <button mat-raised-button color="accent" ><a>Total pedido : {{totales.totalPrecio | currency:'COP':true:'1.0-0'}}</a></button>
     </div>
     
       <mat-accordion class="mat-ex-wrapper">
@@ -88,8 +88,8 @@
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
                       
 
-                      <button color="accent" class="button-lg" mat-raised-button type="button" (click)="submitPayment()">Continuar</button><br><br>
-                      <button color="accent" class="button-lg" mat-raised-button type="button" (click)="returnCart()">Volver </button>
+                      <button color="accent" class="button-lg" mat-raised-button type="button" (click)="submitPayment()"><a>Continuar</a></button><br><br>
+                      <button color="accent" class="button-lg" mat-raised-button type="button" (click)="returnCart()"><a>Volver </a></button>
                       
                     </div>
                   </div>

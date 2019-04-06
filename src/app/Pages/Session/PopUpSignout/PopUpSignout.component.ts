@@ -6,8 +6,8 @@ import { EmbryoService } from 'src/app/Services/Embryo.service';
 
 @Component({
   selector: 'app-PopUpSignout',
-  templateUrl: './PopUpSignout.component.html'
-  
+  templateUrl: './PopUpSignout.component.html',
+  styleUrls: ['./PopUpSignout.component.scss']
 })
 export class PopUpSignoutComponent implements OnInit {
 

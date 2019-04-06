@@ -1,11 +1,18 @@
 .button-lg-x{
     float: right;
+    font-size: 15px;
+    font-family: 'PT Sans' !important;
 }
-.popup{
-   // width: 700px;
-  //  height: 600px;
+.tittle{
+    font-size: 25px;
+    font-family: 'PT Sans' !important;
+    font-weight: bold;
 }
 
 .cdk-overlay-dark-backdrop{
     background: rgba(0, 0, 0,0.15);
+}
+#toaste {
+    position: fixed;
+    z-index: 99999999999 !important;
 }

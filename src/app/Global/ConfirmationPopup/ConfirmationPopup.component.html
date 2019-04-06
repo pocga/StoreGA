@@ -1,9 +1,11 @@
 <div class="app-popup">
    <div class="app-popup-content text-center">
-      <div class="mb-4">
-         <h4>¿Esta seguro que desea eliminar el producto?</h4>
+      <div class="popupdelete">
+         <div class="mb-4">
+            <h4><a>¿Esta seguro que desea eliminar el producto?</a></h4>
+         </div>
+         <button mat-raised-button color="accent" class="mr-3" (click)="dialogRef.close('yes')"><a>Si</a></button>
+         <button mat-raised-button color="accent" class="mr-3" (click)="dialogRef.close()"><a>No</a></button>
       </div>
-      <button mat-raised-button color="accent" class="mr-3" (click)="dialogRef.close('yes')">Si</button>
-      <button mat-raised-button color="accent" class="mr-3" (click)="dialogRef.close()">No</button>
    </div>
 </div>

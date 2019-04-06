@@ -20,14 +20,10 @@ export class OrderPopupComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<OrderPopupComponent>) { }
 
   ngOnInit() {
-    console.log(this.orderid)
-    console.log(this.totales)
+
     this.totalPedido=this.totales[0];
-    console.log(this.totalPedido)
-
-
     this.productsDetail = this.orderid;
-    console.log(this.productsDetail)
+    
     this.productsDetail.forEach(element => {
       let subtotal = element.producto.precio * element.cantidad
       this.total += subtotal
