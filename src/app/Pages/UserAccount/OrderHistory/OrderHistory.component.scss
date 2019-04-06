@@ -16,8 +16,14 @@
 .cursor-pointer:hover {
   cursor: pointer;
 }
+.id-order{
+    text-decoration:underline;
+    color: blue;
+}
 @media screen and (max-width: 500px){
     .container-filter{
         width: 60% !important;
-    }.button-lg{width: 10% !important; }
+    }.search{
+        margin-left: 5px;
+    }
 }

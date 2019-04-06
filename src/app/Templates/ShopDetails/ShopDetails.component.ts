@@ -76,8 +76,8 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
    public addToCart(value:any) {
       
       let toastOption: ToastOptions = {
-         title: "Añadiendo producto al carrito",
-         msg: "Producto añadido",
+         title: "Producto añadido",
+         msg: "",
          showClose: true,
          timeout: 1000,
          theme: "material"  
@@ -91,7 +91,7 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
          },
          (error) => {
            let toastOption: ToastOptions = {
-            title: "ERROR",
+            title: "ADVERTENCIA",
             msg: error.error.descripcionRespuesta,
             showClose: true,
             timeout: 1000,

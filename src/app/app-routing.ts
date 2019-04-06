@@ -14,6 +14,7 @@ import { OrderHistoryComponent } from './Pages/UserAccount/OrderHistory/OrderHis
 import { DetailPageComponent } from './Pages/Products/DetailPage/DetailPage.component';
 import { PanelProductsComponent } from './Pages/Products/PanelProducts/PanelProducts.component';
 import { AuthGuard } from './Core/guards/auth.guard';
+import { SignOutComponent } from './Pages/Session/SignOut/sign-out.component';
 
 export const AppRoutes : Routes = [
 
@@ -44,7 +45,9 @@ export const AppRoutes : Routes = [
       path: 'order-history',
       component: OrderHistoryComponent
    },
- 
+   { path: 'signout', 
+      component: SignOutComponent},
+
    { path: 'managetoken', 
    component: SignInComponent,
    //loadChildren: 'app/Modules/login.module#LoginModule'

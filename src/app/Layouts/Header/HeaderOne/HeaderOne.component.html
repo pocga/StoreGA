@@ -16,14 +16,11 @@
           <span fxFlex></span>
           <div class="list-flex user-tool">
             <embryo-HeaderCart  [routerLink]="['/cart']"></embryo-HeaderCart>
-            <!--<embryo-HeaderCart [currency]="embryoService?.currency" [cartProducts]="embryoService?.localStorageCartProducts" [count]="embryoService?.navbarCartCount" (removeProductData)="openConfirmationPopup($event)"></embryo-HeaderCart>-->
-            
-            <!--<button class="follow-products" (click)="followProduct()">
-              <a class="tittle-follow">Consulta tu pedido</a>
-            </button>-->
-            
             <button class="follow-order" (click)="followProduct()">
               <a   class="fa fa-truck"></a>
+            </button>
+            <button class="signout-pag" >
+              <a   class="fa fa-power-off" (click)="signout()"></a>
             </button>
             
             

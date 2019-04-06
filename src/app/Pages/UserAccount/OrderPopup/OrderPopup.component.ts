@@ -13,10 +13,19 @@ export class OrderPopupComponent implements OnInit {
   private total : number = 0;
   private totalShow : any;
   @Input() orderid : any;
+  @Input() totales : any;
+
+  private totalPedido: any;
+
   constructor(public dialogRef: MatDialogRef<OrderPopupComponent>) { }
 
   ngOnInit() {
     console.log(this.orderid)
+    console.log(this.totales)
+    this.totalPedido=this.totales[0];
+    console.log(this.totalPedido)
+
+
     this.productsDetail = this.orderid;
     console.log(this.productsDetail)
     this.productsDetail.forEach(element => {

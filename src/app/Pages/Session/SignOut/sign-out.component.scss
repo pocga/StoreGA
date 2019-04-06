@@ -1,0 +1,17 @@
+
+.text {
+  position: absolute;
+  top: 50px;
+  padding-left: 9%;
+
+}
+
+.bgImage {
+  /* The image used */
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background: url('../../../../assets/images/signout.jpg') no-repeat center;
+  background-size: cover;
+}
