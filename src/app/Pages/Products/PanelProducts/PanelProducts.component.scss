@@ -24,10 +24,14 @@
     float:right;
     margin-bottom: -20px;
 }
+
+.values-precios , .tittle , .button-lg a ,.listacategorias li, .listacategoriasfiltros a{
+    font-family: 'PT Sans' !important;
+}
 .values-precios{
     margin-bottom: -20px;
     font-size: 15px;
-    font-family: 'PT Sans' !important;
+   // font-family: 'PT Sans' !important;
     margin-left: 7px;
     margin-right: 7px;
 }
@@ -37,8 +41,8 @@
     font-weight: bold;
     padding-left: 20px;
     margin-bottom: 10px;
-    font-family: 'PT Sans' !important;
-    
+  //  font-family: 'PT Sans' !important;
+
 }.product-list{
     font-size: 20px;
 }
@@ -54,11 +58,11 @@
 }
 .button-lg a {
     font-size: 15px;
-    font-family: 'PT Sans' !important,
+  //  font-family: 'PT Sans' !important,
 }
 .listacategorias li{
     display: inline; 
-    font-family: 'PT Sans' !important,
+   // font-family: 'PT Sans' !important,
  //   font-family: 'Tw Cen MT' ; //.Georgia,Verdana,sans-serif,Lucida sans,fantasy, calibri  ,Comic Sans MS
                             //Tw Cen MT,Perpetua
 }
@@ -74,7 +78,7 @@
 }
 .listacategoriasfiltros a {
     font-size: 15px;
-    font-family: 'PT Sans' !important;
+  //  font-family: 'PT Sans' !important;
     
 }
 
