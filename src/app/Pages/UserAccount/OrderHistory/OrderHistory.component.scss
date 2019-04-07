@@ -1,11 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
+
 .inputId{
     width: 300px;
     height: 30px;
 }
 .search{
     text-align: center;
+    font-size: 15px;    
+    font-family: 'PT Sans' !important;
+    
 }
-
+.button-lg{
+    font-size: 15px;    
+    font-family: 'PT Sans' !important;
+}
 .container-filter {
     display: flex;
     justify-content: space-between;
@@ -16,8 +24,22 @@
 .cursor-pointer:hover {
   cursor: pointer;
 }
+.id-order{
+    text-decoration:underline;
+    color: blue;
+}
+.mb-3{
+    font-size: 20px;    
+    font-family: 'PT Sans' !important;
+    font-weight: bold;
+}
+.w-100 {
+    font-family: 'PT Sans' !important;   
+}
 @media screen and (max-width: 500px){
     .container-filter{
         width: 60% !important;
-    }.button-lg{width: 10% !important; }
+    }.search{
+        margin-left: 5px;
+    }
 }

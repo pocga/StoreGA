@@ -11,6 +11,7 @@ import { ConfirmationPopupComponent } from '../Global/ConfirmationPopup/Confirma
 import {ThankPopupComponent}  from '../Pages/Checkout/thankPopup/thank-popup.component';
 import {OrderPopupComponent} from '../Pages/UserAccount/OrderPopup/OrderPopup.component'
 import { AuthService } from './auth.service';
+import { PopUpSignoutComponent } from '../Pages/Session/PopUpSignout/PopUpSignout.component';
 interface Response {
   data     : any;
 }
@@ -73,11 +74,12 @@ export class EmbryoService  {
       return review.afterClosed();  
    }
 
-   public PedidoPopup(orderid){
+   public PedidoPopup(orderid , totales){
       console.log("popup pedidos");
       let review: MatDialogRef<OrderPopupComponent>;
       review = this.dialog.open(OrderPopupComponent);
       review.componentInstance.orderid = orderid;
+      review.componentInstance.totales = totales;
       return review.afterClosed();
    }
    
@@ -120,6 +122,13 @@ export class EmbryoService  {
    {
       let confirmationPopup: MatDialogRef<ConfirmationPopupComponent>;
       confirmationPopup = this.dialog.open(ConfirmationPopupComponent);
+      confirmationPopup.componentInstance.message = message;
+      return confirmationPopup.afterClosed();
+   }
+   public confirmationPopupSignout(message:string)
+   {
+      let confirmationPopup: MatDialogRef<PopUpSignoutComponent>;
+      confirmationPopup = this.dialog.open(PopUpSignoutComponent);
       confirmationPopup.componentInstance.message = message;
       return confirmationPopup.afterClosed();
    }

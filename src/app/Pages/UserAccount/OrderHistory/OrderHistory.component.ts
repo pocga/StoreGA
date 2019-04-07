@@ -13,7 +13,7 @@ import {HttpResponse} from '@angular/common/http';
 })
 export class OrderHistoryComponent implements OnInit {
    
-   displayedColumns = ['orderid', 'name', 'fecha','action','eliminar'];
+   displayedColumns = ['orderid', 'name', 'fecha','eliminar'];
    public datosPedidos=[];
    public id_reserve: any;
    public order_history: any;
@@ -21,6 +21,7 @@ export class OrderHistoryComponent implements OnInit {
    popupResponse  : any;
    public administrador: boolean
    public desactivar:boolean=false;
+   public datos : any;
 
    constructor(public embryoService : EmbryoService) { }
 
@@ -50,7 +51,7 @@ export class OrderHistoryComponent implements OnInit {
                     "name": pedido.usuario.email,
                     "fecha" : pedido.fecha,
                    
-                    "action":'',
+                    
                     "eliminar":'',
                     "pedidos": pedido.productos
                   }
@@ -63,8 +64,15 @@ export class OrderHistoryComponent implements OnInit {
       },err => console.log(err),);
    }
 
-   PedidoPopup(orderid){
-      this.embryoService.PedidoPopup(orderid);   
+   PedidoPopup(order,value){
+
+      for (var i=0;i<this.datosPedidos.length;i++){ 
+         if (this.datosPedidos[i].idPedido == value.orderid ){
+            this.datos=[this.datosPedidos[i].totales.totalPrecio]
+         } 
+      }
+
+      this.embryoService.PedidoPopup(order,this.datos);   
    }
    /*
    reviewPopup(detailData){ //detail product

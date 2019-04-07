@@ -4,8 +4,8 @@ import { Router, ActivatedRoute, Params }   from '@angular/router';
 
 @Component({
   selector: 'app-thakpopup',
-  templateUrl: './thank-popup.component.html'
-  
+  templateUrl: './thank-popup.component.html',
+  styleUrls: ['./thank-popup.component.scss']
 })
 export class ThankPopupComponent implements OnInit {
   

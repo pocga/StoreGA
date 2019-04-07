@@ -25,30 +25,19 @@
               
             <div class="product-detail-content">
               <!--<a href="javascript:void(0)" [routerLink]="['/home']">Volver a Comprar</a>-->
-              <h3>{{detailData.categoria}}</h3>
-              
-              <!---->
-
-              <!--
-              <div fxLayoutAlign="start center" class="mb-3">
-                <div>
-                  <a href="javascript:void(0)" class="text-underline" (click)="reviewPopup(detailData)">ADD A REVIEW</a>
-                </div>
-              </div>-->
-
-              <!---->
+              <h3><a >{{detailData.categoria}}</a></h3>
 
               <div class="product-detail-price">
-                <h4 class="accent-color">Precio por producto: {{detailData.precio | currency:'COP':true:'1.0-0'}} </h4>
+                <h4 class="accent-color"><a>Precio por producto: {{detailData.precio | currency:'COP':true:'1.0-0'}}</a></h4>
               </div>
               <ul class="no-style mb-4">
                 <li>
-                  <span class="font-medium"> Disponibilidad </span>: 
-                  <span *ngIf="detailData.cantidadDisponible > 0">Si</span>
-                  <span *ngIf="detailData.cantidadDisponible == 0">No</span>
+                  <span class="font-medium"> <a>Disponibilidad</a> </span>: 
+                  <span *ngIf="detailData.cantidadDisponible > 0"><a>Si</a></span>
+                  <span *ngIf="detailData.cantidadDisponible == 0"><a>No</a></span>
                 </li>
                 <li>
-                  <span class="font-medium">Código del Producto</span>: {{detailData.idProducto}}
+                  <span class="font-medium"><a>Código del Producto</a></span><a>: {{detailData.idProducto}}</a>
                 </li>
                 <!--
                 <li>
@@ -57,8 +46,8 @@
                 </li>-->
               </ul>
               <div class="short-des">
-                <span class="font-medium">Descripción:</span>
-                <p>{{detailData.descripcion}}
+                <span class="font-medium"><a>Descripción:</a></span>
+                <p><a>{{detailData.descripcion}}</a>
                 </p>
               </div>
               <!--
@@ -90,7 +79,7 @@
                 <mat-form-field>
                   <mat-select placeholder="Cantidad" (selectionChange)="calculatePrice(detailData, $event.value)">
                     <ng-container *ngFor="let quantity of quantityArray">
-                      <mat-option value="{{quantity}}">{{quantity}}</mat-option>
+                      <mat-option value="{{quantity}}"><a>{{quantity}}</a></mat-option>
                     </ng-container>
                   </mat-select>
                 </mat-form-field>

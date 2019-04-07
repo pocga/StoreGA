@@ -23,7 +23,7 @@
                                 <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
 
                                     <li class="listacategoriasfiltros" >
-                                        <mat-checkbox  (change)="cathEvent(item.categoria,$event.checked)" >{{item.categoria}}</mat-checkbox>
+                                        <mat-checkbox  (change)="cathEvent(item.categoria,$event.checked)" ><a>{{item.categoria}}</a></mat-checkbox>
                                     </li>
                                 </div>
                             </div>
@@ -32,10 +32,10 @@
                             <div class="tittle">Disponibilidad</div>
                                 <div class="custom-control custom-checkbox">
                                     <li class="listacategoriasfiltros" >
-                                            <mat-checkbox (change)="cathEventDisponibilityYes($event.checked)">Si</mat-checkbox>                    
+                                            <mat-checkbox (change)="cathEventDisponibilityYes($event.checked)"><a>Si</a></mat-checkbox>                    
                                         </li>
                                         <li class="listacategoriasfiltros" >
-                                            <mat-checkbox  (change)="cathEventDisponibilityNo($event.checked)">No</mat-checkbox>                      
+                                            <mat-checkbox  (change)="cathEventDisponibilityNo($event.checked)"><a>No</a></mat-checkbox>                      
                                     </li>
                                 </div>
                             </div>
@@ -43,13 +43,19 @@
                             <div class="mat-card mb-4">
                                     <div class="tittle">Precio</div>   
                                 <div class="custom-slider">
-                                    <ng5-slider (change)="changeprice(value)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+                                    <div class="values-precios">
+                                        <a class="values-precio">{{minPrice | currency:'':true:'1.0-0' }}</a>
+                                        <a class="values-precio right">{{maxPrice  | currency:'':true:'1.0-0'}}</a>
+                                    </div>
+                                    <div class="ng-slider">
+                                        <ng5-slider (change)="changeprice(value)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+                                    </div>
                                 </div>
                             </div>
                             
                             <div class="mat-card mb-4 container-button">
-                                <button color="accent" class="button-lg" mat-raised-button type="button" (click)="applyFilter(minValue,maxValue)" >Aplicar Filtros</button>
-                                <button color="accent" class="button-lg" mat-raised-button type="button" (click)="checkAllProducts()">Todos los productos</button>
+                                <button color="accent" class="button-lg" mat-raised-button type="button" (click)="applyFilter(minValue,maxValue)" ><a>Aplicar Filtros</a></button>
+                                <button color="accent" class="button-lg" mat-raised-button type="button" (click)="checkAllProducts()"><a>Todos los productos</a></button>
                             </div>
                         </div>
                         
@@ -68,8 +74,8 @@
                             <!--vista mosaico -->
 
                             <div class="container">
-                                <h3 class="h3 product-list">Listado de Productos</h3>
-                                <h5 *ngIf="(lengthvalue.length==0)">No se encontró producto con esas especificaciones</h5>
+                                <h3 class="tittle product-list">Listado de Productos</h3>
+                                <h5 class="tittle product-list" *ngIf="(lengthvalue.length==0)">No se encontró productos con esas especificaciones</h5>
                                     
                                 <div class="row" >
                                     <div class="col-md-3 col-sm-6" *ngFor="let item of datosBusqueda">
@@ -80,8 +86,8 @@
                                                 </a>
                                             </div>
                                             <div class="product-content">
-                                                <h3 class="title"><a href="#">{{item.categoria}}</a></h3>
-                                                <div class="price">${{item.precio}}
+                                                <h3 class="title"><a >{{item.categoria}}</a></h3>
+                                                <div class="price">{{item.precio | currency:'':true:'1.0-0'}}
                                                     <span>id: {{item.idProducto}}</span>
                                                 </div>
                                             </div>

@@ -76,6 +76,7 @@ import { NewProductsCardComponent } from './NewProductsCard/NewProductsCard.comp
 import { DetailPageComponent } from '../Pages/Products/DetailPage/DetailPage.component';
 import { ShopDetailsComponent } from '../Templates/ShopDetails/ShopDetails.component'; 
 import { EmbryoService } from '../Services/Embryo.service';
+import { PopUpSignoutComponent } from '../Pages/Session/PopUpSignout/PopUpSignout.component';
 
 @NgModule({
    imports: [
@@ -117,6 +118,7 @@ import { EmbryoService } from '../Services/Embryo.service';
       SlickCarouselModule
    ],
    declarations: [
+      PopUpSignoutComponent,
       ShopDetailsComponent,
       DetailPageComponent ,
       BrandslogoComponent,
@@ -161,6 +163,7 @@ import { EmbryoService } from '../Services/Embryo.service';
       NewProductsCardComponent
    ],
    exports: [
+      
       BrandslogoComponent,
       SalesComponent,
       FeaturesComponent,
@@ -202,7 +205,8 @@ import { EmbryoService } from '../Services/Embryo.service';
    ],
    entryComponents : [
       ReviewPopupComponent,
-      ConfirmationPopupComponent
+      ConfirmationPopupComponent,
+      PopUpSignoutComponent
    ],
    providers: [
       EmbryoService

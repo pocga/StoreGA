@@ -77,6 +77,7 @@ import { AuthService } from './Services/auth.service';
 import { AuthGuard } from './Core/guards/auth.guard';
 import { TokenInterceptor } from './Core/Interceptor/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SignOutComponent } from './Pages/Session/SignOut/sign-out.component';
 
 
 //import { DetailPageComponent } from './Pages/Products/DetailPage/DetailPage.component';
@@ -90,6 +91,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
   // DetailPageComponent,
+  
   OrderPopupComponent,
    OrderHistoryComponent,
    SignInComponent,
@@ -111,6 +113,7 @@ export function createTranslateLoader(http: HttpClient) {
     FixedHeaderComponent,
     //ProductsListComponent,
     PanelProductsComponent,
+    SignOutComponent
     
     
   ],

@@ -22,6 +22,15 @@
   border: none;
   font-size: 18px;
 }
+.signout-pag{
+  background:  #ff5722;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  border: none;
+  font-size: 18px;
+}
 
 @media(max-width:959px) {
   .responsive-toggle {
@@ -30,6 +39,8 @@
 }
 @media(max-width:500px) {
   .follow-order {
+    transform: scale(0.85);
+  }.signout-pag{
     transform: scale(0.85);
   }
 }

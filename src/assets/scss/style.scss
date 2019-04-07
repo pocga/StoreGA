@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
 
 @import 'variables';
 @import 'material-theme';
@@ -7,6 +8,11 @@
 @import "utilities/utilities";
 @import "rtl";
 
+
+body{
+  font-family: 'PT Sans' !important;
+}
 .cdk-overlay-dark-backdrop{
     background: rgba(0, 0, 0,0.15) !important;
   }
+

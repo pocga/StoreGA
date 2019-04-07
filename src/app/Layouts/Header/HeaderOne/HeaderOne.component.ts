@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EmbryoService } from '../../../Services/Embryo.service';
 import {Router} from '@angular/router'
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'HeaderOne',
@@ -15,14 +16,36 @@ export class HeaderOneComponent implements OnInit {
    popupResponse    : any;
    wishlistProducts : any;
 
-   constructor(public embryoService: EmbryoService, public router:Router) {}
+   constructor(public embryoService: EmbryoService, public router:Router,private _autService1:AuthService) {}
 
    ngOnInit() {
    }
+
    followProduct(){
      
       this.router.navigate(['/order-history']);
    }
+
+   public signout(){
+      let messagee = "¿Esta seguro que desea cerrar sesión?";
+      this.embryoService.confirmationPopupSignout(messagee).
+         subscribe(res => {this.popupResponse = res
+         },                
+                   err => console.log(err),
+                   ()  => this.getPopupResponse(this.popupResponse)
+                   
+                  );  
+   }
+
+   public getPopupResponse(response) {
+      if(response){
+         this.router.navigate(['/signout']);
+         this._autService1.singOut()
+      }
+   }
+
+
+
    public toggleSearch() {
       document.querySelector('app-main').classList.toggle('form-open');
    }
@@ -37,11 +60,11 @@ export class HeaderOneComponent implements OnInit {
       this.embryoService.confirmationPopup(message).
          subscribe(res => {this.popupResponse = res},
                    err => console.log(err),
-                   ()  => this.getPopupResponse(this.popupResponse, value, 'cart')
+                   ()  => this.getPopupResponsee(this.popupResponse, value, 'cart')
                   );
    }
 
-   public getPopupResponse(response:any, value:any, type) {
+   public getPopupResponsee(response:any, value:any, type) {
       if(response) {
          if(type == 'cart'){
             this.embryoService.removeLocalCartProduct(value);
@@ -60,7 +83,7 @@ export class HeaderOneComponent implements OnInit {
       this.embryoService.confirmationPopup(message).
          subscribe(res => {this.popupResponse = res},
                    err => console.log(err),
-                   ()  => this.getPopupResponse(this.popupResponse, value, 'wishlist')
+                   ()  => this.getPopupResponsee(this.popupResponse, value, 'wishlist')
                   );
    }
 
