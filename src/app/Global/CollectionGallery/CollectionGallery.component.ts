@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'embryo-CollectionGallery',
@@ -12,4 +12,4 @@ export class CollectionGalleryComponent implements OnInit {
   ngOnInit() {
   }
 
-}
+}*/

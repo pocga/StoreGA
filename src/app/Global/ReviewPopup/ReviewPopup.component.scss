@@ -15,7 +15,9 @@
 .cdk-overlay-dark-backdrop{
     background: rgba(0, 0, 0,0.15);
 }
-#toaste {
-    position: fixed;
-    z-index: 99999999999 !important;
+
+#toasty {
+    position: fixed !important;
+    z-index: 9999999999999999999  !important;
+      /* Positioning */
 }

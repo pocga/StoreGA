@@ -65,7 +65,7 @@ import { HomeoneComponent } from './Pages/Home/HomeOne/HomeOne.component';
 import { CartComponent } from './Pages/Cart/Cart.component';
 import { NotFoundComponent } from './Pages/NotFound/NotFound.component';
 import { SideBarMenuComponent } from './Layouts/Menu/SidebarMenu/SidebarMenu.component';
-import { PaymentDetailSideBarComponent } from './Layouts/PaymentDetailSideBar/PaymentDetailSideBar.component';
+//import { PaymentDetailSideBarComponent } from './Layouts/PaymentDetailSideBar/PaymentDetailSideBar.component';
 import { FixedHeaderComponent } from './Layouts/Header/FixedHeader/FixedHeader.component';
 import {SignInComponent} from './Pages/Session/SignIn/SignIn.component';
 import { OrderHistoryComponent } from './Pages/UserAccount/OrderHistory/OrderHistory.component';
@@ -104,7 +104,7 @@ export function createTranslateLoader(http: HttpClient) {
     SideBarMenuComponent,
     CartComponent,
     NotFoundComponent,
-    PaymentDetailSideBarComponent,
+   /// PaymentDetailSideBarComponent,
   //  HomeTwoComponent,
     HeaderTwoComponent,
     FooterTwoComponent,

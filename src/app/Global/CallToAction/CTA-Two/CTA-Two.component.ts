@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'embryo-CtaTwo',
@@ -12,4 +12,4 @@ export class CTATwoComponent implements OnInit {
   ngOnInit() {
   }
 
-}
+}*/

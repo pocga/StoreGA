@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+/*import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'embryo-NewProductsCard',
@@ -28,4 +28,4 @@ export class NewProductsCardComponent implements OnInit {
       this.addToWishlist.emit(value);
    }
 
-}
+}*/

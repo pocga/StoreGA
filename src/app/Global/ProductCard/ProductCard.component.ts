@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+/*import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'embryo-ProductCard',
@@ -42,4 +42,4 @@ export class ProductCardComponent implements OnInit {
       }
    }
 
-}
+}*/

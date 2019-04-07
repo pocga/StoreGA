@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+/*import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { EmbryoService } from '../../Services/Embryo.service';
 
@@ -85,4 +85,4 @@ export class BrandslogoComponent implements OnInit, OnChanges {
 
    
 
-}
+}*/

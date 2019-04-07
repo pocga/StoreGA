@@ -14,56 +14,130 @@
                     </ul>
                 </div>
                      
-                <div fxLayout="row wrap"  class="col-gap">
-                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="15">
+                <div fxLayout="row wrap"  class="col-gap"><!--fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="15"-->
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="21" fxFlex.xl="20">
                     
-                        <div class="seccion">    
-                            <div class="mat-card mb-4 categories">
-                                    <div class="tittle">Categorías</div>
-                                <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
+                            <div class="seccion">
 
-                                    <li class="listacategoriasfiltros" >
-                                        <mat-checkbox  (change)="cathEvent(item.categoria,$event.checked)" ><a>{{item.categoria}}</a></mat-checkbox>
-                                    </li>
-                                </div>
-                            </div>
-                
-                            <div class="mat-card mb-4">                            
-                            <div class="tittle">Disponibilidad</div>
-                                <div class="custom-control custom-checkbox">
-                                    <li class="listacategoriasfiltros" >
-                                            <mat-checkbox (change)="cathEventDisponibilityYes($event.checked)"><a>Si</a></mat-checkbox>                    
-                                        </li>
-                                        <li class="listacategoriasfiltros" >
-                                            <mat-checkbox  (change)="cathEventDisponibilityNo($event.checked)"><a>No</a></mat-checkbox>                      
-                                    </li>
-                                </div>
-                            </div>
-                
-                            <div class="mat-card mb-4">
-                                    <div class="tittle">Precio</div>   
-                                <div class="custom-slider">
-                                    <div class="values-precios">
-                                        <a class="values-precio">{{minPrice | currency:'':true:'1.0-0' }}</a>
-                                        <a class="values-precio right">{{maxPrice  | currency:'':true:'1.0-0'}}</a>
-                                    </div>
-                                    <div class="ng-slider">
-                                        <ng5-slider (change)="changeprice(value)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
-                                    </div>
-                                </div>
-                            </div>
+                                    <mat-accordion>
+          
+                                      <mat-expansion-panel>
+          
+                                        <mat-expansion-panel-header>
+          
+                                          <mat-panel-title class="tittle">
+          
+                                            Categorías
+          
+                                          </mat-panel-title>
+          
+                                        </mat-expansion-panel-header>
+          
+                                          <div class="mat-card mb-4 categories">
+          
+                                              <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
+          
+                                                  <li class="listacategoriasfiltros" >
+          
+                                                      <mat-checkbox  (change)="cathEvent(item.categoria,$event.checked)" ><a>{{item.categoria}}</a></mat-checkbox>
+          
+                                                  </li>
+          
+                                              </div>
+          
+                                          </div>
+          
+                                      </mat-expansion-panel>
+          
+                                    </mat-accordion>
+          
+           
+          
+                                    <mat-accordion>
+          
+                                      <mat-expansion-panel>
+          
+                                        <mat-expansion-panel-header>
+          
+                                          <mat-panel-title class="tittle">
+          
+                                            Disponibilidad
+          
+                                          </mat-panel-title>
+          
+                                        </mat-expansion-panel-header>
+          
+                                          <div class="custom-control custom-checkbox">
+          
+                                              <li class="listacategoriasfiltros" >
+          
+                                                      <mat-checkbox (change)="cathEventDisponibilityYes($event.checked)"><a>Si</a></mat-checkbox>
+          
+                                                  </li>
+          
+                                                  <li class="listacategoriasfiltros" >
+          
+                                                      <mat-checkbox  (change)="cathEventDisponibilityNo($event.checked)"><a>No</a></mat-checkbox>
+          
+                                              </li>
+          
+                                          </div>
+          
+                                      </mat-expansion-panel>
+          
+                                    </mat-accordion>
+          
+           
+          
+                                    <mat-accordion>
+          
+                                      <mat-expansion-panel>
+          
+                                        <mat-expansion-panel-header>
+          
+                                          <mat-panel-title class="tittle">
+          
+                                            Precio
+          
+                                          </mat-panel-title>
+          
+                                        </mat-expansion-panel-header>
+          
+                                          <div class="custom-slider">
+          
+                                            <div class="values-precios">
+          
+                                                <a class="values-precio">{{minPrice | currency:'':true:'1.0-0' }}</a>
+          
+                                                <a class="values-precio right">{{maxPrice  | currency:'':true:'1.0-0'}}</a>
+          
+                                            </div>
+          
+                                            <div class="ng-slider">
+          
+                                                <ng5-slider (change)="changeprice(value)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+          
+                                            </div>
+          
+                                          </div>
+          
+                                      </mat-expansion-panel>
+          
+                                    </mat-accordion>
+                                
                             
                             <div class="mat-card mb-4 container-button">
                                 <button color="accent" class="button-lg" mat-raised-button type="button" (click)="applyFilter(minValue,maxValue)" ><a>Aplicar Filtros</a></button>
                                 <button color="accent" class="button-lg" mat-raised-button type="button" (click)="checkAllProducts()"><a>Todos los productos</a></button>
                             </div>
+
                         </div>
                         
             
                     </div>
             
 
-                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="80" fxFlex.xl="80" class="algolia-main-list">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="79" fxFlex.xl="80" class="algolia-main-list">
                     
                         <div *ngIf="!products_list"> 
                         <app-homeone></app-homeone>
@@ -103,6 +177,10 @@
                             <hr>
                         </div>
 
+                    </div>
+
+                    <div class="techshop">
+                        
                     </div>
                 </div>   
         </div>

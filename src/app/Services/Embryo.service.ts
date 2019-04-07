@@ -225,7 +225,7 @@ export class EmbryoService  {
       console.log(data)
      // let producto={"idProducto": 1, "cantidad":1};
       let producto={"idProducto": data, "cantidad":type};
-      
+
       return this.http.post(`${environment.BASE_URL}carrito/${this.username}/productos`, producto);
    }
 

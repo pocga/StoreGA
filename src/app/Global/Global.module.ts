@@ -33,13 +33,13 @@ import { AgmCoreModule } from '@agm/core';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
-import { BrandslogoComponent } from './BrandsLogo/BrandsLogo.component';
-import { SalesComponent } from './Sales/Sales.component';
-import { FeaturesComponent } from './Features/Features.component';
-import { SubscribeOneComponent } from './Subscribe/SubscribeOne/SubscribeOne.component';
-import { DealOfTheDayComponent } from './DealOfTheDay/DealOfTheDay.component';
-import { SocialShareComponent } from './SocialShare/SocialShare.component';
-import { RatingComponent } from './Rating/Rating.component';
+//import { BrandslogoComponent } from './BrandsLogo/BrandsLogo.component';
+//import { SalesComponent } from './Sales/Sales.component';
+//import { FeaturesComponent } from './Features/Features.component';
+//import { SubscribeOneComponent } from './Subscribe/SubscribeOne/SubscribeOne.component';
+//import { DealOfTheDayComponent } from './DealOfTheDay/DealOfTheDay.component';
+//import { SocialShareComponent } from './SocialShare/SocialShare.component';
+//import { RatingComponent } from './Rating/Rating.component';
 import { AddToCardButtonComponent } from './AddToCardButton/AddToCardButton.component';
 import { ReviewPopupComponent } from './ReviewPopup/ReviewPopup.component';
 import { HeaderCartComponent } from './HeaderCart/HeaderCart.component';
@@ -47,32 +47,32 @@ import { HeaderCartComponent } from './HeaderCart/HeaderCart.component';
 import { ConfirmationPopupComponent } from './ConfirmationPopup/ConfirmationPopup.component';
 import { PageTitleComponent } from './PageTitle/PageTitle.component';
 import { HomePageOneSliderComponent } from './Slider/HomePageOneSlider/HomePageOneSlider.component';
-import { TimerCountDownComponent } from './TimerCountDown/TimerCountDown.component';
-import { MapComponent } from './Map/Map.component';
-import { CurrencyDropDownComponent } from './CurrencyDropDown/CurrencyDropDown.component';
-import { LanguageDropDownComponent } from './LanguageDropDown/LanguageDropDown.component';
-import { TestimonialComponent } from './Testimonial/Testimonial.component';
-import { TeamComponent } from './Team/Team.component';
+//import { TimerCountDownComponent } from './TimerCountDown/TimerCountDown.component';
+//import { MapComponent } from './Map/Map.component';
+//import { CurrencyDropDownComponent } from './CurrencyDropDown/CurrencyDropDown.component';
+//import { LanguageDropDownComponent } from './LanguageDropDown/LanguageDropDown.component';
+//import { TestimonialComponent } from './Testimonial/Testimonial.component';
+//import { TeamComponent } from './Team/Team.component';
 import { ContactFormComponent } from './ContactForm/ContactForm.component';
-import { MissionVisionComponent } from './MissionVision/MissionVision.component';
-import { AboutInfoComponent } from './AboutInfo/AboutInfo.component';
+//import { MissionVisionComponent } from './MissionVision/MissionVision.component';
+//import { AboutInfoComponent } from './AboutInfo/AboutInfo.component';
 import { ImgZoomComponent } from './ImgZoom/ImgZoom.component';
 import { CommonSignInComponent } from './CommonSignIn/CommonSignIn.component';
-import { ProductCardComponent } from './ProductCard/ProductCard.component';
-import { HeaderUserProfileDropdownComponent } from './HeaderUserProfileDropdown/HeaderUserProfileDropdown.component';
+//import { ProductCardComponent } from './ProductCard/ProductCard.component';
+//import { HeaderUserProfileDropdownComponent } from './HeaderUserProfileDropdown/HeaderUserProfileDropdown.component';
 import { AppLogoComponent } from './AppLogo/AppLogo.component';
-import { LighteningDealsComponent } from './LighteningDeals/LighteningDeals.component';
-import { TopProductsComponent } from './TopProducts/TopProducts.component';
-import { SubscribeTwoComponent } from './Subscribe/SubscribeTwo/SubscribeTwo.component';
+//import { LighteningDealsComponent } from './LighteningDeals/LighteningDeals.component';
+//import { TopProductsComponent } from './TopProducts/TopProducts.component';
+//import { SubscribeTwoComponent } from './Subscribe/SubscribeTwo/SubscribeTwo.component';
 //import { HomePageTwoSliderComponent } from './Slider/HomePageTwoSlider/HomePageTwoSlider.component';
-import { CTAGroupComponent } from './CallToAction/CTA-Group/CTA-Group.component';
-import { CTATwoComponent } from './CallToAction/CTA-Two/CTA-Two.component';
-import { CollectionGalleryComponent } from './CollectionGallery/CollectionGallery.component';
+//import { CTAGroupComponent } from './CallToAction/CTA-Group/CTA-Group.component';
+//import { CTATwoComponent } from './CallToAction/CTA-Two/CTA-Two.component';
+//import { CollectionGalleryComponent } from './CollectionGallery/CollectionGallery.component';
 import { ProductCategoryCardComponent } from './ProductCategoryCard/ProductCategoryCard.component';
-import { CTASingleBannerComponent } from './CallToAction/CTA-SingleBanner/CTA-SingleBanner.component';
-import { DownloadAppSectionComponent } from './DownloadAppSection/DownloadAppSection.component';
+//import { CTASingleBannerComponent } from './CallToAction/CTA-SingleBanner/CTA-SingleBanner.component';
+//import { DownloadAppSectionComponent } from './DownloadAppSection/DownloadAppSection.component';
 //import { HomePageThreeSliderComponent } from './Slider/HomePageThreeSlider/HomePageThreeSlider.component';
-import { NewProductsCardComponent } from './NewProductsCard/NewProductsCard.component';
+//import { NewProductsCardComponent } from './NewProductsCard/NewProductsCard.component';
 import { DetailPageComponent } from '../Pages/Products/DetailPage/DetailPage.component';
 import { ShopDetailsComponent } from '../Templates/ShopDetails/ShopDetails.component'; 
 import { EmbryoService } from '../Services/Embryo.service';
@@ -121,13 +121,13 @@ import { PopUpSignoutComponent } from '../Pages/Session/PopUpSignout/PopUpSignou
       PopUpSignoutComponent,
       ShopDetailsComponent,
       DetailPageComponent ,
-      BrandslogoComponent,
-      SalesComponent,
-      FeaturesComponent,
-      SubscribeOneComponent,
-      DealOfTheDayComponent,
-      SocialShareComponent,
-      RatingComponent,
+   //   BrandslogoComponent,
+      //SalesComponent,
+     // FeaturesComponent,
+      //SubscribeOneComponent,
+     // DealOfTheDayComponent,
+      //SocialShareComponent,
+      //RatingComponent,
       AddToCardButtonComponent,
       ReviewPopupComponent,
       HeaderCartComponent,
@@ -135,73 +135,73 @@ import { PopUpSignoutComponent } from '../Pages/Session/PopUpSignout/PopUpSignou
       ConfirmationPopupComponent,
       PageTitleComponent,
       HomePageOneSliderComponent,
-      TimerCountDownComponent,
-      MapComponent,
-      CurrencyDropDownComponent,
-      LanguageDropDownComponent,
-      TestimonialComponent,
-      TeamComponent,
+      //TimerCountDownComponent,
+      //MapComponent,
+    //  CurrencyDropDownComponent,
+     // LanguageDropDownComponent,
+      //TestimonialComponent,
+      //TeamComponent,
       ContactFormComponent,
-      MissionVisionComponent,
-      AboutInfoComponent,
+     // MissionVisionComponent,
+     // AboutInfoComponent,
       ImgZoomComponent,
       CommonSignInComponent,
-      ProductCardComponent,
-      HeaderUserProfileDropdownComponent,
+      //ProductCardComponent,
+     // HeaderUserProfileDropdownComponent,
       AppLogoComponent,
-      LighteningDealsComponent,
-      TopProductsComponent,
-      SubscribeTwoComponent,
+      //LighteningDealsComponent,
+      //TopProductsComponent,
+      //SubscribeTwoComponent,
      // HomePageTwoSliderComponent,
-      CTAGroupComponent,
-      CTATwoComponent,
-      CollectionGalleryComponent,
+    //  CTAGroupComponent,
+    //  CTATwoComponent,
+    //  CollectionGalleryComponent,
       ProductCategoryCardComponent,
-      CTASingleBannerComponent,
-      DownloadAppSectionComponent,
+    //  CTASingleBannerComponent,
+    //  DownloadAppSectionComponent,
      // HomePageThreeSliderComponent,
-      NewProductsCardComponent
+      //NewProductsCardComponent
    ],
    exports: [
       
-      BrandslogoComponent,
-      SalesComponent,
-      FeaturesComponent,
-      SubscribeOneComponent,
-      DealOfTheDayComponent,
-      SocialShareComponent,
-      RatingComponent,
+    //  BrandslogoComponent,
+      //SalesComponent,
+      //FeaturesComponent,
+      //SubscribeOneComponent,
+      //DealOfTheDayComponent,
+      //SocialShareComponent,
+      //RatingComponent,
       AddToCardButtonComponent,
       HeaderCartComponent,
       //WishListComponent,
       PageTitleComponent,
       HomePageOneSliderComponent,
-      TimerCountDownComponent,
-      MapComponent,
-      CurrencyDropDownComponent,
-      LanguageDropDownComponent,
-      TestimonialComponent,
-      TeamComponent,
+      //TimerCountDownComponent,
+     // MapComponent,
+      //CurrencyDropDownComponent,
+      //LanguageDropDownComponent,
+      //TestimonialComponent,
+      //TeamComponent,
       ContactFormComponent,
-      MissionVisionComponent,
-      AboutInfoComponent,
+     // MissionVisionComponent,
+     // AboutInfoComponent,
       ImgZoomComponent,
       CommonSignInComponent,
-      ProductCardComponent,
-      HeaderUserProfileDropdownComponent,
+      //ProductCardComponent,
+     // HeaderUserProfileDropdownComponent,
       AppLogoComponent,
-      LighteningDealsComponent,
-      TopProductsComponent,
-      SubscribeTwoComponent,
+      //LighteningDealsComponent,
+      //TopProductsComponent,
+      //SubscribeTwoComponent,
       //HomePageTwoSliderComponent,
-      CTAGroupComponent,
-      CTATwoComponent,
-      CollectionGalleryComponent,
+     // CTAGroupComponent,
+    //  CTATwoComponent,
+     // CollectionGalleryComponent,
       ProductCategoryCardComponent,
-      CTASingleBannerComponent,
-      DownloadAppSectionComponent,
+     // CTASingleBannerComponent,
+    //  DownloadAppSectionComponent,
       //HomePageThreeSliderComponent,
-      NewProductsCardComponent
+     // NewProductsCardComponent
    ],
    entryComponents : [
       ReviewPopupComponent,
