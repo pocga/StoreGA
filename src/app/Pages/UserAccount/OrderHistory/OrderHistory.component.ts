@@ -48,10 +48,8 @@ export class OrderHistoryComponent implements OnInit {
         this.dataSource = this.datosPedidos.map(pedido => {
             return {
                     "orderid": pedido.idPedido,
-                    "name": pedido.usuario.email,
+                    "name": pedido.usuario.nombres +" "+ pedido.usuario.apellidos,
                     "fecha" : pedido.fecha,
-                   
-                    
                     "eliminar":'',
                     "pedidos": pedido.productos
                   }
