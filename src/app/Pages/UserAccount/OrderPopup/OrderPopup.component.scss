@@ -8,20 +8,23 @@
     display: flex;
     justify-content: center;
 }
-
+.popup h3 , .button-lg-x, .cart-product-info a{
+    font-family: 'PT Sans' !important;
+}
 .popup h3{
     font-size: 20px;
-    font-family: 'PT Sans' !important;
+  //  font-family: 'PT Sans' !important;
     font-weight: bold;
 }
 .button-lg-x{
     font-size: 15px;
-    font-family: 'PT Sans' !important;
+   // font-family: 'PT Sans' !important;
 }
 .cart-product-info a{
     
-    font-family: 'PT Sans' !important;
-}.cart-product-info h5{
+ //   font-family: 'PT Sans' !important;
+}
+.cart-product-info h5{
     font-weight: bold;
 }
 
