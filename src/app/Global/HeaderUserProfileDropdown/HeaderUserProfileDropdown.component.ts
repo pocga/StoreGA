@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'embryo-HeaderUserProfileDropdown',
@@ -12,4 +12,4 @@ export class HeaderUserProfileDropdownComponent implements OnInit {
    ngOnInit() {
    }
 
-}
+}*/

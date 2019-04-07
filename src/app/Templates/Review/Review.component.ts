@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+/*import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'embryo-Review',
@@ -28,4 +28,4 @@ export class ReviewComponent implements OnInit {
       }
    }
 
-}
+}*/

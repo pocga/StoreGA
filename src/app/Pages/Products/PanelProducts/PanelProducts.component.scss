@@ -1,5 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
 
+.techshop{
+    background:white;
+    width: 100px;
+    height: 100px;
+}
+
 .container-filter-top {
     display: flex;
     justify-content: center;
@@ -230,13 +236,13 @@ a:before{
 @media only screen and (max-width:990px){.product-grid{margin-bottom:30px}
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
     .col-md-3{ 
         width: 50% !important; 
     }
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
     .mb-4{
         width: 100% !important; 
         display: inline-block !important;

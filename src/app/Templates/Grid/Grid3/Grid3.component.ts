@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+/*import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'embryo-Grid3',
@@ -14,4 +14,4 @@ export class Grid3Component implements OnInit {
    ngOnInit() {
    }
 
-}
+}*/

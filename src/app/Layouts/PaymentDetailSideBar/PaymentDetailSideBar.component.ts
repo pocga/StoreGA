@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+/*import { Component, OnInit,ViewChild } from '@angular/core';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
 import { EmbryoService } from '../../Services/Embryo.service';
@@ -63,4 +63,4 @@ export class PaymentDetailSideBarComponent implements OnInit {
       return total;
    }
 
-}
+}*/

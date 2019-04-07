@@ -88,6 +88,7 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
       this.embryoService.addToCart(value,this.cantidad).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;
          this.toastyService.wait(toastOption);
+         
          },
          (error) => {
            let toastOption: ToastOptions = {

@@ -1,3 +1,4 @@
+/*
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -14,4 +15,4 @@ export class AboutInfoComponent implements OnInit {
    ngOnInit() {
    }
 
-}
+}*/

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+/*import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'embryo-DealOfTheDay',
@@ -18,13 +18,13 @@ export class DealOfTheDayComponent implements OnInit {
    ngOnInit() {
    }
 
-   /**
+  
     * getOfferImagePath is used to change the image path on click event. 
-    */
+    
    public getOfferImagePath(imgPath: any, index:number) {
       document.querySelector('.border-active').classList.remove('border-active');
       this.singleProduct.image = imgPath;
       document.getElementById(index+'_img').className += " border-active";
    }
 
-}
+}*/

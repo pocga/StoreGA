@@ -1,5 +1,5 @@
 
-import {interval as observableInterval} from 'rxjs';
+/*import {interval as observableInterval} from 'rxjs';
 
 import {map} from 'rxjs/operators';
 
@@ -97,4 +97,4 @@ export class TimerCountDownComponent implements OnInit, OnDestroy {
    {
       this.subscription.unsubscribe();
    }
-}
+}*/

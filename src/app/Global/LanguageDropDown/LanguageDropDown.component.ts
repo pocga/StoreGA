@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+/*import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -26,3 +26,4 @@ export class LanguageDropDownComponent implements OnInit {
    }
 
 }
+*/

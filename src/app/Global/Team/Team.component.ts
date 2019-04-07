@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+/*import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'embryo-Team',
@@ -14,4 +14,4 @@ export class TeamComponent implements OnInit {
    ngOnInit() {
    }
 
-}
+}*/

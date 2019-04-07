@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+/*import { Component, OnInit, Input } from '@angular/core';
 declare var google: any;
 
 @Component({
@@ -62,4 +62,4 @@ export class MapComponent implements OnInit {
       }
    }
 
-}
+}*/

@@ -30,8 +30,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { GlobalModule } from '../Global/Global.module';
 //import { ProductGridComponent } from './Grid/ProductGrid/ProductGrid.component';
-import { Grid3Component } from './Grid/Grid3/Grid3.component';
-import { ReviewComponent } from './Review/Review.component';
+//import { Grid3Component } from './Grid/Grid3/Grid3.component';
+//import { ReviewComponent } from './Review/Review.component';
 //import { ShopDetailsComponent } from './ShopDetails/ShopDetails.component';
 
 @NgModule({
@@ -67,14 +67,14 @@ import { ReviewComponent } from './Review/Review.component';
    ],
    declarations: [
     //  ProductGridComponent,
-      Grid3Component,
-      ReviewComponent,
+    //  Grid3Component,
+     // ReviewComponent,
     // ShopDetailsComponent
    ],
    exports: [
    //   ProductGridComponent,
-      Grid3Component,
-      ReviewComponent,
+    //  Grid3Component,
+     // ReviewComponent,
       //ShopDetailsComponent
    ]
 })

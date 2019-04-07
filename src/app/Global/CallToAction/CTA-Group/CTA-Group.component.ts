@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'embryo-CtaGroup',
@@ -39,4 +39,4 @@ export class CTAGroupComponent implements OnInit {
    ngOnInit() {
    }
 
-}
+}*/
