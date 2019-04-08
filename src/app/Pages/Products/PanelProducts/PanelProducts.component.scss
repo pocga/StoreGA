@@ -1,10 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
 
-.techshop{
-    background:white;
-    width: 100px;
-    height: 100px;
-}
+
 
 .container-filter-top {
     display: flex;
@@ -36,7 +32,7 @@
 }
 .values-precios{
     margin-bottom: -20px;
-    font-size: 15px;
+    font-size: 13px;
    // font-family: 'PT Sans' !important;
     margin-left: 7px;
     margin-right: 7px;
@@ -232,7 +228,9 @@ a:before{
 .product-grid .options li a:hover:before{
     opacity:1;
 }
-
+.techshop{
+    height: 200px;
+}
 @media only screen and (max-width:990px){.product-grid{margin-bottom:30px}
 }
 
@@ -251,17 +249,18 @@ a:before{
         display: inline-block !important;
     }.mb-4{margin-top: -10px !important;}
     .categories{margin-top: -15px !important; }
-    .container-button{display: inline-block !important; }
+    .container-button{
+        display: inline-block !important; 
+        display: flex;
+        justify-content: center;
+    }
 }
 .ng-slider{
     margin-left: 7px;
     margin-right: 7px;
-
 }
 
-::ng-deep {
-
-   
+::ng-deep {  
     .custom-slider .ng5-slider .ng5-slider-bar {
       background: #ffe4d1;
       height: 2px;

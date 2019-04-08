@@ -44,7 +44,7 @@ export class OrderHistoryComponent implements OnInit {
       
       this.embryoService.getPedidos().subscribe(response => {
          this.datosPedidos = Object.keys(response).map(key => response[key]);
-         console.log(this.datosPedidos)
+        
         this.dataSource = this.datosPedidos.map(pedido => {
             return {
                     "orderid": pedido.idPedido,

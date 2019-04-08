@@ -134,7 +134,7 @@ export class PanelProductsComponent implements OnInit {
       let datosBusquedas = Object.keys(response).map(function(key) { return response[key];});
       this.datosBusqueda=datosBusquedas[0]; 
       // this.datosBusqueda=datosBusquedas; 
-      console.log(this.datosBusqueda); 
+       
       
     });                
   }
@@ -152,7 +152,7 @@ export class PanelProductsComponent implements OnInit {
       let catalogFound = Object.keys(response).map( key => response[key]);
       this.datosBusqueda = catalogFound[0]
       this.products_list = true;
-      console.log(response);   
+        
       this.lengthvalue =this.datosBusqueda;
     });               
     
@@ -167,7 +167,7 @@ export class PanelProductsComponent implements OnInit {
   }
 
   cathEvent(item:any, isChecked:boolean){
-    console.log(item)
+    
     if (isChecked){
       this.values.push((item === 'Televisores') ? 'TV' : item);
     }else {
@@ -175,11 +175,11 @@ export class PanelProductsComponent implements OnInit {
       this.values.splice(index,1);
     }
 
-    console.log(this.values);
+    
   }
     
   reviewPopup(detailData){ 
-    console.log(detailData)
+    
     this.embryoService.reviewPopup(detailData);
   }
 

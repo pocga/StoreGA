@@ -75,7 +75,7 @@ export class EmbryoService  {
    }
 
    public PedidoPopup(orderid , totales){
-      console.log("popup pedidos");
+      
       let review: MatDialogRef<OrderPopupComponent>;
       review = this.dialog.open(OrderPopupComponent);
       review.componentInstance.orderid = orderid;
@@ -91,10 +91,10 @@ export class EmbryoService  {
          timeout: 10000,
          theme: "material"
       };
-      console.log("reserva");
+     
       toastOption.title = "Gracias por su reserva";
       toastOption.msg = "Su ID de reserva es: ";
-      console.log(toastOption.title);
+      
    }
 
    public setCartItemDefaultValue(setCartItemDefaultValue) {
@@ -157,7 +157,7 @@ export class EmbryoService  {
    public getPedidos(){
     
       let user= this.token();
-      console.log(user)
+     
       let rol=user["custom:role"];
       this.username=user["cognito:username"]
       
@@ -176,7 +176,7 @@ export class EmbryoService  {
       
       
       let deleteProduct=data.producto.idProducto;
-      console.log("id:"+deleteProduct)
+      
 
       var httpOptions = {
          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -222,8 +222,8 @@ export class EmbryoService  {
       let user= this.token();
       this.username=user["cognito:username"]
       data=parseInt(data.idProducto); //id producto
-      console.log(data)
-     // let producto={"idProducto": 1, "cantidad":1};
+     
+     
       let producto={"idProducto": data, "cantidad":type};
 
       return this.http.post(`${environment.BASE_URL}carrito/${this.username}/productos`, producto);
@@ -244,7 +244,7 @@ export class EmbryoService  {
       return this.http.get(`${environment.BASE_URL}catalogo/productos?categ=${value}`);
    }
    public getCatalogByFilter(options){
-      console.log(options)
+      
 
       return this.http.get(
       `${environment.BASE_URL}catalogo/productos?categ=${options.categorias}&disp=${options.disponibilidad}&from=${options.from}&to=${options.to}`);

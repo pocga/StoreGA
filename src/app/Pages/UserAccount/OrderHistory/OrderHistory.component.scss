@@ -7,10 +7,12 @@
 .inputId{
     width: 300px;
     height: 30px;
+    
 }
 .search{
     text-align: center;
-    font-size: 15px;    
+    font-size: 15px;   
+    margin-left: 5px; 
    // font-family: 'PT Sans' !important;
     
 }
@@ -40,11 +42,23 @@
 .w-100 {
    // font-family: 'PT Sans' !important;   
 }
+.container-filter{
+    display: flex;
+    justify-content: center;
+}
 
 @media screen and (max-width: 500px){
     .container-filter{
         width: 60% !important;
+        display: flex;
+        justify-content: center;
     }.search{
         margin-left: 5px;
+    }.button-search{
+        display: flex;
+        justify-content: center;
+    }.inputId{
+        width: 280px;
+        margin-left: 110px;
     }
 }

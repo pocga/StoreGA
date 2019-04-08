@@ -77,6 +77,7 @@ import { DetailPageComponent } from '../Pages/Products/DetailPage/DetailPage.com
 import { ShopDetailsComponent } from '../Templates/ShopDetails/ShopDetails.component'; 
 import { EmbryoService } from '../Services/Embryo.service';
 import { PopUpSignoutComponent } from '../Pages/Session/PopUpSignout/PopUpSignout.component';
+import { ToastaModule } from 'ngx-toasta';
 
 @NgModule({
    imports: [
@@ -115,6 +116,7 @@ import { PopUpSignoutComponent } from '../Pages/Session/PopUpSignout/PopUpSignou
       }),
       FormsModule,
       ReactiveFormsModule,
+      ToastaModule.forRoot(),
       SlickCarouselModule
    ],
    declarations: [

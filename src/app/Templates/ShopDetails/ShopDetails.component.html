@@ -39,11 +39,6 @@
                 <li>
                   <span class="font-medium"><a>Código del Producto</a></span><a>: {{detailData.idProducto}}</a>
                 </li>
-                <!--
-                <li>
-                  <span class="font-medium">Tags</span>: 
-                    <ng-container *ngFor="let tag of detailData.tags">{{tag}}</ng-container>
-                </li>-->
               </ul>
               <div class="short-des">
                 <span class="font-medium"><a>Descripción:</a></span>
@@ -60,6 +55,7 @@
               </div>-->
 
               <div fxLayoutGap="30px" class="mb-3 select-group">
+                <!--
                 <ng-container *ngIf="type == 'men' || type == 'women'">
                   <mat-form-field>
                     <mat-select class="product-detail-select" placeholder="Color">
@@ -75,7 +71,8 @@
                       </ng-container>
                     </mat-select>
                   </mat-form-field>
-                </ng-container>
+                </ng-container>-->
+
                 <mat-form-field>
                   <mat-select placeholder="Cantidad" (selectionChange)="calculatePrice(detailData, $event.value)">
                     <ng-container *ngFor="let quantity of quantityArray">

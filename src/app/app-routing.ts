@@ -72,16 +72,7 @@ export const AppRoutes : Routes = [
             path: 'session',
             loadChildren: './Pages/Session/Session.module#SessionModule'
          },
-
-         /*
-         {
-            path: '',
-            loadChildren: './Pages/About/About.module#AboutModule'
-         },
-         {
-            path: 'blogs',
-            loadChildren: './Pages/Blogs/Blogs.module#BlogsModule'
-         },*/     
+    
          {
             path: 'account',
             loadChildren: './Pages/UserAccount/UserAccount.module#UserAccountModule'
