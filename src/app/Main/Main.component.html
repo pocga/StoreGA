@@ -13,25 +13,17 @@
         <embryo-SidebarMenu *ngFor="let item of menuItems.getMainMenu()" [item]="item"></embryo-SidebarMenu>
       </mat-nav-list>
     </mat-sidenav>
-    <!--
-    <mat-sidenav class="em-sidebar" #paymentSidenav [(opened)]="embryoService.paymentSidenavOpen" position="end" mode="over" >
-      <embryo-PaymentDetailSideBar></embryo-PaymentDetailSideBar>
-    </mat-sidenav>
-    -->
-    <!--<div class="rtl-layout"><a class="text-xl" href="javascript:void(0);" (click)="changeDirection()">RTL</a></div> -->
+    
     <ngx-toasta></ngx-toasta>
     <HeaderOne *ngIf="this.currentUrl != '/home-two' && this.currentUrl != '/home-three'"></HeaderOne>
-    <!--
-    <HeaderTwo *ngIf="this.currentUrl == '/home-two' && this.currentUrl != '/home-three'"></HeaderTwo>
-    <HeaderThree *ngIf="this.currentUrl != '/home-two' && this.currentUrl == '/home-three'"></HeaderThree>
-    -->
+    
     <br>
     <div  class="main">
       <div >
         <router-outlet></router-outlet>
       </div> 
     </div>
-    <!--<FooterOne></FooterOne>-->
+    
   </mat-sidenav-container>
 
   

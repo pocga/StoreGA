@@ -4,12 +4,17 @@
 .button-lg-x{
     float: right;
     font-size: 15px;
-   // font-family: 'PT Sans' !important;
+   
 }
 .tittle{
     font-size: 25px;
-  //  font-family: 'PT Sans' !important;
     font-weight: bold;
+}
+@media screen and (max-width: 600px){
+    .container{
+        width: 100%;
+        overflow: scroll;
+    }   
 }
 
 .cdk-overlay-dark-backdrop{
@@ -20,5 +25,5 @@
 #toasty {
     position: fixed !important;
     z-index: 9999999999999999999  !important;
-      /* Positioning */
+    
 }
