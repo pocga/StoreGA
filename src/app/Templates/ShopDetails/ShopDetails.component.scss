@@ -16,12 +16,34 @@
 }
 
 
+.container{
+    overflow: scroll;
+}
+.short-des{
+    margin-top:-13px;
+}
+.detail-btns{
+    margin-top:-15px;
+}
+.select-group{
+    margin-top:-15px;
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        width: 100%;
+        overflow: scroll;
+    }
+    
+    
+}
+
 
 @media screen and (max-width: 500px){
     .product-detail-content { 
         margin-top: -30px !important; 
     }.relative { 
-        margin-top: -20px !important; 
+        margin-top: -33px !important; 
     }
 }
 
