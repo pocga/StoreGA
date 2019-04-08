@@ -5,8 +5,7 @@
 
     <div class="inner-container section-gap">
         <div class="container" >
-            <!-- Products with free api key  -->
-                <!--<button (click)="checkProducts()" type="button" class="btn btn-outline-primary">buscar</button>-->
+           
                 
                 <div class="mat-card mb-4 container-filter-top">
                     <ul class="listacategorias">
@@ -14,7 +13,7 @@
                     </ul>
                 </div>
                      
-                <div fxLayout="row wrap"  class="col-gap"><!--fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="15"-->
+                <div fxLayout="row wrap"  class="col-gap">
                     <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="21" fxFlex.xl="20">
                     
                             <div class="seccion">
@@ -71,13 +70,13 @@
           
                                               <li class="listacategoriasfiltros" >
           
-                                                      <mat-checkbox (change)="cathEventDisponibilityYes($event.checked)"><a>Si</a></mat-checkbox>
+                                                      <mat-checkbox   (change)="cathEventDisponibilityYes($event.checked)"><a>Si</a></mat-checkbox>
           
                                                   </li>
           
                                                   <li class="listacategoriasfiltros" >
           
-                                                      <mat-checkbox  (change)="cathEventDisponibilityNo($event.checked)"><a>No</a></mat-checkbox>
+                                                      <mat-checkbox   (change)="cathEventDisponibilityNo($event.checked)"><a>No</a></mat-checkbox>
           
                                               </li>
           

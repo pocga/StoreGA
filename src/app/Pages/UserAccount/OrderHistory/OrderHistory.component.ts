@@ -72,10 +72,7 @@ export class OrderHistoryComponent implements OnInit {
 
       this.embryoService.PedidoPopup(order,this.datos);   
    }
-   /*
-   reviewPopup(detailData){ //detail product
-      this.embryoService.reviewPopup(detailData);
-   }*/
+   
    limpiar(){
       this.dataSource = this.order_history;
       this.id_reserve = "";

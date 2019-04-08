@@ -22,6 +22,7 @@ export class PanelProductsComponent implements OnInit {
   public minPrice;
   public optionYes:boolean = false
   public optionNo:boolean = false
+ 
   valueRangePrice;
   values = [];
   valuesCategories = [];
@@ -30,15 +31,15 @@ export class PanelProductsComponent implements OnInit {
   options: Options;
   public found :boolean;
   private lengthvalue: any;
-
+  
   constructor(private embryoService:EmbryoService,private toastyService: ToastaService ) {
   }
    
-  ngOnInit() {   
+  ngOnInit() {  
+    
     this.getCategories();
     this.getPrice();
-   
-    
+      
   }
 
   public getPrice(){
@@ -104,11 +105,10 @@ export class PanelProductsComponent implements OnInit {
    };
    let resultado: string;
    let type="1";
-  this.embryoService.addToCart(value,type).subscribe((res: HttpResponse<any>) => {
+    this.embryoService.addToCart(value,type).subscribe((res: HttpResponse<any>) => {
     resultado = res.statusText;
     this.toastyService.wait(toastOption);
-    //this.embryoService.updateLocalCartProduct(value);
-    // this.embryoService.calculateLocalCartProdCounts();
+    
     },
     (error) => {
       console.log("error: " + JSON.stringify(error));
@@ -133,13 +133,12 @@ export class PanelProductsComponent implements OnInit {
           
       let datosBusquedas = Object.keys(response).map(function(key) { return response[key];});
       this.datosBusqueda=datosBusquedas[0]; 
-      // this.datosBusqueda=datosBusquedas; 
+      
        
       
     });                
   }
   applyFilter(valuePriceLow: any, valuePriceHigh: any){
-    
 
     const valuesFilter = {
       "categorias": this.values.join(),
