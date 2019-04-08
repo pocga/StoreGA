@@ -24,7 +24,6 @@
     display: flex;
     justify-content: space-between;
     width: 500px;
-
 }
 
 .cursor-pointer:hover {
@@ -33,6 +32,7 @@
 .id-order{
     text-decoration:underline;
     color: blue;
+    cursor: pointer;
 }
 .mb-3{
     font-size: 20px;    

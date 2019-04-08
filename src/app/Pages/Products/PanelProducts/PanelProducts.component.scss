@@ -1,6 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
-
-
+.options{
+    cursor: pointer;
+}
+.seeProducts{
+    background-color:#283593;
+    color: white;
+}
 
 .container-filter-top {
     display: flex;
@@ -241,14 +246,13 @@ a:before{
 @media screen and (max-width: 600px){
     .mb-4{
         width: 100% !important; 
-        display: inline-block !important;
+      //  display: inline-block !important;
     }.listacategoriasfiltros{display: inline-block !important;}
     .custom-checkbox{
         display: inline-block !important;
     }.mb-4{margin-top: -10px !important;}
     .categories{margin-top: -15px !important; }
     .container-button{
-        display: inline-block !important; 
         display: flex;
         justify-content: center;
     }

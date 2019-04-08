@@ -151,8 +151,9 @@ export class PanelProductsComponent implements OnInit {
       let catalogFound = Object.keys(response).map( key => response[key]);
       this.datosBusqueda = catalogFound[0]
       this.products_list = true;
-        
       this.lengthvalue =this.datosBusqueda;
+      this.minValue= this.precios[0];
+      this.maxValue= this.precios[1];
     });               
     
   }

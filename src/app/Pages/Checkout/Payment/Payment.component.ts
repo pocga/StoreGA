@@ -225,7 +225,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
       }
    }
    returnCart(){
-      this.router.navigate(['/cart/']);
+      this.router.navigate(['/home/cart/']);
    }
    
    public selectedPaymentTabChange(value) {

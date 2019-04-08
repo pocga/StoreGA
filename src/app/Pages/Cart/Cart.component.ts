@@ -36,13 +36,12 @@ export class CartComponent implements OnInit, AfterViewChecked {
    }
 
    public callCart(){
-      console.log(this.datosBusquedaShow.length)
+      
       this.embryoService.getDataCart().subscribe((response) => {
          this.datosBusqueda = Object.keys(response).map(key => response[key]);   
          this.countRol = this.datosBusqueda.length;
          this.totales=this.datosBusqueda[2];
          this.datosBusquedaShow=this.datosBusqueda[1];
-         console.log(this.datosBusqueda)
        }, err =>  this.datosBusquedaShow = []);
    }
 
@@ -107,7 +106,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
 
    public updateLocalCartProduct() {
       this.embryoService.updateAllLocalCartProduct(this.embryoService.localStorageCartProducts);
-      this.router.navigate(['/checkout/payment']);
+      this.router.navigate(['/home/checkout/payment']);
    }
 
    public getQuantityValue(item) {
