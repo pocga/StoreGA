@@ -28,15 +28,15 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
 
    constructor(private route: ActivatedRoute,
                private router: Router, 
-               public embryoService : EmbryoService,private toastyService: ToastaService
+               public embryoService : EmbryoService,private toastyService: ToastaService,private toastyConfig: ToastaConfig
                ) {
       this.embryoService.getProductReviews().valueChanges().subscribe(res => {this.productReviews = res});
-     
+      this.toastyConfig.position = "top-right";
       
    }
 
    ngOnInit() {
-      console.log(this.detailData) 
+       
       this.mainImgPath = this.detailData.imagen;
       this.totalPrice  = this.detailData.precio; 
 
@@ -81,14 +81,14 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
          showClose: true,
          timeout: 1000,
          theme: "material"  
+         
       };
      
       let resultado: string;
-      console.log(value)
+      
       this.embryoService.addToCart(value,this.cantidad).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;
          this.toastyService.wait(toastOption);
-         
          },
          (error) => {
            let toastOption: ToastOptions = {

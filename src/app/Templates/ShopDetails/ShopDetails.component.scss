@@ -3,18 +3,11 @@
 .select-group .mat-form-field {
 	width: 110px;
 }
-/*
-.product-detail-content a {
-    font-size: 15px;
-    font-family: 'PT Sans' !important;
-  
-}*/
 
 .button-lg{
     font-size: 15px;
     font-family: 'PT Sans' !important;
 }
-
 
 .container{
     overflow: scroll;
@@ -33,11 +26,8 @@
     .container{
         width: 100%;
         overflow: scroll;
-    }
-    
-    
+    }   
 }
-
 
 @media screen and (max-width: 500px){
     .product-detail-content { 
@@ -45,6 +35,11 @@
     }.relative { 
         margin-top: -33px !important; 
     }
+}
+
+#toasty {
+   background-color: red;
+      /* Positioning */
 }
 
 
