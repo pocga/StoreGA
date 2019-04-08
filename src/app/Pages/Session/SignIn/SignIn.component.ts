@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
     
     if (rol=="Administrador"){
        
-       this.router.navigate(['/order-history']);
+       this.router.navigate(['/home/order-history']);
     }else {
        
        this.router.navigate(['/home']);

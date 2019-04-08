@@ -1,28 +1,5 @@
 
 
-
-<mat-toolbar color="primary" class="header-v1">
-    <mat-toolbar-row class="header-v1-top">
-      <div class="container">
-        <div fxLayout="row wrap" fxLayout="center center">
-          <div fxHide.xs="true" fxHide.sm="true" fxHide.md="true" fxFlex.md="33%" fxFlex.lg="33%" fxFlex.xl="33%">
-            <div class="list-flex">
-            </div>
-          </div>
-          <div class="logo-site" fxFlex.xs="40" fxFlex.sm="40" fxFlex.md="50" fxFlex.lg="33%" fxFlex.xl="33%">
-           <embryo-AppLogo></embryo-AppLogo>
-          </div>
-          <div fxFlex.xs="60" fxFlex.sm="60" fxFlex.md="50" fxFlex.lg="33%" fxFlex.xl="33%">
-            <span fxFlex></span>
-            <div class="list-flex user-tool">
-            </div>
-          </div>
-        </div>
-      </div>
-    </mat-toolbar-row>
-</mat-toolbar><br>
-
-
 <div class="inner-container bg-white cart-page section-gap" *ngIf="(datosBusquedaShow.length>0);else elseBlock">
     <div class="container">
       <div class="cart-wrapper">
@@ -78,7 +55,7 @@
               <h4><a>{{totales.totalPrecio | currency:'COP':true:'1.0-0'}}</a></h4>
             </div>
             <div> <span fxFlex></span><button mat-raised-button color="accent" class="button-lg" (click)="updateLocalCartProduct()"><a>Continuar</a></button></div><br>
-            <div> <span fxFlex></span><button mat-raised-button color="accent" class="button-lg" [routerLink]="['/home/']"><a>Volver</a></button></div>
+            <div> <span fxFlex></span><button mat-raised-button color="accent" class="button-lg" [routerLink]="['']"><a>Volver</a></button></div>
           </div>
         </div>
       </div>

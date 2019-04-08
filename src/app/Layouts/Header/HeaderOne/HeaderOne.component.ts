@@ -22,8 +22,7 @@ export class HeaderOneComponent implements OnInit {
    }
 
    followProduct(){
-     
-      this.router.navigate(['/order-history']);
+      this.router.navigate(['/home/order-history']);
    }
 
    public signout(){
@@ -39,7 +38,7 @@ export class HeaderOneComponent implements OnInit {
 
    public getPopupResponse(response) {
       if(response){
-         this.router.navigate(['/signout']);
+       //  this.router.navigate(['/signout']);
          this._autService1.singOut()
       }
    }

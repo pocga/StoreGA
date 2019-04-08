@@ -6,16 +6,18 @@
     <div class="inner-container section-gap">
         <div class="container" >
            
-                
+                <!--
                 <div class="mat-card mb-4 container-filter-top">
                     <ul class="listacategorias">
                         <li  (click)="selectCategorias(item.categoria)" *ngFor="let item of categorias">{{item.categoria}} &nbsp;</li>  
                     </ul>
-                </div>
+                </div>-->
                      
                 <div fxLayout="row wrap"  class="col-gap">
                     <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="21" fxFlex.xl="20">
-                    
+                        <div class="mat-card mb-4 container-button">
+                            <button color="accent" class="button-lg seeProducts" mat-raised-button type="button" (click)="checkAllProducts()"><a>Ver productos</a></button>
+                        </div>
                             <div class="seccion">
 
                                     <mat-accordion>
@@ -126,8 +128,8 @@
                                 
                             
                             <div class="mat-card mb-4 container-button">
-                                <button color="accent" class="button-lg" mat-raised-button type="button" (click)="applyFilter(minValue,maxValue)" ><a>Aplicar Filtros</a></button>
-                                <button color="accent" class="button-lg" mat-raised-button type="button" (click)="checkAllProducts()"><a>Todos los productos</a></button>
+                               <button color="accent" class="button-lg" mat-raised-button type="button" (click)="applyFilter(minValue,maxValue)" ><a>Aplicar Filtros</a></button>
+                              <!--   <button color="accent" class="button-lg" mat-raised-button type="button" (click)="checkAllProducts()"><a>Todos los productos</a></button>-->
                             </div>
 
                         </div>

@@ -37,9 +37,9 @@ export class AuthService {
 
           onSuccess: function(session) {
 
-              let idToken = session.getIdToken().getJwtToken(); 
-              localStorage.setItem("idToken", idToken ) 
-              
+              let idToken = session.getIdToken().getJwtToken(); //Get idToken from session
+              localStorage.setItem("idToken", idToken ) //set storage idToken session
+              //thisAux.menuItemsService.loadMenuItems() //Get menu Items
 
           },
           onFailure: function(err) {

@@ -7,7 +7,7 @@
   </button>
 
   <mat-menu #viewdropmenu="matMenu">
-    <ng-container *ngIf="(cartProducts && cartProducts.length > 0); else elseBlock">
+    <ng-container *ngIf="(cartProducts && cartProducts.length > 0)">
       <div class="drop-wrap">
         <div fxFlex="row wrap" class="cart-menu-list p-2" fxLayoutAlign="start center" *ngFor="let product of cartProducts;">
           <div fxFlex.xs="25" fxFlex.sm="25" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25"> <a href="javascript:void(0);"><img [src]="product?.image" width="60" alt="cart-image"></a> </div>
@@ -27,11 +27,7 @@
       </div>
 
     </ng-container>
-    <ng-template #elseBlock>
-      <div class="cart-menu-list p-2" fxLayoutAlign="center center">
-        Producto no encontrado
-      </div>
-    </ng-template>
+    
   </mat-menu>
 </ng-container>
 
