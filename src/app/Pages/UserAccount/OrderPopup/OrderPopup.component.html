@@ -1,11 +1,18 @@
 <div class="container-popup">
   <div class="popup">
-      <button mat-raised-button color="accent" class="button-lg-x" (click)="dialogRef.close()"><a>Cerrar</a></button><br>
+      <button mat-raised-button color="accent" class="button-lg-x closePopup" (click)="dialogRef.close()"><a>Cerrar</a></button><br>
+      <div class="datosDestinatarios">
+          <h3>Datos destinatario</h3>
+          <li>Nombre : {{totales.nombreDestinatario}}</li>
+          <li>Dirección: {{totales.direccionDestinatario}}</li>
+          <li>Cuidad: {{totales.ciudadDestinatario}}</li><br>       
+      </div>
       <h3>Detalle de pedido </h3>
   </div>
 
+
   <div class="inner-container bg-white cart-page section-gap">
-      <div class="container">
+          <div class="container">
         <div class="cart-wrapper">
           <div class="cart-shop-list mb-5 text-center  card-shadow">
             <div fxLayout='row wrap' fxLayoutAlign="start center" class="cart-item" *ngFor="let item of productsDetail">
@@ -23,8 +30,6 @@
                     
                       <div fxFlex.xs="100" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="40" fxFlex.xl="40">
                         <h5><a>{{item.producto.descripcion}}</a></h5>
-                        <p class="mb-0"><a>Entrega en 3-4 días | Gratis</a></p>
-                        <p> <a>10 días para cambio </a></p>
                       </div>
 
                       <div fxFlex.xs="50" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="20">
@@ -46,7 +51,7 @@
       </div>
 
     <div class="totalOrder">
-      <button mat-raised-button color="accent" class="button-lg-x">Total Pedido = {{totalPedido | currency:'COP'}}</button><br>       
+      <button mat-raised-button color="accent" class="button-lg-x"> Total Pedido = {{totalPedido | currency:'COP'}}</button><br>       
     </div>
   </div>
 </div>

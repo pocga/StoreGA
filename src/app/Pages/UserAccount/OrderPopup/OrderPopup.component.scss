@@ -24,6 +24,15 @@
 .cart-product-info h5{
     font-weight: bold;
 }
+.closePopup{
+    float: right;
+}
+.datosDestinatarios li{
+    list-style:none;
+}.datosDestinatarios{
+    margin-top: -15px;
+    justify-content: center
+}
 
 @media screen and (max-width: 500px){
     .container{

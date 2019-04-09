@@ -22,7 +22,7 @@ export class OrderHistoryComponent implements OnInit {
    public administrador: boolean
    public desactivar:boolean=false;
    public datos : any;
-
+   
    constructor(public embryoService : EmbryoService) { }
 
    ngOnInit() {
@@ -66,7 +66,8 @@ export class OrderHistoryComponent implements OnInit {
 
       for (var i=0;i<this.datosPedidos.length;i++){ 
          if (this.datosPedidos[i].idPedido == value.orderid ){
-            this.datos=[this.datosPedidos[i].totales.totalPrecio]
+           // this.datos=[this.datosPedidos[i].totales.totalPrecio]
+            this.datos=this.datosPedidos[i];
          } 
       }
 
