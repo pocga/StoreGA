@@ -26,7 +26,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    isDisabledPaymentStepThree = false;
 
    emailPattern        : any = /\S+@\S+\.\S+/;
-   //Pattern        : any = /\S+@\S+\.\S+/;
+   
   
    offerCards : any = [
       {
@@ -92,7 +92,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
                private formGroup : FormBuilder,
                public router: Router) {
 
-     // this.embryoService.removeBuyProducts();
+   
    }
 
    ngOnInit() {
@@ -132,10 +132,8 @@ export class PaymentComponent implements OnInit, AfterViewInit{
                return response[key]; });
                 
          this.countRol = this.datosBusqueda.length;
-         this.totales=this.datosBusqueda[2];
-         //this.datosBusqueda=this.datosBusqueda[1];
-        
-       });
+         this.totales=this.datosBusqueda[2];       
+      });
    }
 
    ngAfterViewInit() {
@@ -156,10 +154,6 @@ export class PaymentComponent implements OnInit, AfterViewInit{
             break;
       }
    }
-   /*
-   public toggleRightSidenav() {
-      this.embryoService.paymentSidenavOpen = !this.embryoService.paymentSidenavOpen;
-   }*/
    
    public getCartProducts() {
       let total = 0;
@@ -175,8 +169,6 @@ export class PaymentComponent implements OnInit, AfterViewInit{
       } 
       return total; 
    }
-
-
 
    public submitPayment() {
 
@@ -222,6 +214,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          this.requeriredForm =true  
       }
    }
+   
    returnCart(){
       this.router.navigate(['/home/cart/']);
    }

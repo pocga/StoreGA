@@ -1,3 +1,4 @@
+/*
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MenuItems } from '../../../Core/menu/menu-items/menu-items';
@@ -15,4 +16,4 @@ export class FooterOneComponent implements OnInit {
    ngOnInit() {
    }
 
-}
+}*/

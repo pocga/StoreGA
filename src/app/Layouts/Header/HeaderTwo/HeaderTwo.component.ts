@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { EmbryoService } from '../../../Services/Embryo.service';
 
 @Component({
@@ -68,4 +68,4 @@ export class HeaderTwoComponent implements OnInit {
       this.embryoService.addToCart(value, 'wishlist');
    } 
 
-}
+}*/

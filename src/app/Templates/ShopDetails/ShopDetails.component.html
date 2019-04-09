@@ -1,7 +1,6 @@
 
 <div class="product-detail-page section-gap bg-white" *ngIf="detailData">
-  <div class="container">
-      
+  <div class="container">     
     <div fxLayout='row wrap' fxLayoutAlign="center center" class="col-gap">
       <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md=90 fxFlex.lg="80" fxFlex.xl="90">
         <div fxLayout='row wrap' class="col-gap position-relative">
@@ -21,12 +20,9 @@
               </div>
             </div>
           </div>
-          <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md=50 fxFlex.lg="50" fxFlex.xl="50">
-              
+          <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md=50 fxFlex.lg="50" fxFlex.xl="50">              
             <div class="product-detail-content">
-              <!--<a href="javascript:void(0)" [routerLink]="['/home']">Volver a Comprar</a>-->
               <h3><a >{{detailData.categoria}}</a></h3>
-
               <div class="product-detail-price">
                 <h4 class="accent-color"><a>Precio por producto: {{detailData.precio | currency:'COP':true:'1.0-0'}}</a></h4>
               </div>
@@ -45,11 +41,7 @@
                 <p><a>{{detailData.descripcion}}</a>
                 </p>
               </div>
-              
-
               <div fxLayoutGap="30px" class="mb-3 select-group">
-               
-
                 <mat-form-field>
                   <mat-select placeholder="Cantidad" (selectionChange)="calculatePrice(detailData, $event.value)">
                     <ng-container *ngFor="let quantity of quantityArray">
@@ -58,16 +50,9 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-          
-
-              <div class="mb-5 detail-btns">
-              
-                <button mat-raised-button color="accent" class="button-lg mr-3" (click)=" addToCart(detailData)">Agregar al carrito</button>
-                
-               
+              <div class="mb-5 detail-btns">             
+                <button mat-raised-button color="accent" class="button-lg mr-3" (click)=" addToCart(detailData)">Agregar al carrito</button>                               
               </div>
-             
-
             </div>
           </div>
         </div>

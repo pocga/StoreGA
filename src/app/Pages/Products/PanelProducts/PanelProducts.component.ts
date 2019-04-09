@@ -22,18 +22,17 @@ export class PanelProductsComponent implements OnInit {
   public minPrice;
   public optionYes:boolean = false
   public optionNo:boolean = false
-
+  public found :boolean;
+  private lengthvalue: any;
+  public dispS : boolean = false;
+  public dispN : boolean = false;
   valueRangePrice;
   values = [];
   valuesCategories = [];
   minValue: number;
   maxValue: number;
   options: Options;
-  public found :boolean;
-  private lengthvalue: any;
 
-  public dispS : boolean = false;
-  public dispN : boolean = false;
 
   constructor(private embryoService:EmbryoService,private toastyService: ToastaService ) {
   }

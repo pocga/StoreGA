@@ -26,7 +26,6 @@ export class EmbryoService  {
    featuredProductsSelectedTab : any = 0;
    newArrivalSelectedTab       : any = 0;
 
-   /**** Get currency code:- https://en.wikipedia.org/wiki/ISO_4217 *****/
    currency  : string = '';
    language  : string = '';     
 
@@ -63,9 +62,11 @@ export class EmbryoService  {
    public token(){
       return this.authService.getDecodedAccessToken(localStorage.getItem("idToken"));
    }
+
    public productList(){
 
    }
+
    public PopupThank(res){
       
       let review: MatDialogRef<ThankPopupComponent>;
@@ -141,53 +142,41 @@ export class EmbryoService  {
 
       return this.http.get(`${environment.BASE_URL}catalogo/productos/imagenes`);
    }
-
-   /*
-      ----------  Cart Product Function  ----------
-   */
-
-   // returning LocalCarts Product Count
+  
    public calculateLocalCartProdCounts() {
 
       this.localStorageCartProducts = null;
       this.localStorageCartProducts = JSON.parse(localStorage.getItem("cart_item")) || [];
       this.navbarCartCount = +((this.localStorageCartProducts).length);
-      //console.log(this.localStorageCartProducts.length)
    }
+
    public getPedidos(){
     
-      let user= this.token();
-     
+      let user= this.token();     
       let rol=user["custom:role"];
       this.username=user["cognito:username"]
       
       if (rol=="Administrador"){
          return this.http.get(`${environment.BASE_URL}pedidos`);
-      }else {        
-         
+      }else {                 
          return this.http.get(`${environment.BASE_URL}pedidos/usuarios/${this.username}`);
       }     
    }
+
    public confirmarPedido(data){
       return this.http.post(`${environment.BASE_URL}pedidos`, data);
    }
 
-   public deleteCart(data) {
-      
-      
+   public deleteCart(data) {      
       let deleteProduct=data.producto.idProducto;
-      
-
       var httpOptions = {
          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
          observe: 'response' as 'response'  
       };
       let user= this.token();
       this.username=user["cognito:username"]
-      return this.http.delete(`${environment.BASE_URL}carrito/${this.username}/productos/${deleteProduct}`, httpOptions)
-     
+      return this.http.delete(`${environment.BASE_URL}carrito/${this.username}/productos/${deleteProduct}`, httpOptions)     
    }
-
 
    public deleteOrder(data) {
 
@@ -195,9 +184,7 @@ export class EmbryoService  {
          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
          observe: 'response' as 'response'  
       };
-
-      return this.http.delete(`${environment.BASE_URL}pedidos/${data}`, httpOptions)
-     
+      return this.http.delete(`${environment.BASE_URL}pedidos/${data}`, httpOptions)     
    }
 
    public getDataCart(){
@@ -206,24 +193,17 @@ export class EmbryoService  {
       return this.http.get(`${environment.BASE_URL}carrito/${this.username}/productos`);
    }
 
-
-   public putDataCart(data,value:any) {
-      
+   public putDataCart(data,value:any) {      
       let user= this.token();
       this.username=user["cognito:username"]
-
       let producto={"idProducto": data.idProducto, "cantidad":value};
       return this.http.put(`${environment.BASE_URL}carrito/${this.username}/productos`, producto);
-    //  return this.http.put('http://localhost:8080/carrito/eliana/productos', );
    }
-
-   
+ 
    public addToCart(data: any, type:any){
       let user= this.token();
       this.username=user["cognito:username"]
-      data=parseInt(data.idProducto); //id producto
-     
-     
+      data=parseInt(data.idProducto);      
       let producto={"idProducto": data, "cantidad":type};
 
       return this.http.post(`${environment.BASE_URL}carrito/${this.username}/productos`, producto);
@@ -232,20 +212,22 @@ export class EmbryoService  {
    public getAllCatalogo(){
       return this.http.get(`${environment.BASE_URL}catalogo/productos/`);
    } 
+
    public getCategories(){
       let user= this.token();
       this.username=user["cognito:username"]
       return this.http.get(`${environment.BASE_URL}catalogo/productos/categorias`);
    }
+
    public getPrice(){
       return this.http.get(`${environment.BASE_URL}catalogo/productos/rango`);
    }
+
    public getOnlyCategoria(value){
       return this.http.get(`${environment.BASE_URL}catalogo/productos?categ=${value}`);
    }
-   public getCatalogByFilter(options){
-      
 
+   public getCatalogByFilter(options){
       return this.http.get(
       `${environment.BASE_URL}catalogo/productos?categ=${options.categorias}&disp=${options.disponibilidad}&from=${options.from}&to=${options.to}`);
    }
@@ -277,7 +259,6 @@ export class EmbryoService  {
       localStorage.setItem("cart_item", JSON.stringify(product))
    }
 
-   // Removing cart from local
    public removeLocalCartProduct(product: any) {
       let products: any = JSON.parse(localStorage.getItem("cart_item"));
 
@@ -298,17 +279,12 @@ export class EmbryoService  {
 
       this.toastyService.wait(toastOption);
       setTimeout(() => {
-         // ReAdding the products after remove
+        
          localStorage.setItem("cart_item", JSON.stringify(products));
          this.calculateLocalCartProdCounts();
       }, 500);
    }
 
-   /*
-      ----------  Wishlist Product Function  ----------
-   */
-
-   // Adding new Product to Wishlist in localStorage
    public addToWishlist(data: any){
       let toastOption: ToastOptions = {
          title: "Adding Product To Wishlist",
@@ -344,7 +320,6 @@ export class EmbryoService  {
       
    }
 
-   // returning LocalWishlist Product Count
    public calculateLocalWishlistProdCounts() {
 
       this.localStorageWishlist = null;
@@ -352,7 +327,6 @@ export class EmbryoService  {
       this.navbarWishlistProdCount = +((this.localStorageWishlist).length);
    }
 
-   // Removing Wishlist from local
    public removeLocalWishlistProduct(product: any) {
       let products: any = JSON.parse(localStorage.getItem("wishlist_item"));
 
@@ -406,10 +380,7 @@ export class EmbryoService  {
       }, 500);
 
    }
-  
-   /**
-    * getBlogList used to get the blog list. 
-    */
+
    public getBlogList()
    {
       let blogs : any;
@@ -417,9 +388,6 @@ export class EmbryoService  {
       return blogs;
    }
 
-   /**
-    * getContactInfo used to get the contact infomation. 
-    */
    public getContactInfo()
    {
       let contact : any;
@@ -427,9 +395,6 @@ export class EmbryoService  {
       return contact;
    }
 
-   /**
-    * getTermCondition used to get the term and condition. 
-    */
    public getTermCondition()
    {
       let termCondition : any;
@@ -437,9 +402,6 @@ export class EmbryoService  {
       return termCondition;
    }
 
-   /**
-    * getPrivacyPolicy used to get the privacy policy.
-    */
    public getPrivacyPolicy()
    {
       let privacyPolicy : any;
@@ -447,9 +409,6 @@ export class EmbryoService  {
       return privacyPolicy;
    }
 
-   /**
-    * getFaq used to get the faq.
-    */
    public getFaq()
    {
       let faq : any;
@@ -457,9 +416,6 @@ export class EmbryoService  {
       return faq;
    }
 
-   /**
-    * getProductReviews used to get the product review.
-    */
    public getProductReviews()
    {
       let review : any;
@@ -467,9 +423,6 @@ export class EmbryoService  {
       return review;
    }
 
-   /**
-    * Buy Product functions 
-    */
    public addBuyUserDetails(formdata) {
       localStorage.setItem("user", JSON.stringify(formdata));
       
@@ -486,9 +439,6 @@ export class EmbryoService  {
       this.buyUserCartProducts = JSON.parse(localStorage.getItem("byProductDetails"))
    }
 
-   /**
-    * getTeam used to get the team data.
-    */
    public getTeam()
    {
       let team : any;
@@ -496,27 +446,18 @@ export class EmbryoService  {
       return team;
    }
 
-   /**
-    * getTestimonial used to get the testimonial data.
-    */
    public getTestimonial() {
       let testimonial : any;
       testimonial = this.db.object("testimonial");
       return testimonial;
    }
 
-   /**
-    * getMissionVision used to get the Mission and Vision data.
-    */
    public getMissionVision() {
       let mission_vision : any;
       mission_vision = this.db.list("mission_vision");
       return mission_vision;
    }
 
-   /**
-    * getAboutInfo used to get the about info data.
-    */
    public getAboutInfo() {
       let about_info : any;
       about_info = this.db.object("about_info");

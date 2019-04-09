@@ -23,11 +23,7 @@ export class HomePageOneSliderComponent implements OnInit, OnChanges {
        this.slides = Object.keys(response).map(key => response[key]);
      });
    } 
-
    
-
-   
-
    ngOnChanges() {
       this.slideConfig = {
          slidesToShow: 1,

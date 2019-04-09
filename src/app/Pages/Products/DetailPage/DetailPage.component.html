@@ -1,11 +1,8 @@
 <ng-container *ngIf="singleProductData">
-  <embryo-PageTitle heading="{{singleProductData.name}}"></embryo-PageTitle>
- 
+  <embryo-PageTitle heading="{{singleProductData.name}}"></embryo-PageTitle> 
   <div class="inner-container">
     <div class="product-detail-page">
       <embryo-ShopDetails [currency]="embryoService?.currency" [detailData]="singleProductData"></embryo-ShopDetails>
-      
-
     </div>
   </div>
 </ng-container>

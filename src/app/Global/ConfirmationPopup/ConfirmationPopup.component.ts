@@ -17,9 +17,7 @@ export class ConfirmationPopupComponent implements OnInit {
    ngOnInit() {
    }
 
-   removeCart(){
-    
+  removeCart(){
     this.dialogRef.close();
-  }
-   
+  }  
 }

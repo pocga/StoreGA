@@ -14,9 +14,7 @@ export class ThankPopupComponent implements OnInit {
    constructor(public dialogRef: MatDialogRef<ThankPopupComponent>) {
      
    }
-
-   ngOnInit() {
-     
+   ngOnInit() {     
    }
 
 }

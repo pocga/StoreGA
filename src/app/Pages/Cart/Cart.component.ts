@@ -42,7 +42,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
          this.countRol = this.datosBusqueda.length;
          this.totales=this.datosBusqueda[2];
          this.datosBusquedaShow=this.datosBusqueda[1];
-       }, err =>  this.datosBusquedaShow = []);
+      }, err =>  this.datosBusquedaShow = []);
    }
 
    ngAfterViewChecked() : void {
@@ -113,9 +113,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
       if(item.cantidad>1) {
          return item.cantidad
       } else {
-         return 1;
-      }
-     
+         return 1;}
    }
 
 
@@ -153,15 +151,16 @@ export class CartComponent implements OnInit, AfterViewChecked {
 
       }else {this.valido=true}           
    }
+
    public keyyPress(event: any) {
       const pattern = /[0-9]/;
       const inputChar = String.fromCharCode(event.charCode);
  
       if (!pattern.test(inputChar)) {    
-          // invalid character, prevent input
           event.preventDefault();
       }
    }
+   
    public calculateProductSinglePrice(product:any, value: any) {
       
       let precio :number;
