@@ -136,23 +136,22 @@ export class CartComponent implements OnInit, AfterViewChecked {
                theme: "material"
             };
             this.toastyService.wait(toastOption);
-            console.log("si");
+            
             },
             (error) => {
             let toastOption: ToastOptions = {
                title: "ERROR",
-               msg: "El producto supera el limite disponible",
+               msg: error.error.descripcionRespuesta,
                showClose: true,
                timeout: 1000,
                theme: "material"
             };
             this.toastyService.wait(toastOption);
-            console.log("no");
+           
             }
             );
 
-      }else {this.valido=true}
-            
+      }else {this.valido=true}           
    }
    public keyyPress(event: any) {
       const pattern = /[0-9]/;

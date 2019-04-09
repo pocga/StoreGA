@@ -44,6 +44,9 @@
     display: flex;
     justify-content: center;
 }
+.ng-container{
+    border-style: solid !important;
+}
 
 @media screen and (max-width: 500px){
     .container-filter{
@@ -58,5 +61,15 @@
     }.inputId{
         width: 280px;
         margin-left: 110px;
+    }.id-order{
+        cursor: pointer;
+        margin-left: -20px;
+    }.cursor-pointer a{
+        margin-left: 10px;
+        cursor: pointer;
+    }.w-100 a{
+        font-size: 12px;
     }
+   
+
 }

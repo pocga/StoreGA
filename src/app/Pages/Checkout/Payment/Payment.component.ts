@@ -85,8 +85,8 @@ export class PaymentComponent implements OnInit, AfterViewInit{
 
    paymentForm   : FormGroup;
    public requeriredForm : boolean=false;
-   textPattern        : any = '^[a-zA-Z]+$' // '/^[A-Za-z]*\s()[A-Za-z]*$/'; ///^[a-zA-Z]+$/ '/[a-zA-Z]/'  
-   numberPattern : any = '^(0|[1-9][0-9]*)$'
+   public textPattern        : any = '^[A-Za-z]+((\s)?((\'|\-|\.)?([A-Za-z])+))*$'//'^[a-zA-Z]+$' // '/^[A-Za-z]*\s()[A-Za-z]*$/'; ///^[a-zA-Z]+$/ '/[a-zA-Z]/'  
+   public numberPattern : any = '^(0|[1-9][0-9]*)$'
 
    constructor(public embryoService : EmbryoService, 
                private formGroup : FormBuilder,
@@ -97,16 +97,14 @@ export class PaymentComponent implements OnInit, AfterViewInit{
 
    ngOnInit() {
 
-
-
       this.paymentFormOne = this.formGroup.group({
          user_details       : this.formGroup.group({
-            first_name         : ['', [Validators.required,Validators.pattern(this.textPattern)]],//Validators.pattern('/^[a-zA-Z]+$/')
+            first_name         : ['', [Validators.required,Validators.pattern(this.textPattern)]],
            // last_name          : ['', [Validators.required]],
             street_name_number : ['', [Validators.required]],
           //  apt                : ['', [Validators.required]],
            // zip_code           : ['', [Validators.required]],
-            city_state         : ['', [Validators.required,Validators.pattern(this.textPattern)]],//,Validators.pattern(this.textPattern)]
+            city_state         : ['', [Validators.required,Validators.pattern(this.textPattern)]],
            // country            : ['', [Validators.required]],
             mobile             : ['', [Validators.required,Validators.pattern(this.numberPattern)]],
            // email              : ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -136,7 +134,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          this.countRol = this.datosBusqueda.length;
          this.totales=this.datosBusqueda[2];
          //this.datosBusqueda=this.datosBusqueda[1];
-        console.log(this.datosBusqueda);
+        
        });
    }
 
