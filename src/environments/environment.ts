@@ -13,7 +13,10 @@ export const environment = {
     messagingSenderId: "73552048992"
   },
 
-  BASE_URL:'https://jsc2p92uk1.execute-api.us-east-1.amazonaws.com/v1/'
+  // Producción
+  //BASE_URL:'https://jsc2p92uk1.execute-api.us-east-1.amazonaws.com/v1/'
+  // Desarrollo
+  BASE_URL:'https://jsc2p92uk1.execute-api.us-east-1.amazonaws.com/test/'
 };
 
 /*
