@@ -20,33 +20,61 @@
                         </div>
                         <div class="seccion">
 
-                          <div class="mat-card mb-4">
-                            <div class="tittle">Categorías</div>
-                            <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
-                              <li class="listacategoriasfiltros" >
-                                  <mat-checkbox  (change)="cathEvent(item.name,$event.checked)" >{{item.name}}</mat-checkbox>
-                              </li>
-                            </div>
-                          </div>
+                          <mat-accordion>
+                            <mat-expansion-panel>
+                              <mat-expansion-panel-header>
+                                <mat-panel-title class="tittle">
+                                  Categorías
+                                </mat-panel-title>
+                              </mat-expansion-panel-header>
+                                <div class="mat-card mb-4 categories">
+                                    <div class="custom-control custom-checkbox" *ngFor="let item of categorias">
+                                        <li class="listacategoriasfiltros" >
+                                          <mat-checkbox (change)="cathEvent(item.name, $event.checked)"  [(ngModel)]="item.check">
+                                            <a>{{item.name}}</a>
+                                          </mat-checkbox>
+                                        </li>
+                                    </div>
+                                </div>
+                            </mat-expansion-panel>
+                          </mat-accordion>
 
-                          <div class="mat-card mb-4">
-                            <div class="tittle">Disponibilidad</div>
-                              <div class="custom-control custom-checkbox">
-                                  <li class="listacategoriasfiltros" >
-                                    <mat-checkbox (change)="cathEventDisponibilityYes($event.checked)">Si</mat-checkbox>
-                                  </li>
-                                  <li class="listacategoriasfiltros" >
-                                    <mat-checkbox  (change)="cathEventDisponibilityNo($event.checked)">No</mat-checkbox>
-                                  </li>
-                              </div>
-                          </div>
+                          <mat-accordion>
+                            <mat-expansion-panel>
+                              <mat-expansion-panel-header>
+                                <mat-panel-title class="tittle">
+                                  Disponibilidad
+                                </mat-panel-title>
+                              </mat-expansion-panel-header>
+                                <div class="custom-control custom-checkbox">
+                                    <li class="listacategoriasfiltros" >
+                                        <mat-checkbox  (change)="cathEventDisponibilityYes($event.checked)" [(ngModel)]="dispS"><a>Si</a></mat-checkbox>
+                                    </li>
+                                    <li class="listacategoriasfiltros" >
+                                        <mat-checkbox   (change)="cathEventDisponibilityNo($event.checked)" [(ngModel)]="dispN"><a>No</a></mat-checkbox>
+                                    </li>
+                                </div>
+                            </mat-expansion-panel>
+                          </mat-accordion>
 
-                          <div class="mat-card mb-4">
-                            <div class="tittle">Precio</div>
-                            <div class="custom-slider">
-                              <ng5-slider (change)="changeprice(value)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
-                            </div>
-                          </div>
+                          <mat-accordion>
+                            <mat-expansion-panel>
+                              <mat-expansion-panel-header>
+                                <mat-panel-title class="tittle">
+                                  Precio
+                                </mat-panel-title>
+                              </mat-expansion-panel-header>
+                                <div class="custom-slider">
+                                  <div class="values-precios">
+                                      <a class="values-precio">{{minPrice | currency:'':true:'1.0-0' }}</a>
+                                      <a class="values-precio right">{{maxPrice  | currency:'':true:'1.0-0'}}</a>
+                                  </div>
+                                  <div class="ng-slider">
+                                      <ng5-slider (change)="changeprice(value)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+                                  </div>
+                                </div>
+                            </mat-expansion-panel>
+                          </mat-accordion>
 
                           <div class="mat-card mb-4 container-button">
                              <button color="accent" class="button-lg" mat-raised-button type="button" (click)="applyFilter(minValue,maxValue)" ><a>Aplicar Filtros</a></button>
