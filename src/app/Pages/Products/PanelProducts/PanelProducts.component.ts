@@ -142,14 +142,13 @@ export class PanelProductsComponent implements OnInit {
   }
 
   applyFilter(valuePriceLow: any, valuePriceHigh: any){
-
+    
     const valuesFilter = {
       "categorias": this.values.join(),
       "disponibilidad": (this.optionYes === this.optionNo) ? '' : (this.optionYes === true) ? true : false,
       "from": valuePriceLow,
       "to": valuePriceHigh
     }
-
     this.embryoService.getCatalogByFilter(valuesFilter).subscribe(response => {
       let catalogFound = Object.keys(response).map( key => response[key]);
       this.datosBusqueda = catalogFound[0]
@@ -163,12 +162,15 @@ export class PanelProductsComponent implements OnInit {
       this.dispN = false;
       this.minValue= this.precios[0];
       this.maxValue= this.precios[1];
+      this.values=[];
+      this.optionYes=false;
+      this.optionNo=false;
     });
 
   }
 
   cathEventDisponibilityYes(isChecked:boolean){
-    this.optionYes=isChecked;
+    this.optionYes=isChecked;    
   }
 
   cathEventDisponibilityNo(isChecked:boolean){
@@ -183,8 +185,7 @@ export class PanelProductsComponent implements OnInit {
       let index=this.values.indexOf((item === 'Televisores') ? 'TV' : item);
       this.values.splice(index,1);
     }
-
-
+    
   }
 
   reviewPopup(detailData){
