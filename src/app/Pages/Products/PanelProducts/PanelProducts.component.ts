@@ -11,18 +11,18 @@ import * as $ from 'jquery';
   styleUrls: ['./PanelProducts.component.scss']
 })
 export class PanelProductsComponent implements OnInit {
-  
+
   public index = 0;
   public products_list:boolean=false;
   public productList;
   public datosBusqueda = [];
-  public categorias: any;
+  public categorias: Array<{name: string, check: boolean}> = [];
   public precios:any;
   public maxPrice;
   public minPrice;
   public optionYes:boolean = false
   public optionNo:boolean = false
- 
+
   valueRangePrice;
   values = [];
   valuesCategories = [];
@@ -31,71 +31,75 @@ export class PanelProductsComponent implements OnInit {
   options: Options;
   public found :boolean;
   private lengthvalue: any;
-  
+
+  public dispS : boolean = false;
+  public dispN : boolean = false;
+
   constructor(private embryoService:EmbryoService,private toastyService: ToastaService ) {
   }
-   
-  ngOnInit() {  
-    
+
+  ngOnInit() {
     this.getCategories();
     this.getPrice();
-      
   }
 
   public getPrice(){
     this.embryoService.getPrice().subscribe((response) => {
-    this.precios = Object.keys(response).map(key => response[key]);  
+    this.precios = Object.keys(response).map(key => response[key]);
     this.minValue= this.precios[0];
     this.maxValue= this.precios[1];
-    
+
     this.options = {
       floor: this.minValue,
       ceil: this.maxValue,
       translate: (valueRangePrice: number, label: LabelType): string => {
-          
+
         switch (label) {
           case LabelType.Low:
           this.minPrice=valueRangePrice;
-          
+
             return '<b class="values-precio"></b> '  ;
             //return '<b class="values-precio"></b> $' + valueRangePrice ;
-    
+
           case LabelType.High:
           this.maxPrice=valueRangePrice;
             return '<b class="values-precio"> </b> ';
             //return '<b class="values-precio"> </b> $' + valueRangePrice;
-              
+
           default:
             return '' ;
            // return '$' + valueRangePrice;
-          }          
-        }          
-      };  
-    }); 
-  } 
-  
-  
-  public getCategories() {
-    this.embryoService.getCategories().subscribe((response) => {
-      this.categorias = Object.keys(response).map(key => response[key]);  
-      this.categorias = this.categorias[2]
-      
-    }); 
+          }
+        }
+      };
+    });
   }
+
+
+  public getCategories() {
+    this.categorias = [];
+    this.embryoService.getCategories().subscribe((response) => {
+      let respuesta = Object.keys(response).map(key => response[key]);
+      for (let entry of respuesta[2]) {
+        this.categorias.push({name:entry.categoria, check:false});
+      }
+    });
+  }
+
   selectCategorias(value){
     this.lengthvalue=['.'];
     if (value=="Televisores"){
       value="TV"
     }
     this.embryoService.getOnlyCategoria(value).subscribe((response) => {
-    let Onlycategorias = Object.keys(response).map(key => response[key]);   
+    let Onlycategorias = Object.keys(response).map(key => response[key]);
       this.datosBusqueda=Onlycategorias[0];
       this.products_list = true;
-    }); 
-    
+    });
   }
+
   public addToCart(value:any) {
- 
+
     let toastOption: ToastOptions = {
       title: "Producto añadido",
       msg: "",
@@ -108,7 +112,7 @@ export class PanelProductsComponent implements OnInit {
     this.embryoService.addToCart(value,type).subscribe((res: HttpResponse<any>) => {
     resultado = res.statusText;
     this.toastyService.wait(toastOption);
-    
+
     },
     (error) => {
       console.log("error: " + JSON.stringify(error));
@@ -129,37 +133,44 @@ export class PanelProductsComponent implements OnInit {
     if (this.index >=1){
       this.products_list = true;
     }
-    this.embryoService.getAllCatalogo().subscribe((response) => { 
-          
-      let datosBusquedas = Object.keys(response).map(function(key) { return response[key];});
-      this.datosBusqueda=datosBusquedas[0]; 
-      
-       
-      
-    });                
-  }
-  applyFilter(valuePriceLow: any, valuePriceHigh: any){
+    this.embryoService.getAllCatalogo().subscribe((response) => {
 
+      let datosBusquedas = Object.keys(response).map(function(key) { return response[key];});
+      this.datosBusqueda=datosBusquedas[0];
+
+    });
+  }
+
+  applyFilter(valuePriceLow: any, valuePriceHigh: any){
+    
     const valuesFilter = {
       "categorias": this.values.join(),
       "disponibilidad": (this.optionYes === this.optionNo) ? '' : (this.optionYes === true) ? true : false,
       "from": valuePriceLow,
       "to": valuePriceHigh
     }
-
     this.embryoService.getCatalogByFilter(valuesFilter).subscribe(response => {
       let catalogFound = Object.keys(response).map( key => response[key]);
       this.datosBusqueda = catalogFound[0]
       this.products_list = true;
       this.lengthvalue =this.datosBusqueda;
+      //Limpiar filtros
+      for (let i = 0; i < this.categorias.length; i++) {
+        this.categorias[i].check = false;
+      }
+      this.dispS = false;
+      this.dispN = false;
       this.minValue= this.precios[0];
       this.maxValue= this.precios[1];
-    });               
-    
+      this.values=[];
+      this.optionYes=false;
+      this.optionNo=false;
+    });
+
   }
 
   cathEventDisponibilityYes(isChecked:boolean){
-    this.optionYes=isChecked; 
+    this.optionYes=isChecked;    
   }
 
   cathEventDisponibilityNo(isChecked:boolean){
@@ -167,19 +178,18 @@ export class PanelProductsComponent implements OnInit {
   }
 
   cathEvent(item:any, isChecked:boolean){
-    
+
     if (isChecked){
       this.values.push((item === 'Televisores') ? 'TV' : item);
     }else {
       let index=this.values.indexOf((item === 'Televisores') ? 'TV' : item);
       this.values.splice(index,1);
     }
-
     
   }
-    
-  reviewPopup(detailData){ 
-    
+
+  reviewPopup(detailData){
+
     this.embryoService.reviewPopup(detailData);
   }
 

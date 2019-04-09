@@ -1,5 +1,5 @@
 
-<embryo-PageTitle heading="Payment Information"></embryo-PageTitle>
+
 
 <div class="inner-container section-gap" >
    <div class="checkout-option">
@@ -22,7 +22,7 @@
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="33" fxFlex.xl="33">          
                       <div class="mb-2">
                         <mat-form-field class="w-100"><!--pattern="[A-Za-z]"-->
-                          <input matInput type="text" placeholder="Nombre" formControlName="first_name"  required>
+                          <input matInput type="text" placeholder="Nombre Destinatario" formControlName="first_name"  required>
                           <mat-error *ngIf="paymentFormOne.get('user_details.first_name').hasError('required') && paymentFormOne.get('user_details.first_name').touched">Este campo es requerido</mat-error>
                           <mat-error *ngIf="paymentFormOne.get('user_details.first_name').hasError('pattern') && paymentFormOne.get('user_details.city_state').touched ">Ingrese nombre válido</mat-error>
                         </mat-form-field>
@@ -33,7 +33,7 @@
                     <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="33" fxFlex.xl="33">
                       <div class="mb-2">
                         <mat-form-field class="w-100">
-                          <input matInput type="text" formControlName="street_name_number" placeholder="Dirección de entrega">
+                          <input matInput type="text" formControlName="street_name_number" placeholder="Dirección de entrega" required>
                           <mat-error *ngIf="paymentFormOne.get('user_details.street_name_number').hasError('required') && paymentFormOne.get('user_details.street_name_number').touched">Este campo es requerido</mat-error>
                         </mat-form-field>
                       </div>
