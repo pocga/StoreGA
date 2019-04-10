@@ -53,9 +53,6 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
       this.totalPrice  = this.detailData.precio; 
    }
 
-   /**
-    * getImagePath is used to change the image path on click event. 
-    */
    public getImagePath(imgPath: string, index:number) {
       document.querySelector('.border-active').classList.remove('border-active');
       this.mainImgPath = imgPath;
@@ -67,7 +64,6 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
       this.cantidad=value;
       this.totalPrice = detailData.price*value;
    }
-
 
    public addToWishlist(value:any) {
       this.embryoService.addToWishlist(value);
@@ -103,6 +99,7 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
        ); 
        this.embryoService.calculateLocalCartProdCounts();
    }
+   
    public buyNow(value:any) {
       this.embryoService.buyNow(value);
       this.router.navigate(['/checkout']);

@@ -31,7 +31,6 @@ export class ImgZoomComponent implements OnInit {
       this.renderer.setStyle(this.result, 'backgroundImage', "url('" + val + "')");
     }
     this.notFirstTime = true;
-    // this.renderer.setStyle(this.result, 'backgroundImage', val);
    }
 
    ngOnInit() {

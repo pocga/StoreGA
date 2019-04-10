@@ -16,17 +16,10 @@ export class ReviewPopupComponent implements OnInit {
   singleProductDetails : any;//
   reviews : any;//
 
-
   constructor( public dialogRef: MatDialogRef<ReviewPopupComponent>) { 
  
   }
    ngOnInit() {
-     
-
 
   }
- 
-
-
-
 }

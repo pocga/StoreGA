@@ -27,12 +27,7 @@ import { MatButtonModule,
          MatGridListModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { GlobalModule } from '../Global/Global.module';
-//import { ProductGridComponent } from './Grid/ProductGrid/ProductGrid.component';
-//import { Grid3Component } from './Grid/Grid3/Grid3.component';
-//import { ReviewComponent } from './Review/Review.component';
-//import { ShopDetailsComponent } from './ShopDetails/ShopDetails.component';
 
 @NgModule({
    imports: [
@@ -66,16 +61,10 @@ import { GlobalModule } from '../Global/Global.module';
       GlobalModule
    ],
    declarations: [
-    //  ProductGridComponent,
-    //  Grid3Component,
-     // ReviewComponent,
-    // ShopDetailsComponent
+
    ],
    exports: [
-   //   ProductGridComponent,
-    //  Grid3Component,
-     // ReviewComponent,
-      //ShopDetailsComponent
+
    ]
 })
 export class TemplatesModule {}

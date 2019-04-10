@@ -1,11 +1,9 @@
-
 <ng-container *ngIf="(mobWidth >= mobScreenSize) else elseButtonBlock">
   <button mat-mini-fab [matMenuTriggerFor]="viewdropmenu" [matBadgeHidden]="hiddenBadge" matBadge="{{count}}" matBadgePosition="after" matBadgeColor="accent">
       <i class="material-icons notranslate">
         shopping_cart
       </i>
   </button>
-
   <mat-menu #viewdropmenu="matMenu">
     <ng-container *ngIf="(cartProducts && cartProducts.length > 0)">
       <div class="drop-wrap">
@@ -25,12 +23,9 @@
           </div>
         </div>
       </div>
-
-    </ng-container>
-    
+    </ng-container>   
   </mat-menu>
 </ng-container>
-
 <ng-template #elseButtonBlock>
   <button mat-mini-fab [matBadgeHidden]="hiddenBadge" matBadge="{{count}}" matBadgePosition="after" matBadgeColor="accent" [routerLink]="['/cart']">
       <i class="material-icons notranslate">

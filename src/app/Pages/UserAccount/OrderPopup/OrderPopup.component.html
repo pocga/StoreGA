@@ -9,8 +9,6 @@
       </div>
       <h3>Detalle de pedido </h3>
   </div>
-
-
   <div class="inner-container bg-white cart-page section-gap">
           <div class="container">
         <div class="cart-wrapper">
@@ -23,33 +21,22 @@
                   </a>
                 </div>
               </div>
-
                 <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="90" fxFlex.lg="80" fxFlex.xl="80">
                   <div fxLayout='row wrap' fxLayoutAlign="center center" class="cart-product-info">
-                    
-                    
-                      <div fxFlex.xs="100" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="40" fxFlex.xl="40">
+                     <div fxFlex.xs="100" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="40" fxFlex.xl="40">
                         <h5><a>{{item.producto.descripcion}}</a></h5>
                       </div>
-
                       <div fxFlex.xs="50" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="20">
-                        <div class="cart-item-price">
-                            
+                        <div class="cart-item-price">                           
                           <h5><a>{{(item.producto.precio) | currency:'COP' }} X {{(item.cantidad)}}</a></h5>
                         </div>
                       </div>
-
-                    
-
                   </div>
                 </div>
-
-
             </div>
           </div>
         </div>
       </div>
-
     <div class="totalOrder">
       <button mat-raised-button color="accent" class="button-lg-x"> Total Pedido = {{totalPedido | currency:'COP'}}</button><br>       
     </div>

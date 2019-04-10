@@ -28,16 +28,12 @@ export class OrderHistoryComponent implements OnInit {
    ngOnInit() {
       this.callPedidos();
       let user= this.embryoService.token();
-      let rol=user["custom:role"];
-      //let username=user["cognito:username"]       
+      let rol=user["custom:role"];     
       if (rol=="Administrador"){
          this.administrador=true;         
       }else {
          this.administrador=false;  
       }  
-
-      
- 
    }
 
    public callPedidos(){
@@ -66,11 +62,9 @@ export class OrderHistoryComponent implements OnInit {
 
       for (var i=0;i<this.datosPedidos.length;i++){ 
          if (this.datosPedidos[i].idPedido == value.orderid ){
-           // this.datos=[this.datosPedidos[i].totales.totalPrecio]
             this.datos=this.datosPedidos[i];
          } 
       }
-
       this.embryoService.PedidoPopup(order,this.datos);   
    }
    
@@ -103,13 +97,9 @@ export class OrderHistoryComponent implements OnInit {
             (error) => {
             console.log(error)
             }
-              ); 
-                  
+              );                   
       }
    }
-
-
-   
 
    searchOrder(id_reserve){
       this.dataSource = this.order_history;
