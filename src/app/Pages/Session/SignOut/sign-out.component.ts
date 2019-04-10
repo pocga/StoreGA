@@ -11,8 +11,7 @@ export class SignOutComponent implements OnInit{
   ngOnInit(){
 
   }
-
     ngAfterViewInit(){
-        document.getElementById('preloader').classList.add('hide');
+      //document.getElementById('preloader').classList.add('hide');
     }
 }
