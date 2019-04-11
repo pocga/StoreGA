@@ -28,10 +28,10 @@
       <td mat-cell *matCellDef="let element"><a>{{element.fecha}}</a></td>
     </ng-container>
 
-    <ng-container *ngIf="administrador" matColumnDef="eliminar" >
-        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+    <ng-container  matColumnDef="eliminar" >
+        <th *ngIf="administrador" mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
-           <a  (click)="deletePedido(element.orderid)" class="accent-color ">   
+           <a *ngIf="administrador" (click)="deletePedido(element.orderid)" class="accent-color ">   
              <i  *ngIf="!desactivar" class="material-icons cursor-pointer"><a>close</a></i></a>  
         </td>
     </ng-container>
