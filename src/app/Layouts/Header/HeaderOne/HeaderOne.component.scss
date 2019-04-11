@@ -22,6 +22,21 @@
   border: none;
   font-size: 18px;
 }
+.count {
+  background:  #ff5722;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  color: white;
+  font-size: 13px;
+  margin-top: -30px; 
+  margin-left: -15px; 
+  display: flex;
+  justify-content: center;
+  
+}.count a{
+  margin-top: -8px;
+}
 .signout-pag{
   background:  #ff5722;
   border-radius: 50%;
@@ -37,7 +52,12 @@
     display: block;
   }
 }
-@media(max-width:500px) {
+@media(max-width:600px) {
+  .count{
+    transform: scale(0.85);
+  }
+}
+@media(max-width:600px) {
   .follow-order {
     transform: scale(0.85);
   }.signout-pag{

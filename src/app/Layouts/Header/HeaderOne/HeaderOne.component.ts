@@ -15,10 +15,21 @@ export class HeaderOneComponent implements OnInit {
    cartProducts     : any;
    popupResponse    : any;
    wishlistProducts : any;
+   public datosBusqueda = [];
+   public countRol: number;
 
    constructor(public embryoService: EmbryoService, public router:Router,private _autService1:AuthService) {}
 
    ngOnInit() {
+      this.callCart();
+   }
+   
+   public callCart(){     
+      this.embryoService.getDataCart().subscribe((response) => {
+         this.datosBusqueda = Object.keys(response).map(key => response[key]);   
+         this.countRol = this.datosBusqueda[1].length;
+         
+      }, err =>  this.countRol = 0 );
    }
 
    followProduct(){
