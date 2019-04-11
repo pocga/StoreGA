@@ -187,7 +187,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
             productos= {"cantidad": this.datos[i].cantidad,"idProducto":this.datos[i].producto.idProducto} 
             productos1[i]=productos;
          }
-         console.log(productos1)
+        
          let user= this.embryoService.token();
          user=user["cognito:username"];
 
@@ -204,7 +204,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          this.embryoService.confirmarPedido(this.datosUsuario).subscribe((res: HttpResponse<any>) => {
             resultado = res.statusText;
             this.embryoService.PopupThank(res);
-            console.log(this.datosUsuario);
+            
             },
             (error) => {
             console.log(error);

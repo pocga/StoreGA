@@ -217,7 +217,7 @@ export class EmbryoService  {
 
    public getCategories(){
       let user= this.token();
-      console.log(user);
+      
       this.username=user["cognito:username"]
       return this.http.get(`${environment.BASE_URL}catalogo/productos/categorias`);
    }
