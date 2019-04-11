@@ -167,7 +167,8 @@ export class EmbryoService  {
       return this.http.post(`${environment.BASE_URL}pedidos`, data);
    }
 
-   public deleteCart(data) {      
+   public deleteCart(data) {   
+        
       let deleteProduct=data.producto.idProducto;
       var httpOptions = {
          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -179,7 +180,7 @@ export class EmbryoService  {
    }
 
    public deleteOrder(data) {
-
+      
       var httpOptions = {
          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
          observe: 'response' as 'response'  
@@ -210,11 +211,13 @@ export class EmbryoService  {
    }
 
    public getAllCatalogo(){
+      
       return this.http.get(`${environment.BASE_URL}catalogo/productos/`);
    } 
 
    public getCategories(){
       let user= this.token();
+      console.log(user);
       this.username=user["cognito:username"]
       return this.http.get(`${environment.BASE_URL}catalogo/productos/categorias`);
    }
