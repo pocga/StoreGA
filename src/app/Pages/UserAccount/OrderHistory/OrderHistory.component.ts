@@ -90,6 +90,7 @@ export class OrderHistoryComponent implements OnInit {
       if(response){
          let resultado;
          this.embryoService.deleteOrder(value).subscribe((res: HttpResponse<any>) => {
+            
             resultado = res.statusText;
             this.id_reserve = "";
             this.callPedidos();
