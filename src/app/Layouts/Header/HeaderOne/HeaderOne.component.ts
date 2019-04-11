@@ -28,7 +28,7 @@ export class HeaderOneComponent implements OnInit {
       this.embryoService.getDataCart().subscribe((response) => {
          this.datosBusqueda = Object.keys(response).map(key => response[key]);   
          this.countRol = this.datosBusqueda[1].length;
-         
+         return this.countRol;
       }, err =>  this.countRol = 0 );
    }
 
