@@ -140,6 +140,18 @@ export class PanelProductsComponent implements OnInit {
   checkAllProducts(){
     this.lengthvalue=['.'];
     this.index++;
+    
+    for (let i = 0; i < this.categorias.length; i++) {
+      this.categorias[i].check = false;
+    }
+    this.dispS = false;
+    this.dispN = false;
+    this.minValue= this.precios[0];
+    this.maxValue= this.precios[1];
+    this.values=[];
+    this.optionYes=false;
+    this.optionNo=false;
+
     if (this.index >=1){
       this.products_list = true;
     }
@@ -165,16 +177,7 @@ export class PanelProductsComponent implements OnInit {
       this.products_list = true;
       this.lengthvalue =this.datosBusqueda;
       //Limpiar filtros
-      for (let i = 0; i < this.categorias.length; i++) {
-        this.categorias[i].check = false;
-      }
-      this.dispS = false;
-      this.dispN = false;
-      this.minValue= this.precios[0];
-      this.maxValue= this.precios[1];
-      this.values=[];
-      this.optionYes=false;
-      this.optionNo=false;
+      
     });
 
   }
