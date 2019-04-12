@@ -14,7 +14,7 @@ export class AuthService {
   public initCognitoSDK(){
       let thisAux = this;
       const  authData = { // data UserPool
-
+        
       // Producción
           ClientId : '4l482gmr6vl5vs55k8hh4t0ol2', // Your client id here
           AppWebDomain : 'tech-shop.auth.us-east-1.amazoncognito.com',
@@ -25,7 +25,7 @@ export class AuthService {
           UserPoolId : 'us-east-1_CVePKGhTu', // Your user pool id here
           AdvancedSecurityDataCollectionFlag : false, // e.g. true
           Storage: '' // OPTIONAL e.g. new CookieStorage(), to use the specified storage provided
-       /*
+      /*
           //Desarrollo
           ClientId : 'iq5d9op5dpme4mqgsogedr56h', // Your client id here
           AppWebDomain : 'tech-shop-dev.auth.us-east-1.amazoncognito.com',

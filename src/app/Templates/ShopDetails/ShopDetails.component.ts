@@ -4,6 +4,7 @@ import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta
 import {HttpResponse} from '@angular/common/http';
 
 import {EmbryoService } from '../../Services/Embryo.service';
+import { CountService } from 'src/app/Services/count.service';
 
 @Component({
   selector: 'embryo-ShopDetails',
@@ -23,12 +24,13 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
    sizeArray     : number[] = [36,38,40,42,44,46,48];
    quantityArray : number[] = [1,2,3,4,5,6,7,8,9,10];
    productReviews : any;
+   public countRol :any ;
 
   public cantidad="1";
 
    constructor(private route: ActivatedRoute,
                private router: Router, 
-               public embryoService : EmbryoService,private toastyService: ToastaService,private toastyConfig: ToastaConfig
+               public embryoService : EmbryoService,private toastyService: ToastaService,private toastyConfig: ToastaConfig,private data: CountService
                ) {
       this.embryoService.getProductReviews().valueChanges().subscribe(res => {this.productReviews = res});
       this.toastyConfig.position = "top-right";
@@ -85,6 +87,15 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
       this.embryoService.addToCart(value,this.cantidad).subscribe((res: HttpResponse<any>) => {
          resultado = res.statusText;
          this.toastyService.wait(toastOption);
+         this.embryoService.getDataCart().subscribe((response) => {
+            let respuesta = Object.keys(response).map(key => response[key]);   
+            this.countRol = respuesta[1].length; 
+            console.log(this.countRol);
+            this.data.changeIndex(this.countRol);
+            //this.contProducts.emit(this.countRol);
+         }); 
+
+
          },
          (error) => {
            let toastOption: ToastOptions = {

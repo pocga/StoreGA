@@ -39,7 +39,7 @@ export class EmbryoService  {
    navbarCartCount : number = 0;
    navbarWishlistProdCount = 0;
    buyUserCartProducts : any;
-
+   productsCarrito :any;
    private username:any;
     
    constructor(private http:HttpClient, 
@@ -150,6 +150,8 @@ export class EmbryoService  {
       this.navbarCartCount = +((this.localStorageCartProducts).length);
    }
 
+   
+   
    public getPedidos(){
     
       let user= this.token();     

@@ -3,12 +3,14 @@ import { Observable } from 'rxjs';
 import { EmbryoService } from '../../../Services/Embryo.service';
 import {Router} from '@angular/router'
 import { AuthService } from 'src/app/Services/auth.service';
+import { CountService } from 'src/app/Services/count.service';
 
 @Component({
   selector: 'HeaderOne',
   templateUrl: './HeaderOne.component.html',
   styleUrls: ['./HeaderOne.component.scss']
 })
+
 export class HeaderOneComponent implements OnInit {
 
    toggleActive     : boolean = false;
@@ -16,22 +18,23 @@ export class HeaderOneComponent implements OnInit {
    popupResponse    : any;
    wishlistProducts : any;
    public datosBusqueda = [];
-   public countRol: number;
+   public contProducts: any;
 
-   constructor(public embryoService: EmbryoService, public router:Router,private _autService1:AuthService) {}
+   constructor(public embryoService: EmbryoService, public router:Router,private _autService1:AuthService,private data: CountService) {}
 
-   ngOnInit() {
-      this.callCart();
-   }
-   
-   public callCart(){     
+   ngOnInit() {                       
       this.embryoService.getDataCart().subscribe((response) => {
          this.datosBusqueda = Object.keys(response).map(key => response[key]);   
-         this.countRol = this.datosBusqueda[1].length;
-         return this.countRol;
-      }, err =>  this.countRol = 0 );
+         this.contProducts = this.datosBusqueda[1].length;
+         
+      }, err =>  this.contProducts = 0);
+      this.data.currentIndex.subscribe(contador => { this.contProducts =contador; });
    }
 
+   contProductsCart($event){
+      this.contProducts=$event;
+   }
+   
    followProduct(){
       this.router.navigate(['/home/order-history']);
    }
@@ -53,8 +56,6 @@ export class HeaderOneComponent implements OnInit {
          this._autService1.singOut()
       }
    }
-
-
 
    public toggleSearch() {
       document.querySelector('app-main').classList.toggle('form-open');

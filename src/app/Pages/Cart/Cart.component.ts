@@ -6,6 +6,7 @@ import {HttpResponse} from '@angular/common/http';
 import { EmbryoService } from '../../Services/Embryo.service';
 import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
 import { isNgTemplate } from '@angular/compiler';
+import { CountService } from 'src/app/Services/count.service';
 
 @Component({
   selector: 'embryo-Cart',
@@ -28,7 +29,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
    constructor(public embryoService : EmbryoService, 
                private router: Router,
                private loadingBar: LoadingBarService,
-               private cdRef : ChangeDetectorRef,private toastyService: ToastaService) {
+               private cdRef : ChangeDetectorRef,private toastyService: ToastaService, private data: CountService) {
    }
 
    ngOnInit() {
@@ -39,10 +40,11 @@ export class CartComponent implements OnInit, AfterViewChecked {
       
       this.embryoService.getDataCart().subscribe((response) => {
          this.datosBusqueda = Object.keys(response).map(key => response[key]);   
-         this.countRol = this.datosBusqueda.length;
+         this.countRol = this.datosBusqueda[1].length;
          this.totales=this.datosBusqueda[2];
          this.datosBusquedaShow=this.datosBusqueda[1];
-      }, err =>  this.datosBusquedaShow = []);
+         this.data.changeIndex(this.countRol);
+      }, err => { this.datosBusquedaShow = [] ; this.data.changeIndex(0); });
    }
 
    ngAfterViewChecked() : void {
