@@ -205,14 +205,15 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          let resultado;
          this.embryoService.confirmarPedido(this.datosUsuario).subscribe((res: HttpResponse<any>) => {
             resultado = res.statusText;
-            this.embryoService.PopupThank(res);
             this.embryoService.getDataCart().subscribe((response) => {
                let respuesta = Object.keys(response).map(key => response[key]);   
                this.count = respuesta[1].length; 
                this.data.changeIndex(this.count);
-               
-            }); 
+                             
+            },  err => this.data.changeIndex(0));
             
+            this.embryoService.PopupThank(res);
+                         
             },
             (error) => {
             console.log(error);

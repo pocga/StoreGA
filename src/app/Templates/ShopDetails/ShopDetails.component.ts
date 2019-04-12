@@ -90,7 +90,6 @@ export class ShopDetailsComponent implements OnInit, OnChanges {
          this.embryoService.getDataCart().subscribe((response) => {
             let respuesta = Object.keys(response).map(key => response[key]);   
             this.countRol = respuesta[1].length; 
-            console.log(this.countRol);
             this.data.changeIndex(this.countRol);
             //this.contProducts.emit(this.countRol);
          }); 
