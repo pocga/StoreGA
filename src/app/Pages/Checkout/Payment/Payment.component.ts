@@ -87,9 +87,9 @@ export class PaymentComponent implements OnInit, AfterViewInit{
 
    paymentForm   : FormGroup;
    public requeriredForm : boolean=false;
-   public textPattern        : any = '^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$'//'^[a-zA-Z]+$' // '/^[A-Za-z]*\s()[A-Za-z]*$/'; ///^[a-zA-Z]+$/ '/[a-zA-Z]/'  
+   public textPattern        : any = '^[A-Za-z]+((\s)?((\'|\-|\.)?([A-Za-z])+))*$'
    public numberPattern : any = '^(0|[1-9][0-9]*)$'
-   //'^[A-Za-z]+((\s)?((\'|\-|\.)?([A-Za-z])+))*$'
+   
    constructor(public embryoService : EmbryoService, 
                private formGroup : FormBuilder,
                public router: Router,private data: CountService) {
