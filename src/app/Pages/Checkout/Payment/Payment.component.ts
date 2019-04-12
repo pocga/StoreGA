@@ -5,6 +5,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import {HttpResponse} from '@angular/common/http';
 import * as moment from 'moment';
 import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY } from '@angular/cdk/overlay/typings/overlay-directives';
+import { CountService } from 'src/app/Services/count.service';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
    step = 0;
    isDisabledPaymentStepTwo  = true;
    isDisabledPaymentStepThree = false;
+   public count :any ;
 
    emailPattern        : any = /\S+@\S+\.\S+/;
    
@@ -90,7 +92,7 @@ export class PaymentComponent implements OnInit, AfterViewInit{
 
    constructor(public embryoService : EmbryoService, 
                private formGroup : FormBuilder,
-               public router: Router) {
+               public router: Router,private data: CountService) {
 
    
    }
@@ -204,6 +206,12 @@ export class PaymentComponent implements OnInit, AfterViewInit{
          this.embryoService.confirmarPedido(this.datosUsuario).subscribe((res: HttpResponse<any>) => {
             resultado = res.statusText;
             this.embryoService.PopupThank(res);
+            this.embryoService.getDataCart().subscribe((response) => {
+               let respuesta = Object.keys(response).map(key => response[key]);   
+               this.count = respuesta[1].length; 
+               this.data.changeIndex(this.count);
+               
+            }); 
             
             },
             (error) => {
