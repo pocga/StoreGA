@@ -25,7 +25,7 @@
 
     <ng-container matColumnDef="fecha">
       <th mat-header-cell *matHeaderCellDef>Fecha</th>
-      <td mat-cell *matCellDef="let element"><a>{{element.fecha}}</a></td>
+      <td mat-cell *matCellDef="let element"><a>{{element.fecha | date:'yyyy-MM-dd HH:mm'}}</a></td>
     </ng-container>
 
     <ng-container  matColumnDef="eliminar" >
