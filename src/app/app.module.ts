@@ -66,6 +66,7 @@ import { AuthGuard } from './Core/guards/auth.guard';
 import { TokenInterceptor } from './Core/Interceptor/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SignOutComponent } from './Pages/Session/SignOut/sign-out.component';
+import { CountService } from './Services/count.service';
 
 export function createTranslateLoader(http: HttpClient) {
    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -150,6 +151,7 @@ export function createTranslateLoader(http: HttpClient) {
       AuthService ,
       AuthGuard,
       TokenInterceptor,
+      CountService,
       {
       provide: HTTP_INTERCEPTORS,
          useClass: TokenInterceptor,

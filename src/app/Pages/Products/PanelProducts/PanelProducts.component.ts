@@ -1,9 +1,11 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Output} from '@angular/core';
 import { EmbryoService } from '../../../Services/Embryo.service';
 import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
 import {HttpResponse} from '@angular/common/http';
 import { Options, LabelType } from 'ng5-slider';
 import * as $ from 'jquery';
+import { EventEmitter } from 'events';
+import { CountService } from 'src/app/Services/count.service';
 
 @Component({
   selector: 'app-PanelProducts',
@@ -32,11 +34,12 @@ export class PanelProductsComponent implements OnInit {
   minValue: number;
   maxValue: number;
   options: Options;
+  public countRol :any ;
+ // @Output() contProducts = new EventEmitter();
 
-
-  constructor(private embryoService:EmbryoService,private toastyService: ToastaService ) {
+  constructor(private embryoService:EmbryoService,private toastyService: ToastaService,private data: CountService ) {
   }
-
+  
   ngOnInit() {
     this.getCategories();
     this.getPrice();
@@ -111,6 +114,12 @@ export class PanelProductsComponent implements OnInit {
     this.embryoService.addToCart(value,type).subscribe((res: HttpResponse<any>) => {
     resultado = res.statusText;
     this.toastyService.wait(toastOption);
+    this.embryoService.getDataCart().subscribe((response) => {
+      let respuesta = Object.keys(response).map(key => response[key]);   
+      this.countRol = respuesta[1].length; 
+      this.data.changeIndex(this.countRol);
+      //this.contProducts.emit(this.countRol);
+   }); 
 
     },
     (error) => {
@@ -124,6 +133,8 @@ export class PanelProductsComponent implements OnInit {
       };
       this.toastyService.wait(toastOption);
     });
+
+     
   }
 
   checkAllProducts(){
